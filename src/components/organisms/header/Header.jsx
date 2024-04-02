@@ -18,11 +18,6 @@ function Header() {
   return (
     <HeaderWrapper>
       <span>theme mode : {theme}</span>
-
-      <ButtonList className={"layout-col-1-1"}>
-        <Button>1번 버튼</Button>
-        <Button>2번 버튼</Button>
-      </ButtonList>
     </HeaderWrapper>
   );
 }
