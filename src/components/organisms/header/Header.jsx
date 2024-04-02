@@ -17,7 +17,7 @@ function Header() {
 
   return (
     <HeaderWrapper>
-      <span>{theme}</span>
+      <span>theme mode : {theme}</span>
 
       <ButtonList className={"layout-col-1-1"}>
         <Button>1번 버튼</Button>

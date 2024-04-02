@@ -1,0 +1,9 @@
+@font-face {
+  font-family: "Dongguk";
+  src: url("../assets/fonts/Dongguk.woff") format("WOFF");
+}
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../assets/fonts/Pretendard.woff") format("WOFF");
+}
