@@ -6,6 +6,7 @@ export const GlobalStyle = createGlobalStyle`
     --vh: 100%;
     display: flex;
     justify-content: center;
+    background-color: black;
    }
 
   html, body, div, span, applet, object, iframe,
@@ -36,6 +37,9 @@ export const GlobalStyle = createGlobalStyle`
   body {
     touch-action: manipulation;
     line-height: 1;
+    -ms-overflow-style: none;
+    scrollbar-width: none; /* 파이어폭스 */
+
     // 가운데 정렬
   }
   menu, ol, ul {
