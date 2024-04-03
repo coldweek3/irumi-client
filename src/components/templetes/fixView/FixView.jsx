@@ -1,11 +1,10 @@
 import React from "react";
-import Header from "../../organisms/header/header";
-import ButtonSetting from "../../organisms/buttonSetting/buttonSetting";
+
+import ButtonSetting from "../../organisms/buttonSetting/ButtonSetting";
 
 function FixView() {
   return (
     <div>
-      <Header />
       <ButtonSetting />
     </div>
   );

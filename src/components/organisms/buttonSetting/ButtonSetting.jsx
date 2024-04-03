@@ -1,9 +1,9 @@
 import React from "react";
 import { styled } from "styled-components";
 
-import Button from "../../atoms/button/button";
-import ButtonList from "../../molecules/buttonList/buttonList";
-import EmSizeParent from "../../molecules/emSizeParent/emSizeParent";
+import Button from "../../atoms/button/Button";
+import ButtonList from "../../molecules/buttonList/ButtonList";
+import EmSizeParent from "../../molecules/emSizeParent/EmSizeParent";
 
 export const ButtonSettingWrapper = styled.div`
   display: flex;
