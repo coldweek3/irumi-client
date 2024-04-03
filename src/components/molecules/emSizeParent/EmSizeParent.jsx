@@ -15,7 +15,6 @@ function EmSizeParent() {
   // 시간에 따라 현재 테마 받아오기
   return (
     <EmSizeParentWrapper $emsize={emSizeValue}>
-      {emSizeValue}
       <EmSizeChlid />
     </EmSizeParentWrapper>
   );

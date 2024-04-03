@@ -1,11 +1,13 @@
 import React from "react";
-import { styled } from "styled-components";
+import * as S from "./style";
 
-export const EmSizeChildWrapper = styled.div`
-  font-size: 2em;
-`;
 function EmSizeChlid() {
-  return <EmSizeChildWrapper>375px 기준 10px</EmSizeChildWrapper>;
+  return (
+    <S.EmSizeChildWrapper>
+      <S.EmSizeChlidImg src="/vite.svg" />
+      375px 기준 10px
+    </S.EmSizeChildWrapper>
+  );
 }
 
 export default EmSizeChlid;
