@@ -1,11 +1,11 @@
 import { styled, ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./style/globalStyle";
 
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { Outlet } from "react-router-dom";
 
-import { themeMode } from "./recoil/theme.jsx";
-import { windowSize } from "./recoil/windowSize.jsx";
+import { theme } from "./recoil/theme.jsx";
+import { emSize } from "./recoil/emSize.jsx";
 
 import { day, night } from "./style/theme.js";
 import "./style/fontStyle.css";
@@ -33,10 +33,13 @@ const Layout = () => {
 };
 
 function App() {
-  const theme = useRecoilValue(themeMode);
+  // 시간에 따라 현재 테마 받아오기
+  const themeValue = useRecoilValue(theme);
 
   // window의 너비가 바뀔때마다 emSize를 재정의함
-  const setEmSize = useRecoilState(windowSize);
+  const setEmSize = useSetRecoilState(emSize);
+
+  // main app 내에 resizeListenr 이벤트 핸들러 생성
   useEffect(() => {
     const resizeListener = () => {
       setEmSize(getEmSize(window.innerWidth));
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <>
-      <ThemeProvider theme={theme == "DAY" ? day : night}>
+      <ThemeProvider theme={themeValue == "DAY" ? day : night}>
         <GlobalStyle />
         <Layout />
       </ThemeProvider>

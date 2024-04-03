@@ -8,4 +8,4 @@ export const getTheme = () => {
   return nowTime > 6 && nowTime < 19 ? "DAY" : "NIGHT";
 };
 
-export const themeMode = atom({ key: "Theme-Mode", default: getTheme() });
+export const theme = atom({ key: "Theme", default: getTheme() });

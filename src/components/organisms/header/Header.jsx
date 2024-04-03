@@ -1,9 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
-import ButtonList from "../../molecules/buttonList/ButtonList";
-import Button from "../../atoms/button/Button";
 
-import { themeMode } from "../../../recoil/theme";
+import { theme } from "../../../recoil/theme";
 import { useRecoilValue } from "recoil";
 
 export const HeaderWrapper = styled.div`
@@ -13,11 +11,11 @@ export const HeaderWrapper = styled.div`
 `;
 
 function Header() {
-  const theme = useRecoilValue(themeMode);
+  const themeValue = useRecoilValue(theme);
 
   return (
     <HeaderWrapper>
-      <span>theme mode : {theme}</span>
+      <span>theme mode : {themeValue}</span>
     </HeaderWrapper>
   );
 }

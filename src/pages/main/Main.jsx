@@ -1,5 +1,5 @@
 import React from "react";
-import FixView from "../../components/templetes/fixView/FixView";
+import FixView from "../../components/templetes/fixView/fixView";
 
 function Main() {
   return <FixView></FixView>;
