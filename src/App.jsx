@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 import { theme } from "./recoil/theme.jsx";
 import { emSize } from "./recoil/emSize.jsx";
 
-import { day, night } from "./style/theme.js";
+import { day, sunset, night } from "./style/theme.js";
 import "./style/fontStyle.css";
 import { useEffect } from "react";
 import { getEmSize } from "./utils/getEmSize.jsx";
@@ -52,7 +52,11 @@ function App() {
 
   return (
     <>
-      <ThemeProvider theme={themeValue == "DAY" ? day : night}>
+      <ThemeProvider
+        theme={
+          themeValue == "DAY" ? day : themeValue == "SUNSET" ? sunset : night
+        }
+      >
         <GlobalStyle />
         <Layout />
       </ThemeProvider>
