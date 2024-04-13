@@ -1,6 +1,6 @@
 import React from "react";
 import { styled } from "styled-components";
-import { emSize } from "../../../recoil/emSize";
+import { emSize } from "../../../../recoil/emSize";
 import { useRecoilValue } from "recoil";
 
 import EmSizeChlid from "../../atoms/emSizeChlid/EmSizeChlid";
