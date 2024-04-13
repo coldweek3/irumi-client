@@ -19,6 +19,10 @@ const ButtonListWrapper = styled.div`
     grid-template-rows: 1fr 1fr;
     row-gap: 4px;
   }
+
+  &.bottom {
+    padding-bottom: 64px;
+  }
 `;
 
 function ButtonList({ children, className }) {

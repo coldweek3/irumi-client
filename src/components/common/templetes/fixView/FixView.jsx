@@ -7,19 +7,21 @@ import { heightSize } from "../../../../recoil/heightSize";
 
 const FixViewWrapper = styled.div`
   width: 100%;
-  background-color: red;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
   padding: 0px 16px;
   min-height: ${props => props.$heightSize}px;
 `;
 
-function FixView() {
+function FixView({ children }) {
   const heightSizeValue = useRecoilValue(heightSize);
 
   return (
-    <FixViewWrapper $heightSize={heightSizeValue}>
-      <ButtonSetting />
-    </FixViewWrapper>
+    <FixViewWrapper $heightSize={heightSizeValue}>{children}</FixViewWrapper>
   );
 }
 
