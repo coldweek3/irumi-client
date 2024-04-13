@@ -21,7 +21,7 @@ const ButtonListWrapper = styled.div`
   }
 
   &.bottom {
-    padding-bottom: 64px;
+    padding-bottom: 40px;
   }
 `;
 

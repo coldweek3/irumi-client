@@ -53,9 +53,9 @@ const WishCardLikeWrapper = styled.div`
   }
 `;
 
-function WishCard() {
+function WishCard({ wishSize = 127 }) {
   const emSizeValue = useRecoilValue(emSize);
-  const wishSize = 127;
+
   return (
     <WishCardEmWrapper $emsize={emSizeValue}>
       <WishCardWrapper

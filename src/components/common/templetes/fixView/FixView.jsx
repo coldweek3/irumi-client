@@ -1,6 +1,5 @@
 import React from "react";
 
-import ButtonSetting from "../../organisms/buttonSetting/ButtonSetting";
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { heightSize } from "../../../../recoil/heightSize";
@@ -12,6 +11,9 @@ const FixViewWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  position: relative;
+  overflow: hidden;
 
   padding: 0px 16px;
   min-height: ${props => props.$heightSize}px;
