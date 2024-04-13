@@ -1,7 +1,7 @@
 import React from "react";
 import { styled } from "styled-components";
 
-export const ButtonListWrapper = styled.div`
+const ButtonListWrapper = styled.div`
   display: grid;
 
   &.layout-1 {
@@ -11,7 +11,7 @@ export const ButtonListWrapper = styled.div`
   &.layout-col-1-1 {
     width: 100%;
     grid-template-columns: 1fr 1fr;
-    column-gap: 4px;
+    column-gap: 20px;
   }
 
   &.layout-row-1-1 {

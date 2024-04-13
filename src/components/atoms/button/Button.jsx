@@ -9,33 +9,20 @@ const ButtonWrapper = styled.div`
 
   //버튼 사이즈 시스템
 
-  &.large {
-    padding: 8px 0px;
-    width: 100%;
-    max-width: 500px;
-    font-size: 20px;
+  &.middle {
+    font-size: 14px;
+    line-height: calc(16 / 14);
+    padding: 12px 20px;
+    border-radius: 20px;
   }
 
-  //버튼 컬러 시스템
+  // 버튼 컬러 시스템
   &.primary {
-    background-color: ${props => props.theme.main1};
-    color: ${props => props.theme.font2};
+    background-color: ${props => props.theme.btn_primary};
+    color: ${props => props.theme.btn_primary_font};
   }
+  // 버튼에 마우스를 올렸을 때
   &.primary:hover {
-    background-color: ${props => props.theme.main1};
-    color: ${props => props.theme.font2};
-    border: 1px solid black;
-  }
-
-  &.normal {
-    background-color: ${props => props.theme.grey1};
-    color: ${props => props.theme.font1};
-  }
-
-  &.normal:hover {
-    background-color: ${props => props.theme.grey1};
-    color: ${props => props.theme.font1};
-    border: 1px solid black;
   }
 `;
 

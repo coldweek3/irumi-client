@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 
 import EmSizeChlid from "../../atoms/emSizeChlid/EmSizeChlid";
 
-export const EmSizeParentWrapper = styled.div`
+const EmSizeParentWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
 `;
 
