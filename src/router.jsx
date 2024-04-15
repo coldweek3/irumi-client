@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import Main from "./pages/main/Main";
-import WishWrite from "./pages/wishWrite/wishWrite";
+import WishWrite from "./pages/wishWrite/lanternWrite";
 
 const router = createBrowserRouter([
   {
