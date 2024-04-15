@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 //배경지 컴포넌트
-import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
+import GradientBackground from "../../components/organisms/Background/GradientBackground";
+import Header from "../../components/molecules/header/header";
 
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};
@@ -19,7 +20,7 @@ function wishWrite() {
 
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
-      <div>소원지 작성하는 페이지입니다~</div>
+      <Header title="소원 작성하기" />
     </Background>
   );
 }
