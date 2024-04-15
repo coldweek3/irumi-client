@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 //배경지 컴포넌트
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
-import Header from "../../components/molecules/header/header";
+import Header from "../../components/common/molecules/header/header";
 
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};
