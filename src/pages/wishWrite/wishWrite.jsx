@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 //배경지 컴포넌트
-import GradientBackground from "../../components/organisms/Background/GradientBackground";
+import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};

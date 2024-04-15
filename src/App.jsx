@@ -11,10 +11,10 @@ import { day, sunset, night } from "./style/theme.js";
 import "./style/fontStyle.css";
 import { useEffect } from "react";
 import { getEmSize } from "./utils/getEmSize.jsx";
+import { heightSize } from "./recoil/heightSize.jsx";
 
 const Wrapper = styled.div`
   width: 100vw;
-  min-height: 100vh;
   max-width: 500px;
   background-color: ${props => props.theme.bg};
   color: ${props => props.theme.font1};
@@ -39,10 +39,14 @@ function App() {
   // window의 너비가 바뀔때마다 emSize를 재정의함
   const setEmSize = useSetRecoilState(emSize);
 
+  // window의 길이가 바뀔때마다 emSize를 재정의함
+  const setHeightSize = useSetRecoilState(heightSize);
+
   // main app 내에 resizeListenr 이벤트 핸들러 생성
   useEffect(() => {
     const resizeListener = () => {
       setEmSize(getEmSize(window.innerWidth));
+      setHeightSize(window.innerHeight);
     };
     window.addEventListener("resize", resizeListener);
     return () => {

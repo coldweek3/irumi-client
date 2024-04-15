@@ -1,9 +1,9 @@
 import { useRecoilValue } from "recoil";
-import { theme } from "../../../recoil/theme";
+import { theme } from "../../../../recoil/theme";
 
-import dayImage from "../../../assets/image/WishWrite/DayGradientBg.png";
-import sunsetImage from "../../../assets/image/WishWrite/SunsetGradientBg.png";
-import nightImage from "../../../assets/image/WishWrite/NightGradientBg.png";
+import dayImage from "../../../../assets/image/WishWrite/DayGradientBg.png";
+import sunsetImage from "../../../../assets/image/WishWrite/SunsetGradientBg.png";
+import nightImage from "../../../../assets/image/WishWrite/NightGradientBg.png";
 
 function GradientBackground() {
   const currentTheme = useRecoilValue(theme);

@@ -5,7 +5,7 @@ import Button from "../../atoms/button/Button";
 import ButtonList from "../../molecules/buttonList/ButtonList";
 import EmSizeParent from "../../molecules/emSizeParent/EmSizeParent";
 
-export const ButtonSettingWrapper = styled.div`
+const ButtonSettingWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -16,19 +16,9 @@ export const ButtonSettingWrapper = styled.div`
 function ButtonSetting() {
   return (
     <ButtonSettingWrapper>
-      <EmSizeParent />
       <ButtonList className={"layout-col-1-1"}>
-        <Button className={"large normal"}>라지1</Button>
-        <Button className={"large primary"}>라지2</Button>
-      </ButtonList>
-
-      <ButtonList className={"layout-1"}>
-        <Button className={"large primary"}>라지1</Button>
-      </ButtonList>
-
-      <ButtonList className={"layout-row-1-1"}>
-        <Button className={"large primary"}>라지1</Button>
-        <Button className={"large normal"}>라지2</Button>
+        <Button className={"middle primary"}>버튼</Button>
+        <Button className={"middle primary"}>버튼</Button>
       </ButtonList>
     </ButtonSettingWrapper>
   );
