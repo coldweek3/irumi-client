@@ -3,6 +3,7 @@ import App from "./App";
 
 import Main from "./pages/main/Main";
 import WishWrite from "./pages/wishWrite/lanternWrite";
+import MailWrite from "./pages/mailWirte/mailWrite";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <Main /> },
-      { path: "/wishWrite", element: <WishWrite /> }
+      { path: "/wishWrite", element: <WishWrite /> },
+      { path: "/mailWrite", element: <MailWrite /> }
     ]
   }
 ]);

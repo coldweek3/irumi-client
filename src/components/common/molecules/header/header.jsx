@@ -6,6 +6,7 @@ const HeaderWrapper = styled.div`
   height: 100px;
   flex-direction: row;
   display: flex;
+  justify-content: center;
 `;
 
 const HeaderTitle = styled.div`
