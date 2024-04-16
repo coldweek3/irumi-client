@@ -21,8 +21,8 @@ function Main() {
       <WishCardSwiper />
 
       <ButtonList className={"layout-col-1-1 bottom"}>
-        <Button className={"middle primary"}>버튼</Button>
-        <Button className={"middle primary"}>버튼</Button>
+        <Button className={"middle primary"}>연등 둘러보기</Button>
+        <Button className={"middle primary"}>연등 작성하기</Button>
       </ButtonList>
     </FixView>
   );
