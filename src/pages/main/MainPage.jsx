@@ -5,7 +5,7 @@ import ButtonList from "../../components/common/molecules/buttonList/ButtonList"
 import WishCardSwiper from "../../components/main/molecules/wishCardSwiper/WishCardSwiper";
 import MainTextLabel from "../../components/main/atoms/mainTextLabel/MainTextLabel";
 import LinkButton from "../../components/common/atoms/button/LinkButton";
-import LamplightBanner from "../../components/main/atoms/lamplightBanner/LightBanner";
+import LamplightBanner from "../../components/main/atoms/lamplightBanner/LamplightBanner";
 
 function MainPage() {
   return (
