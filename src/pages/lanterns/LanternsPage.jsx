@@ -18,12 +18,12 @@ function LanternsPage() {
   }, [currentIndex]);
   return (
     <ScrollView>
+      <SearchHeader className={"scroll"} />
       <ToggleButton
         index={indexKor}
         currentIndex={currentIndex}
         getCurrentIndex={getCurrentIndex}
       />
-      <SearchHeader className={"scroll"} />
       <LanternList />
     </ScrollView>
   );

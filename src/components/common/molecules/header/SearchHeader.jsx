@@ -4,7 +4,8 @@ import SearchBar from "../../atoms/searchBar/SearchBar";
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 56px;
+  height: 60px;
+  padding-top: 4px;
 
   display: flex;
   justify-content: center;

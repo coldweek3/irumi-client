@@ -21,7 +21,7 @@ function MainPage() {
       <WishCardSwiper />
 
       <ButtonList className={"layout-col-1-1 bottom"}>
-        <LinkButton className={"middle primary"} herf={"/lanternList"}>
+        <LinkButton className={"middle primary"} herf={"/lanterns"}>
           연등 둘러보기
         </LinkButton>
 
