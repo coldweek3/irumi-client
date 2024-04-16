@@ -3,11 +3,11 @@ import { useRecoilValue } from "recoil";
 import { emSize } from "../../../../recoil/emSize";
 import styled from "styled-components";
 
-const WishCardEmWrapper = styled.div`
+const LanternCardEmWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
 `;
 
-const WishCardWrapper = styled.div`
+const LanternCardWrapper = styled.div`
   color: #5b3a1a;
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@ const WishCardWrapper = styled.div`
   background-image: ${props => `url(/img/wishCard/purple_light.png)`};
 `;
 
-const WishCardName = styled.div`
+const LanternCardName = styled.div`
   width: 100%;
   padding-top: ${props => props.$yPosition}em;
   div {
@@ -29,7 +29,7 @@ const WishCardName = styled.div`
     font-size: ${props => props.$fontSize}em;
   }
 `;
-const WishCardContent = styled.div`
+const LanternCardContent = styled.div`
   width: 100%;
   flex-grow: 1;
   padding-top: ${props => props.$yPosition}em;
@@ -42,7 +42,7 @@ const WishCardContent = styled.div`
   }
 `;
 
-const WishCardLikeWrapper = styled.div`
+const LanternCardLikeWrapper = styled.div`
   width: 100%;
   padding-bottom: ${props => props.$yPosition}em;
   display: flex;
@@ -53,39 +53,39 @@ const WishCardLikeWrapper = styled.div`
   }
 `;
 
-function WishCard({ wishSize = 127 }) {
+function LanternCard({ wishSize = 127 }) {
   const emSizeValue = useRecoilValue(emSize);
 
   return (
-    <WishCardEmWrapper $emsize={emSizeValue}>
-      <WishCardWrapper
+    <LanternCardEmWrapper $emsize={emSizeValue}>
+      <LanternCardWrapper
         $padding={((92 / 344) * wishSize) / 10}
         $width={wishSize / 10}
         $height={((705 / 344) * wishSize) / 10}
       >
-        <WishCardName
+        <LanternCardName
           $yPosition={((412 / 344) * wishSize) / 10}
           $fontSize={((24 / 344) * wishSize) / 10}
         >
           <div>산시20 김강민</div>
-        </WishCardName>
+        </LanternCardName>
 
-        <WishCardContent
+        <LanternCardContent
           $yPosition={((12 / 344) * wishSize) / 10}
           $fontSize={((20 / 344) * wishSize) / 10}
         >
           <div>올해 우리 가족 무 탈하게 잘 마무리 하길...</div>
-        </WishCardContent>
+        </LanternCardContent>
 
-        <WishCardLikeWrapper
+        <LanternCardLikeWrapper
           $yPosition={((24 / 344) * wishSize) / 10}
           $fontSize={((24 / 344) * wishSize) / 10}
         >
           <div>좋아요</div>
-        </WishCardLikeWrapper>
-      </WishCardWrapper>
-    </WishCardEmWrapper>
+        </LanternCardLikeWrapper>
+      </LanternCardWrapper>
+    </LanternCardEmWrapper>
   );
 }
 
-export default WishCard;
+export default LanternCard;
