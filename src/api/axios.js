@@ -1,8 +1,8 @@
-import axios from "axios";
+// import axios from "axios";
 
 // export const API = axios.create({
 //   baseURL: " ",
 //   headers: {
-//     "Content-Type": "application/json",
-//   },
+//     "Content-Type": "application/json"
+//   }
 // });

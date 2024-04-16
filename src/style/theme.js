@@ -7,6 +7,12 @@ export const day = {
   searchBg: "#FBEDD0",
   searchLine: "#5B3A1A",
 
+  hintColor: "#FCD300",
+
+  bannerGradient1: "#B1DEF1",
+  bannerGradient2: "#82D6FB",
+  bannerShadow: "#00000026",
+
   btn_primary: "#C3DE97",
   btn_primary_font: "#ffffff"
 };
@@ -20,6 +26,12 @@ export const sunset = {
   searchBg: "#FBEDD0",
   searchLine: "#5B3A1A",
 
+  hintColor: "#FCD300",
+
+  bannerGradient1: "#69628A",
+  bannerGradient2: "#906E89",
+  bannerShadow: "#00000026",
+
   btn_primary: "#F0C840",
   btn_primary_font: "#ffffff"
 };
@@ -32,6 +44,12 @@ export const night = {
 
   searchBg: "#FBEDD0",
   searchLine: "#5B3A1A",
+
+  hintColor: "#FCD300",
+
+  bannerGradient1: "#102951",
+  bannerGradient2: "#5d6d7c",
+  bannerShadow: "#ffffff26",
 
   btn_primary: "#FFB5BE",
   btn_primary_font: "#ffffff"

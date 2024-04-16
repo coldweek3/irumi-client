@@ -1,17 +1,18 @@
 import React from "react";
 import FixView from "../../components/common/templetes/fixView/FixView";
-import LightBanner from "../../components/main/atoms/lightBanner/LightBanner";
+
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
 import WishCardSwiper from "../../components/main/molecules/wishCardSwiper/WishCardSwiper";
 import MainTextLabel from "../../components/main/atoms/mainTextLabel/MainTextLabel";
 import LinkButton from "../../components/common/atoms/button/LinkButton";
+import LamplightBanner from "../../components/main/atoms/lamplightBanner/LightBanner";
 
 function MainPage() {
   return (
     <FixView>
-      <LightBanner />
+      <LamplightBanner />
       <MainTextLabel className={"count"}>
-        지금까지 1000개의 연등이...
+        지금까지 '1000'개의 연등이 달렸어요!
       </MainTextLabel>
 
       <MainTextLabel className={"notice"}>
