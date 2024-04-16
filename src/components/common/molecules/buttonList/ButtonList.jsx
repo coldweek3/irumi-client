@@ -21,7 +21,14 @@ const ButtonListWrapper = styled.div`
   }
 
   &.bottom {
+    position: absolute;
+    transform: translate(-50%, 0%);
+    left: 50%;
+
+    bottom: 0;
     padding-bottom: 40px;
+
+    padding: 0 16px 40px 16px;
   }
 `;
 

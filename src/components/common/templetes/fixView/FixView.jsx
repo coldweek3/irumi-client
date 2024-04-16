@@ -5,18 +5,17 @@ import { useRecoilValue } from "recoil";
 import { heightSize } from "../../../../recoil/heightSize";
 import { theme } from "../../../../recoil/theme";
 
+// 더이상 스크롤이 될 일이 없는 컴포넌트를 가정하고 만듦.
 const FixViewWrapper = styled.div`
   width: 100%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-between; */
 
   position: relative;
   overflow: hidden;
 
-  padding: 0px 16px;
   min-height: ${props => props.$heightSize}px;
 
   background-size: cover;
@@ -25,7 +24,6 @@ const FixViewWrapper = styled.div`
 
 function FixView({ children }) {
   const themeValue = useRecoilValue(theme);
-
   const heightSizeValue = useRecoilValue(heightSize);
 
   return (
