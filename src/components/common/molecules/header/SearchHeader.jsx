@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import SearchBar from "../../atoms/searchBar/SearchBar";
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 44px;
-  background-color: red;
+  height: 56px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   &.scroll {
     position: fixed;
@@ -17,7 +21,11 @@ const HeaderWrapper = styled.div`
 `;
 
 function SearchHeader({ className }) {
-  return <HeaderWrapper className={className}>헤더</HeaderWrapper>;
+  return (
+    <HeaderWrapper className={className}>
+      <SearchBar />
+    </HeaderWrapper>
+  );
 }
 
 export default SearchHeader;

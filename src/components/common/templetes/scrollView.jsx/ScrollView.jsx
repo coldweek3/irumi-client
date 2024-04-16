@@ -6,7 +6,7 @@ import { theme } from "../../../../recoil/theme";
 const ScrollViewWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  padding-top: 44px;
+  padding-top: 56px;
 
   display: flex;
   flex-direction: column;
