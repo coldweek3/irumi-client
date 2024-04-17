@@ -4,7 +4,7 @@ import SearchBar from "../../atoms/searchBar/SearchBar";
 
 const HeaderWrapper = styled.div`
   width: 100%;
-  height: 60px;
+  height: 80px;
   padding-top: 4px;
 
   display: flex;
@@ -13,7 +13,7 @@ const HeaderWrapper = styled.div`
 
   &.scroll {
     position: fixed;
-    max-width: 500px;
+    max-width: 506px;
 
     transform: translate(-50%, 0%);
     left: 50%;
