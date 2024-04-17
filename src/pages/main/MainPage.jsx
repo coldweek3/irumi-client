@@ -9,19 +9,18 @@ import LamplightBanner from "../../components/main/atoms/lamplightBanner/Lamplig
 import { getLanterns } from "../../apis/api/lantern";
 
 import InitView from "../../components/common/templetes/initView/InitView";
-import { getInitData } from "../../apis/services/getData";
 
 function MainPage() {
   const [isInit, setIsInit] = useState(true);
   const [data, setData] = useState({ totCount: 0, lanterns: [] });
 
   const fetchData = async () => {
-    await getLanterns("random")
-      .then(getInitData)
-      .then(data => {
-        setData(data);
-      });
-    setIsInit(false);
+    await getLanterns("random").then(result => {
+      if (result.type == "clear") {
+        setData(result.data);
+        setIsInit(false);
+      }
+    });
   };
 
   useEffect(() => {

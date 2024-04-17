@@ -11,8 +11,6 @@ const LanternListWrapper = styled.div`
   row-gap: 40px;
   column-gap: 12px;
 
-  padding-bottom: 80px;
-
   place-items: center;
 `;
 
