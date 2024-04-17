@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   background-color: ${props => props.theme.bg};
   color: ${props => props.theme.font1};
 
-  font-family: "Pretendard";
+  font-family: "LotteMartDreamMedium";
 `;
 
 const Layout = () => {

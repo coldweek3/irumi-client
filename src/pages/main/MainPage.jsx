@@ -1,17 +1,18 @@
 import React from "react";
 import FixView from "../../components/common/templetes/fixView/FixView";
-import LightBanner from "../../components/main/atoms/lightBanner/LightBanner";
+
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
-import Button from "../../components/common/atoms/button/Button";
 import WishCardSwiper from "../../components/main/molecules/wishCardSwiper/WishCardSwiper";
 import MainTextLabel from "../../components/main/atoms/mainTextLabel/MainTextLabel";
+import LinkButton from "../../components/common/atoms/button/LinkButton";
+import LamplightBanner from "../../components/main/atoms/lamplightBanner/LamplightBanner";
 
-function Main() {
+function MainPage() {
   return (
     <FixView>
-      <LightBanner />
+      <LamplightBanner />
       <MainTextLabel className={"count"}>
-        지금까지 1000개의 연등이...
+        지금까지 '1000'개의 연등이 달렸어요!
       </MainTextLabel>
 
       <MainTextLabel className={"notice"}>
@@ -21,11 +22,16 @@ function Main() {
       <WishCardSwiper />
 
       <ButtonList className={"layout-col-1-1 bottom"}>
-        <Button className={"middle primary"}>버튼</Button>
-        <Button className={"middle primary"}>버튼</Button>
+        <LinkButton className={"middle primary"} herf={"/lanterns"}>
+          연등 둘러보기
+        </LinkButton>
+
+        <LinkButton className={"middle primary"} herf={"/wishWrite"}>
+          연등 작성하기
+        </LinkButton>
       </ButtonList>
     </FixView>
   );
 }
 
-export default Main;
+export default MainPage;
