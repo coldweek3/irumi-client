@@ -7,6 +7,10 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
+  // 버튼에 마우스를 올렸을 때
+  &:hover {
+    transform: scale(1.1);
+  }
   //버튼 사이즈 시스템
 
   &.middle {
@@ -21,7 +25,7 @@ const ButtonWrapper = styled.div`
     background-color: ${props => props.theme.btn_primary};
     color: ${props => props.theme.btn_primary_font};
   }
-  // 버튼에 마우스를 올렸을 때
+
   &.primary:hover {
   }
 `;

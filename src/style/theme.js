@@ -1,11 +1,11 @@
 export const day = {
-  bg: "#ffffff",
-  font1: "#000000",
+  bg: "#000000",
+  font1: "#ffffff",
   font2: "#9C9C9C",
   font3: "#5B3A1A",
 
   searchBg: "#FBEDD0",
-  searchLine: "#5B3A1A",
+  searchFont: "#5B3A1A",
 
   hintColor: "#FCD300",
 
@@ -24,7 +24,7 @@ export const sunset = {
   font3: "#5B3A1A",
 
   searchBg: "#FBEDD0",
-  searchLine: "#5B3A1A",
+  searchFont: "#5B3A1A",
 
   hintColor: "#FCD300",
 
@@ -43,7 +43,7 @@ export const night = {
   font3: "#5B3A1A",
 
   searchBg: "#FBEDD0",
-  searchLine: "#5B3A1A",
+  searchFont: "#5B3A1A",
 
   hintColor: "#FCD300",
 
