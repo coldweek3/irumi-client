@@ -59,7 +59,7 @@ function SearchBar() {
   return (
     <SearchWrapper onSubmit={handleSubmit}>
       <SearchInput
-        placeholder="검색어를 입력하세요."
+        placeholder="이름을 검색해보세요!"
         type="text"
         value={keyword}
         onChange={keywordChangeHandler}

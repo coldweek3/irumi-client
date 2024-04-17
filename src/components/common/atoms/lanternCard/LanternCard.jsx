@@ -69,7 +69,7 @@ function LanternCard({ wishSize = 127, lanternInfo }) {
             $yPosition={((412 / 344) * wishSize) / 10}
             $fontSize={((24 / 344) * wishSize) / 10}
           >
-            <div>{lanternInfo.id}</div>
+            <div>{lanternInfo.nickname}</div>
           </LanternCardName>
 
           <LanternCardContent

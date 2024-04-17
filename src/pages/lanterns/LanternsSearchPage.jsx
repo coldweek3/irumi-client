@@ -9,10 +9,10 @@ import { getLanterns } from "../../apis/api/lantern";
 import LoadingIndicator from "../../components/common/atoms/loading/LoadingIndicator";
 import InitView from "../../components/common/templetes/initView/InitView";
 import { PaginationTotalPage } from "../../emun/pagination";
+import LanternsTextLabel from "../../components/lanterns/atoms/lanternsTextLabel/LanternsTextLabel";
 
 function LanternsSearchPage() {
   const params = useParams();
-  console.log(params.keyword + "의 api를 호출합니다.");
 
   // API 호출 관련
   const [isInit, setIsInit] = useState(true);
@@ -86,7 +86,21 @@ function LanternsSearchPage() {
   ) : (
     <ScrollView>
       <SearchHeader className={"scroll"} />
-      <LanternList lanterns={lanterns} />
+
+      {/* 검색 결과 분기 설정 */}
+
+      {lanterns.length == 0 ? (
+        <LanternsTextLabel className={"none"}>
+          '{params.keyword}'에 대한 검색 결과가 없습니다.
+        </LanternsTextLabel>
+      ) : (
+        <>
+          <LanternsTextLabel className={"notNone"}>
+            '{params.keyword}'에 대한 검색 결과입니다.
+          </LanternsTextLabel>
+          <LanternList lanterns={lanterns} />
+        </>
+      )}
 
       <div ref={setTarget}>{isLoading ? <LoadingIndicator /> : ""}</div>
     </ScrollView>
