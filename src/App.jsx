@@ -9,7 +9,7 @@ import { emSize } from "./recoil/emSize.jsx";
 
 import { day, sunset, night } from "./style/theme.js";
 import "./style/fontStyle.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getEmSize } from "./utils/getEmSize.jsx";
 import { heightSize } from "./recoil/heightSize.jsx";
 

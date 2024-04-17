@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
 import LanternCard from "../../../common/atoms/lanternCard/LanternCard";
 
-function LanternCardSwiper() {
+function LanternCardSwiper({ lanterns }) {
   return (
     <Swiper
       effect={"coverflow"}
@@ -26,27 +26,11 @@ function LanternCardSwiper() {
       modules={[EffectCoverflow, Pagination]}
       className="mySwiper"
     >
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
-      <SwiperSlide>
-        <LanternCard wishSize={150} />
-      </SwiperSlide>
+      {lanterns?.map((item, index) => (
+        <SwiperSlide key={index}>
+          <LanternCard lanternInfo={item} wishSize={150} />
+        </SwiperSlide>
+      ))}
     </Swiper>
   );
 }

@@ -2,35 +2,46 @@ import React, { useEffect, useState } from "react";
 import FixView from "../../components/common/templetes/fixView/FixView";
 
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
-import WishCardSwiper from "../../components/main/molecules/wishCardSwiper/WishCardSwiper";
+import LanternCardSwiper from "../../components/main/molecules/lanternCardSwiper/LanternCardSwiper";
 import MainTextLabel from "../../components/main/atoms/mainTextLabel/MainTextLabel";
 import LinkButton from "../../components/common/atoms/button/LinkButton";
 import LamplightBanner from "../../components/main/atoms/lamplightBanner/LamplightBanner";
 import { getLanterns } from "../../apis/api/lantern";
 
+import InitView from "../../components/common/templetes/initView/InitView";
+import { getInitData } from "../../apis/services/getData";
+
 function MainPage() {
-  const [data, setData] = useState({});
+  const [isInit, setIsInit] = useState(true);
+  const [data, setData] = useState({ totCount: 0, lanterns: [] });
 
   const fetchData = async () => {
-    await getLanterns("random");
+    await getLanterns("random")
+      .then(getInitData)
+      .then(data => {
+        setData(data);
+      });
+    setIsInit(false);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  return (
+  return isInit ? (
+    <InitView />
+  ) : (
     <FixView>
       <LamplightBanner />
       <MainTextLabel className={"count"}>
-        지금까지 '1000'개의 연등이 달렸어요!
+        지금까지 '{data.totCount}'개의 연등이 달렸어요!
       </MainTextLabel>
 
       <MainTextLabel className={"notice"}>
         좌우로 드래그 해보세요.
       </MainTextLabel>
 
-      <WishCardSwiper />
+      <LanternCardSwiper lanterns={data.lanterns} />
 
       <ButtonList className={"layout-col-1-1 bottom"}>
         <LinkButton className={"middle primary"} herf={"/lanterns"}>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
-import ScrollView from "../../components/common/templetes/scrollView.jsx/ScrollView";
+import ScrollView from "../../components/common/templetes/scrollView/ScrollView";
 
 import SearchHeader from "../../components/common/molecules/header/SearchHeader";
 import LanternList from "../../components/lanterns/molecules/lanternList/LanternList";
 import ToggleButton from "../../components/lanterns/atoms/button/ToggleButton";
+import InitView from "../../components/common/templetes/initView/InitView";
+import { getLanterns } from "../../apis/api/lantern";
+import { getInitData } from "../../apis/services/getData";
 
 function LanternsPage() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,11 +15,27 @@ function LanternsPage() {
   };
 
   const indexKor = ["최신순", "인기순"];
-  const indexEng = ["current", "popular"];
+  const indexEng = ["recent", "pop"];
+
+  const [isInit, setIsInit] = useState(true);
+  const [data, setData] = useState();
+
+  const fetchData = async () => {
+    await getLanterns(indexEng[currentIndex])
+      .then(getInitData)
+      .then(data => {
+        setData(data);
+      });
+    setIsInit(false);
+  };
+
   useEffect(() => {
-    console.log(indexEng[currentIndex] + "순으로 api 호출");
-  }, [currentIndex]);
-  return (
+    fetchData();
+  }, []);
+
+  return isInit ? (
+    <InitView />
+  ) : (
     <ScrollView>
       <SearchHeader className={"scroll"} />
       <ToggleButton
@@ -24,7 +43,7 @@ function LanternsPage() {
         currentIndex={currentIndex}
         getCurrentIndex={getCurrentIndex}
       />
-      <LanternList />
+      <LanternList lanterns={data.results} />
     </ScrollView>
   );
 }

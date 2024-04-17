@@ -16,14 +16,12 @@ const LanternListWrapper = styled.div`
   place-items: center;
 `;
 
-function LanternList() {
+function LanternList({ lanterns }) {
   return (
     <LanternListWrapper>
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
+      {lanterns.map((item, index) => (
+        <LanternCard key={index} lanternInfo={item} wishSize={150} />
+      ))}
     </LanternListWrapper>
   );
 }

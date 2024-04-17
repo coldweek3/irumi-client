@@ -1,10 +1,9 @@
-import { API } from "../utils/axios";
+import { API } from "../utils";
 
 export const getLanterns = async type => {
   try {
-    console.log(API.defaults.baseURL);
     const result = await API.get(`api/lanterns/${type}`);
-    console.log(result);
+    return result.data;
   } catch (error) {
     console.log(error);
   }

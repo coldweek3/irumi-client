@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ScrollView from "../../components/common/templetes/scrollView.jsx/ScrollView";
+import ScrollView from "../../components/common/templetes/scrollView/ScrollView";
 
 import SearchHeader from "../../components/common/molecules/header/SearchHeader";
 import LanternList from "../../components/lanterns/molecules/lanternList/LanternList";
