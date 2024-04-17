@@ -7,9 +7,9 @@ import "swiper/css/pagination";
 import "./swiper.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
-import WishCard from "../../../common/atoms/wishCard/WishCard";
+import LanternCard from "../../../common/atoms/lanternCard/LanternCard";
 
-function WishCardSwiper() {
+function LanternCardSwiper() {
   return (
     <Swiper
       effect={"coverflow"}
@@ -27,28 +27,28 @@ function WishCardSwiper() {
       className="mySwiper"
     >
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
       <SwiperSlide>
-        <WishCard wishSize={150} />
+        <LanternCard wishSize={150} />
       </SwiperSlide>
     </Swiper>
   );
 }
 
-export default WishCardSwiper;
+export default LanternCardSwiper;

@@ -1,20 +1,18 @@
 import React from "react";
-
 import styled from "styled-components";
 import { useRecoilValue } from "recoil";
-import { heightSize } from "../../../../recoil/heightSize";
 import { theme } from "../../../../recoil/theme";
 
-// 더이상 스크롤이 될 일이 없는 컴포넌트를 가정하고 만듦.
-const FixViewWrapper = styled.div`
+const ScrollViewWrapper = styled.div`
   width: 100%;
+  min-height: 100vh;
+  padding-top: 60px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   position: relative;
-  overflow: hidden;
 
   min-height: ${props => props.$heightSize}px;
 
@@ -22,15 +20,10 @@ const FixViewWrapper = styled.div`
   background-image: ${props => `url(/img/fixBg/${props.$theme}.png)`};
 `;
 
-function FixView({ children }) {
+function ScrollView({ children }) {
   const themeValue = useRecoilValue(theme);
-  const heightSizeValue = useRecoilValue(heightSize);
 
-  return (
-    <FixViewWrapper $theme={themeValue} $heightSize={heightSizeValue}>
-      {children}
-    </FixViewWrapper>
-  );
+  return <ScrollViewWrapper $theme={themeValue}>{children}</ScrollViewWrapper>;
 }
 
-export default FixView;
+export default ScrollView;

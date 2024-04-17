@@ -3,17 +3,22 @@ import App from "./App";
 
 import Main from "./pages/main/Main";
 import LanternWrite from "./pages/Lantern/LanternWrite";
-import LanternColor from "./pages/Lantern/LanternColorPage";
+import LanternColor from "./pages/Lantern/LanternColorPage"
 import MailWrite from "./pages/mailWirte/mailWrite";
+import MainPage from "./pages/main/MainPage";
+import LanternsPage from "./pages/lanterns/LanternsPage";
+import LanternsSearchPage from "./pages/lanterns/LanternsSearchPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      { path: "/", element: <Main /> },
+      { path: "/", element: <MainPage /> },
       { path: "/lanternColor", element: <LanternColor /> },
       { path: "/lanternWrite", element: <LanternWrite /> },
+      { path: "/lanterns", element: <LanternsPage /> },
+      { path: "/lanterns/:keyword", element: <LanternsSearchPage /> },
       { path: "/mailWrite", element: <MailWrite /> }
     ]
   }
