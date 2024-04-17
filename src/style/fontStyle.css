@@ -7,3 +7,19 @@
   font-family: "Pretendard";
   src: url("../assets/fonts/Pretendard.woff") format("WOFF");
 }
+
+@font-face {
+  font-family: "LotteMartDreamBold";
+  src: url("../assets/fonts/AnyConv.com__12롯데마트드림Bold.woff")
+    format("WOFF");
+}
+@font-face {
+  font-family: "LotteMartDreamMedium";
+  src: url("../assets/fonts/AnyConv.com__12롯데마트드림Medium.woff")
+    format("WOFF");
+}
+@font-face {
+  font-family: "LotteMartDreamLight";
+  src: url("../assets/fonts/AnyConv.com__12롯데마트드림Light.woff")
+    format("WOFF");
+}
