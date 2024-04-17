@@ -12,11 +12,15 @@ const TextLabelWrapper = styled.div`
   left: 50%;
 
   &.count {
-    top: 22%;
+    top: 24%;
+    font-size: 20px;
+    font-family: "LotteMartDreamBold";
   }
 
   &.notice {
-    top: 27%;
+    top: 30%;
+    font-size: 14px;
+    color: ${props => props.theme.hintColor};
   }
 `;
 function MainTextLabel({ children, className }) {
