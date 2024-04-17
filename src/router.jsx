@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 
-import WishWrite from "./pages/wishWrite/lanternWrite";
+import Main from "./pages/main/Main";
+import LanternWrite from "./pages/Lantern/LanternWrite";
+import LanternColor from "./pages/Lantern/LanternColorPage"
 import MailWrite from "./pages/mailWirte/mailWrite";
 import MainPage from "./pages/main/MainPage";
 import LanternsPage from "./pages/lanterns/LanternsPage";
@@ -13,7 +15,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <MainPage /> },
-      { path: "/wishWrite", element: <WishWrite /> },
+      { path: "/lanternColor", element: <LanternColor /> },
+      { path: "/lanternWrite", element: <LanternWrite /> },
       { path: "/lanterns", element: <LanternsPage /> },
       { path: "/lanterns/:keyword", element: <LanternsSearchPage /> },
       { path: "/mailWrite", element: <MailWrite /> }
