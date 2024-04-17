@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Main /> },
       { path: "/lanternColor", element: <LanternColor /> },
-      { path: "/lanternWrite", element: <LanternWrite /> }
+      { path: "/lanternWrite", element: <LanternWrite /> },
       { path: "/mailWrite", element: <MailWrite /> }
     ]
   }
