@@ -6,9 +6,8 @@ import { Link } from "react-router-dom";
 
 const LanternCardEmWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
-  &:hover {
-    transform: scale(1.1);
-  }
+  width: calc(${props => props.$width} * 1);
+  height: calc(${props => props.$size} * 820);
 `;
 
 const LanternCardWrapper = styled.div`
@@ -22,7 +21,7 @@ const LanternCardWrapper = styled.div`
   height: calc(${props => props.$size} * 820);
 
   background-size: cover;
-  background-image: ${props => `url(/img/wishCard/purple_light.png)`};
+  background-image: url(${props => props.$url});
 `;
 
 const LanternCardName = styled.div`
@@ -77,9 +76,19 @@ function LanternCard({ lanternSize = 127, lanternInfo }) {
   const emSizeValue = useRecoilValue(emSize);
 
   return (
-    <Link to={`랜턴디테일/${lanternInfo.id}`}>
-      <LanternCardEmWrapper $emsize={emSizeValue}>
+    <LanternCardEmWrapper
+      $emsize={emSizeValue}
+      $width={lanternSize / 10 + "em"}
+      $size={lanternSize / 10 / 400 + "em"}
+    >
+      <Link to={`랜턴디테일/${lanternInfo.id}`}>
         <LanternCardWrapper
+          $url={
+            "/img/wishCard/" +
+            lanternInfo.lanternColor +
+            (lanternInfo.light_bool ? "_light" : "_default") +
+            ".png"
+          }
           $width={lanternSize / 10 + "em"}
           $size={lanternSize / 10 / 400 + "em"}
         >
@@ -96,8 +105,8 @@ function LanternCard({ lanternSize = 127, lanternInfo }) {
             <div>{lanternInfo.like_cnt}</div>
           </LanternCardLikeWrapper>
         </LanternCardWrapper>
-      </LanternCardEmWrapper>
-    </Link>
+      </Link>
+    </LanternCardEmWrapper>
   );
 }
 

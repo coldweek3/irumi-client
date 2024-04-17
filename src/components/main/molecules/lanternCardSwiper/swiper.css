@@ -1,19 +1,30 @@
 .swiper {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 62%;
+  /* position: absolute; */
   width: 110%;
-  height: 400px;
-  z-index: 20;
-  overflow: visible;
+  overflow: hidden;
 }
 
+.swiper-slide.lantern {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
 .swiper-slide .lantern {
+  display: flex !i;
+  justify-self: center;
+  align-items: center;
+  overflow: visible;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) scale(0.8);
+}
+
+.swiper-slide-prev.lantern {
+  padding-left: 5%;
+}
+.swiper-slide-next.lantern {
+  padding-right: 5%;
 }
 
 .swiper-slide .swiper-slide-prev .lantern {
