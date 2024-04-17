@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import FixView from "../../components/common/templetes/fixView/FixView";
 
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
@@ -6,8 +6,19 @@ import WishCardSwiper from "../../components/main/molecules/wishCardSwiper/WishC
 import MainTextLabel from "../../components/main/atoms/mainTextLabel/MainTextLabel";
 import LinkButton from "../../components/common/atoms/button/LinkButton";
 import LamplightBanner from "../../components/main/atoms/lamplightBanner/LamplightBanner";
+import { getLanterns } from "../../apis/api/lantern";
 
 function MainPage() {
+  const [data, setData] = useState({});
+
+  const fetchData = async () => {
+    await getLanterns("random");
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <FixView>
       <LamplightBanner />
