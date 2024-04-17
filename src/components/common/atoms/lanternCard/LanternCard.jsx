@@ -2,6 +2,7 @@ import React from "react";
 import { useRecoilValue } from "recoil";
 import { emSize } from "../../../../recoil/emSize";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const LanternCardEmWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
@@ -53,38 +54,40 @@ const LanternCardLikeWrapper = styled.div`
   }
 `;
 
-function LanternCard({ wishSize = 127 }) {
+function LanternCard({ wishSize = 127, lanternInfo }) {
   const emSizeValue = useRecoilValue(emSize);
 
   return (
-    <LanternCardEmWrapper $emsize={emSizeValue}>
-      <LanternCardWrapper
-        $padding={((92 / 344) * wishSize) / 10}
-        $width={wishSize / 10}
-        $height={((705 / 344) * wishSize) / 10}
-      >
-        <LanternCardName
-          $yPosition={((412 / 344) * wishSize) / 10}
-          $fontSize={((24 / 344) * wishSize) / 10}
+    <Link to={`랜턴디테일/${lanternInfo.id}`}>
+      <LanternCardEmWrapper $emsize={emSizeValue}>
+        <LanternCardWrapper
+          $padding={((92 / 344) * wishSize) / 10}
+          $width={wishSize / 10}
+          $height={((705 / 344) * wishSize) / 10}
         >
-          <div>산시20 김강민</div>
-        </LanternCardName>
+          <LanternCardName
+            $yPosition={((412 / 344) * wishSize) / 10}
+            $fontSize={((24 / 344) * wishSize) / 10}
+          >
+            <div>{lanternInfo.nickname}</div>
+          </LanternCardName>
 
-        <LanternCardContent
-          $yPosition={((12 / 344) * wishSize) / 10}
-          $fontSize={((20 / 344) * wishSize) / 10}
-        >
-          <div>올해 우리 가족 무 탈하게 잘 마무리 하길...</div>
-        </LanternCardContent>
+          <LanternCardContent
+            $yPosition={((12 / 344) * wishSize) / 10}
+            $fontSize={((20 / 344) * wishSize) / 10}
+          >
+            <div>{lanternInfo.content}</div>
+          </LanternCardContent>
 
-        <LanternCardLikeWrapper
-          $yPosition={((24 / 344) * wishSize) / 10}
-          $fontSize={((24 / 344) * wishSize) / 10}
-        >
-          <div>좋아요</div>
-        </LanternCardLikeWrapper>
-      </LanternCardWrapper>
-    </LanternCardEmWrapper>
+          <LanternCardLikeWrapper
+            $yPosition={((24 / 344) * wishSize) / 10}
+            $fontSize={((24 / 344) * wishSize) / 10}
+          >
+            <div>좋아요</div>
+          </LanternCardLikeWrapper>
+        </LanternCardWrapper>
+      </LanternCardEmWrapper>
+    </Link>
   );
 }
 

@@ -11,19 +11,15 @@ const LanternListWrapper = styled.div`
   row-gap: 40px;
   column-gap: 12px;
 
-  padding-bottom: 80px;
-
   place-items: center;
 `;
 
-function LanternList() {
+function LanternList({ lanterns }) {
   return (
     <LanternListWrapper>
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
-      <LanternCard wishSize={150} />
+      {lanterns.map((item, index) => (
+        <LanternCard key={index} lanternInfo={item} wishSize={150} />
+      ))}
     </LanternListWrapper>
   );
 }

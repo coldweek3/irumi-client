@@ -18,6 +18,7 @@ const ScrollViewWrapper = styled.div`
 
   background-size: cover;
   background-image: ${props => `url(/img/fixBg/${props.$theme}.png)`};
+  padding-bottom: 80px;
 `;
 
 function ScrollView({ children }) {

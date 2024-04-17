@@ -9,6 +9,7 @@ const ToggleWrapper = styled.div`
   gap: 24px;
 `;
 const ToggleLabel = styled.div`
+  cursor: pointer;
   font-size: 20px;
 
   color: ${props => (props.$isActive ? props.theme.font1 : props.theme.font2)};
