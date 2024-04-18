@@ -1,7 +1,7 @@
 .swiper {
   /* position: absolute; */
   width: 110%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .swiper-slide.lantern {

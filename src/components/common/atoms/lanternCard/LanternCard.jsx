@@ -8,6 +8,9 @@ const LanternCardEmWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
   width: calc(${props => props.$width} * 1);
   height: calc(${props => props.$size} * 820);
+  &:hover {
+    transform: scale(1.1) translateY(-5%);
+  }
 `;
 
 const LanternCardWrapper = styled.div`
