@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import { useRecoilState } from "recoil";
 import {
@@ -30,6 +31,8 @@ function wishWrite() {
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
   const [password, setPassword] = useRecoilState(passwordState);
+
+  const navigate = useNavigate();
 
   // 모든 입력란이 채워졌는지 확인하는 함수
   const isSatisfied = () => {

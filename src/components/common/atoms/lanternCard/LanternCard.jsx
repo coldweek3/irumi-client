@@ -58,7 +58,7 @@ function LanternCard({ wishSize = 127, lanternInfo }) {
   const emSizeValue = useRecoilValue(emSize);
 
   return (
-    <Link to={`랜턴디테일/${lanternInfo.id}`}>
+    <Link to={`lanternDetail/${lanternInfo.id}`}>
       <LanternCardEmWrapper $emsize={emSizeValue}>
         <LanternCardWrapper
           $padding={((92 / 344) * wishSize) / 10}
