@@ -7,6 +7,12 @@ import LikeBtn from "../../components/lanternWrite/atom/likeBtn";
 import { useParams } from "react-router-dom";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
 import { postLike } from "../../apis/api/likeBtn";
+import MoreModal from "../../components/lanternWrite/organisms/moreModal";
+import DeleteModal from "../../components/lanternWrite/organisms/DeleteModal";
+import PwModal from "../../components/lanternWrite/organisms/PwModal";
+import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
+import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
+import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
 
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};
@@ -22,20 +28,21 @@ const LanternViewPaperContainer = styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
-  height: 85%;
+  height: 100%;
+  width: 100%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 `;
 
 const LanternViewPaperImg = styled.img`
-  transform: scale(0.9);
+  transform: scale(0.8);
 `;
 
 const LanternDotContainer = styled.div`
   position: absolute;
   transform: scale(0.2);
-  top: 46%;
+  top: 50%;
   margin-left: 120px;
   z-index: 9;
   cursor: pointer;
@@ -100,13 +107,108 @@ function LanternDetail() {
     }
   };
 
+  //더보기 버튼
+  const [modalOpen, setModalOpen] = useState(false);
+  // 삭제
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [pwModalOpen, setPwModalOpen] = useState(false);
+  // 신고
+  const [reportModalOpen, setReportModalOpen] = useState(false);
+  const [reportedModalOpen, setReportedModalOpen] = useState(false);
+  const [isReportedModalOpen, setIsReportedModalOpen] = useState(false);
+
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  // 연등 삭제 모달
+  const openDeleteModal = () => {
+    setDeleteModalOpen(true);
+    closeModal();
+  };
+  const closeDeleteModal = () => {
+    setDeleteModalOpen(false);
+  };
+  // 비밀번호 입력 모달
+  const openPwModal = () => {
+    setPwModalOpen(true);
+    closeDeleteModal();
+  };
+  const closePwModal = () => {
+    setPwModalOpen(false);
+  };
+
+  // 신고 체크박스 모달
+  const openReportModal = () => {
+    setReportModalOpen(true);
+    closeModal();
+  };
+  const closeReportModal = () => {
+    setReportModalOpen(false);
+  };
+  // 신고 완료 모달
+  const openReportedModal = () => {
+    setReportedModalOpen(true);
+    closeReportModal();
+    setTimeout(() => {
+      setReportedModalOpen(false);
+    }, 1500);
+  };
+  // 이미 신고한 게시글 모달
+  const openIsReportedModal = () => {
+    setIsReportedModalOpen(true);
+    closeReportModal();
+    setTimeout(() => {
+      setIsReportedModalOpen(false);
+    }, 1500);
+  };
+
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
       <Header />
       <LanternViewPaperContainer>
-        <LanternDotContainer>
+        <LanternDotContainer onClick={openModal}>
           <LanternDot src="/img/Lantern/Dot.png" />
         </LanternDotContainer>
+        {/* 더보기 모달 */}
+        {modalOpen && (
+          <MoreModal
+            closeModal={closeModal}
+            openDeleteModal={openDeleteModal}
+            openReportModal={openReportModal}
+          />
+        )}
+        {/* 연등 삭제 모달*/}
+        {deleteModalOpen && (
+          <DeleteModal
+            closeDeleteModal={closeDeleteModal}
+            openPwModal={openPwModal}
+          />
+        )}
+        {/* 비밀번호 입력 모달 */}
+        {pwModalOpen && (
+          <PwModal
+            openPwModal={openPwModal}
+            closePwModal={closePwModal}
+            data={lanternData}
+          />
+        )}
+        {/* 신고 모달 */}
+        {reportModalOpen && (
+          <ReportModal
+            closeReportModal={closeReportModal}
+            openReportedModal={openReportedModal}
+            openIsReportedModal={openIsReportedModal}
+            detailId={detailId}
+          />
+        )}
+        {/* 신고 완료 모달 */}
+        {reportedModalOpen && <ReportAlertModal />}
+        {/* 이미 신고한 게시글 모달 */}
+        {isReportedModalOpen && <ReportedAlertModal />}
         <LanternViewPaperImg
           src={
             lanternData
@@ -114,6 +216,27 @@ function LanternDetail() {
               : ""
           }
         />
+        {(deleteModalOpen ||
+          pwModalOpen ||
+          reportModalOpen ||
+          reportedModalOpen ||
+          isReportedModalOpen) && (
+          <div
+            style={{
+              position: "fixed",
+              top: 0,
+              left: 0,
+              width: "100%",
+              // height: "100vh",
+              height: "100%",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              zIndex: 11,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}
+          />
+        )}
 
         <LanternViewNickname>
           {lanternData ? lanternData.nickname : ""}

@@ -4,7 +4,7 @@ import { postLike } from "../../../apis/api/likeBtn";
 
 const LikeBtnWrapper = styled.div`
   position: absolute;
-  top: 90%;
+  top: 85%;
   margin-left: 110px;
   display: flex;
   align-items: center;
