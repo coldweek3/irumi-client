@@ -10,6 +10,7 @@ import LampMain from "./pages/lamp/LampMain";
 import FirstthemeWrite from "./pages/lamp/FirstthemeWrite";
 import SecondthemeWrite from "./pages/lamp/SecondthemeWrite";
 import ThirdthemeWrite from "./pages/lamp/ThirdthemeWrite";
+import FlyLamp from "./pages/lamp/FlyLamp";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,8 @@ const router = createBrowserRouter([
       { path: "/lampMain", element: <LampMain /> },
       { path: "/firstthemeWrite", element: <FirstthemeWrite /> },
       { path: "/secondthemeWrite", element: <SecondthemeWrite /> },
-      { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> }
+      { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> },
+      { path: "/flyLamp", element: <FlyLamp /> }
     ]
   }
 ]);

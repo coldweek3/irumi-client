@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { emailState } from "../../../recoil/lanternContent";
+import { API } from "../../../apis/utils";
 
 const LanternWriteEmailWrapper = styled.div`
   display: flex;
@@ -36,6 +37,15 @@ function LanternEmail() {
     setEmail(event.target.value);
   };
 
+  const nextBtnOnClick = async () => {
+    const response = await API.post("/api/lamplights", {
+      nickname: "사용자 닉네임",
+      content: "사용자 소원",
+      email: email,
+      theme: 1
+    });
+  };
+
   return (
     <LanternWriteEmailWrapper>
       <LanternWriteEmailTitle>이메일</LanternWriteEmailTitle>
@@ -45,6 +55,7 @@ function LanternEmail() {
         value={email}
         onChange={handleEmailChange}
       />
+      <button onClick={nextBtnOnClick}></button>
     </LanternWriteEmailWrapper>
   );
 }

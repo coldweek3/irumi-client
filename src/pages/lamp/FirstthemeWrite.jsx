@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import {
   nicknameState,
   wishState,
@@ -28,6 +29,7 @@ const FirstthemeWrite = () => {
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState); // 이메일 상태 추가
   const { backgroundImageUrl } = GradientBackground();
+  const navigate = useNavigate();
 
   // 모든 입력란이 채워졌는지 확인하는 함수
   const isSatisfied = () => {
@@ -49,7 +51,10 @@ const FirstthemeWrite = () => {
 
         // POST 성공 시
         console.log("등불이 저장되었습니다", response.data);
-        alert("소원이 이뤄질 거예요");
+        // alert("소원이 이뤄질 거예요");
+
+        // Navigate to /flyLamp upon successful POST
+        navigate("/flyLamp");
       } catch (error) {
         console.error("POST ERROR", error);
         alert("Failed to submit data. Please try again later.");
