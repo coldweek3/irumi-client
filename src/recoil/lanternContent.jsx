@@ -14,3 +14,8 @@ export const passwordState = atom({
   key: "passwordState",
   default: ""
 });
+
+export const emailState = atom({
+  key: "emailState",
+  default: ""
+});
