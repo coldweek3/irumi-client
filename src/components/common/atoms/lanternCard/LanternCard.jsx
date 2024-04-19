@@ -15,14 +15,14 @@ function LanternCard({ lanternSize = 170, lanternData }) {
       $width={lanternSize / 10 + "em"}
       $size={lanternSize / 10 / 400 + "em"}
     >
-      <Link to={`lanternDetail/${lanternData.id}`}>
+      <Link to={`/lanternDetail/${lanternData.id}`}>
         <LanternCardWrapper
           $url={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
           $width={lanternSize / 10 + "em"}
           $size={lanternSize / 10 / 400 + "em"}
         >
           <LanternCardName $size={lanternSize / 10 / 400 + "em"}>
-            <p>{lanternData.nickname}</p>
+            <p>{lanternData.id}</p>
           </LanternCardName>
 
           <LanternCardContent $size={lanternSize / 10 / 400 + "em"}>

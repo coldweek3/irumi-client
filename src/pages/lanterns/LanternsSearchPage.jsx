@@ -3,29 +3,39 @@ import ScrollView from "../../components/common/templetes/scrollView/ScrollView"
 
 import SearchHeader from "../../components/common/molecules/header/SearchHeader";
 import LanternList from "../../components/lanterns/molecules/lanternList/LanternList";
-
-import { useParams } from "react-router-dom";
-import { getLanterns } from "../../apis/api/lantern";
-import LoadingIndicator from "../../components/common/atoms/loading/LoadingIndicator";
+import ToggleButton from "../../components/lanterns/atoms/button/ToggleButton";
 import InitView from "../../components/common/templetes/initView/InitView";
+import { getLanterns } from "../../apis/api/lantern";
 import { PaginationTotalPage } from "../../emun/pagination";
+import InfinifyScroll from "../../components/lanterns/organisms/infinityScroll/InfinifyScroll";
+import { useParams } from "react-router-dom";
 import LanternsTextLabel from "../../components/lanterns/atoms/lanternsTextLabel/LanternsTextLabel";
 
-function LanternsSearchPage() {
+function LanternsPage() {
   const params = useParams();
+  // 최신순, 인기순 토글
+  const indexKor = ["최신순", "인기순"];
+  const indexEng = ["recent", "pop"];
 
-  // API 호출 관련
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const getCurrentIndex = data => {
+    setCurrentIndex(data);
+  };
+
+  // 초기 API 호출 관련
   const [isInit, setIsInit] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-
   const [lanterns, setLanterns] = useState([]);
-  const [totPage, setTotPage] = useState(0);
 
+  const [totPage, setTotPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     await getLanterns(
-      `recent?page=${currentPage}&nickname=${params.keyword}`
+      `${indexEng[currentIndex]}?page=${currentPage}&nickname=${params.nickname}`
     ).then(result => {
       if (result.type == "clear") {
         setLanterns(result.data.results);
@@ -35,38 +45,20 @@ function LanternsSearchPage() {
     });
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // target for infinite scroll observer
-  // 해당 타겟이 옵저버 내 들어오게 되면, 함수가 실행됨
-  const [target, setTarget] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let observer;
-
-    if (target) {
-      observer = new IntersectionObserver(onIntersect, { threshold: 1 });
-      observer.observe(target);
+    console.log(currentPage);
+    if (currentPage > 1) {
+      loadData();
     }
-  }, [target]);
-
-  const onIntersect = async ([entry], observer) => {
-    // 전체 페이지 개수보다 현재 페이지 개수가 작을때만 실행됨
-    if (currentPage < totPage)
-      if (entry.isIntersecting) {
-        observer.unobserve(entry.target);
-        setCurrentPage(currentPage + 1);
-        observer.observe(entry.target);
-      }
-  };
+  }, [currentPage]);
 
   // 다음 페이지를 불러오는 함수
   const loadData = async () => {
     setIsLoading(true);
     await getLanterns(
-      `recent?page=${currentPage}&nickname=${params.keyword}`
+      `${indexEng[currentIndex]}?page=${currentPage}&nickname=${params.nickname}`
     ).then(result => {
       setIsLoading(false);
       if (result.type == "clear") {
@@ -75,36 +67,38 @@ function LanternsSearchPage() {
     });
   };
 
-  useEffect(() => {
-    if (currentPage > 1) {
-      loadData();
-    }
-  }, [currentPage]);
-
   return isInit ? (
     <InitView />
   ) : (
     <ScrollView>
       <SearchHeader className={"scroll"} />
 
-      {/* 검색 결과 분기 설정 */}
+      {/* 무한 스크롤을 적용한 내부 콘텐츠 */}
+      <InfinifyScroll
+        isLoading={isLoading}
+        isMoreData={currentPage < totPage}
+        onBottom={() => setCurrentPage(currentPage + 1)}
+      >
+        {/* 검색 결과 분기 설정 */}
 
-      {lanterns.length == 0 ? (
-        <LanternsTextLabel className={"none"}>
-          '{params.keyword}'에 대한 검색 결과가 없습니다.
-        </LanternsTextLabel>
-      ) : (
-        <>
-          <LanternsTextLabel className={"notNone"}>
-            '{params.keyword}'에 대한 검색 결과입니다.
+        {lanterns.length == 0 ? (
+          <LanternsTextLabel className={"none"}>
+            '{params.keyword}'에 대한 검색 결과가 없습니다.
           </LanternsTextLabel>
-          <LanternList lanterns={lanterns} />
-        </>
-      )}
+        ) : (
+          <>
+            <LanternsTextLabel className={"notNone"}>
+              '{params.keyword}'에 대한 검색 결과입니다.
+            </LanternsTextLabel>
+            <LanternList lanterns={lanterns} />
+          </>
+        )}
 
-      <div ref={setTarget}>{isLoading ? <LoadingIndicator /> : ""}</div>
+        <LanternList lanterns={lanterns} />
+      </InfinifyScroll>
+      {/* 무한 스크롤을 적용한 내부 콘텐츠 */}
     </ScrollView>
   );
 }
 
-export default LanternsSearchPage;
+export default LanternsPage;

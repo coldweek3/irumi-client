@@ -7,7 +7,7 @@ import ToggleButton from "../../components/lanterns/atoms/button/ToggleButton";
 import InitView from "../../components/common/templetes/initView/InitView";
 import { getLanterns } from "../../apis/api/lantern";
 import { PaginationTotalPage } from "../../emun/pagination";
-import LoadingIndicator from "../../components/common/atoms/loading/LoadingIndicator";
+import InfinifyScroll from "../../components/lanterns/organisms/infinityScroll/InfinifyScroll";
 
 function LanternsPage() {
   // 최신순, 인기순 토글
@@ -19,14 +19,16 @@ function LanternsPage() {
     setCurrentIndex(data);
   };
 
-  // API 호출 관련
+  // 초기 API 호출 관련
   const [isInit, setIsInit] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
-
   const [lanterns, setLanterns] = useState([]);
-  const [totPage, setTotPage] = useState(0);
 
+  const [totPage, setTotPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const fetchData = async () => {
     await getLanterns(`${indexEng[currentIndex]}?page=${currentPage}`).then(
@@ -40,32 +42,14 @@ function LanternsPage() {
     );
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // target for infinite scroll observer
-  // 해당 타겟이 옵저버 내 들어오게 되면, 함수가 실행됨
-  const [target, setTarget] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    let observer;
-
-    if (target) {
-      observer = new IntersectionObserver(onIntersect, { threshold: 1 });
-      observer.observe(target);
+    console.log(currentPage);
+    if (currentPage > 1) {
+      loadData();
     }
-  }, [target]);
-
-  const onIntersect = async ([entry], observer) => {
-    // 전체 페이지 개수보다 현재 페이지 개수가 작을때만 실행됨
-    if (currentPage < totPage)
-      if (entry.isIntersecting) {
-        observer.unobserve(entry.target);
-        setCurrentPage(currentPage + 1);
-        observer.observe(entry.target);
-      }
-  };
+  }, [currentPage]);
 
   // 다음 페이지를 불러오는 함수
   const loadData = async () => {
@@ -83,25 +67,26 @@ function LanternsPage() {
     );
   };
 
-  useEffect(() => {
-    if (currentPage > 1) {
-      loadData();
-    }
-  }, [currentPage]);
-
   return isInit ? (
     <InitView />
   ) : (
     <ScrollView>
       <SearchHeader className={"scroll"} />
-      <ToggleButton
-        index={indexKor}
-        currentIndex={currentIndex}
-        getCurrentIndex={getCurrentIndex}
-      />
-      <LanternList lanterns={lanterns} />
 
-      <div ref={setTarget}>{isLoading ? <LoadingIndicator /> : ""}</div>
+      {/* 무한 스크롤을 적용한 내부 콘텐츠 */}
+      <InfinifyScroll
+        isLoading={isLoading}
+        isMoreData={currentPage < totPage}
+        onBottom={() => setCurrentPage(currentPage + 1)}
+      >
+        <ToggleButton
+          index={indexKor}
+          currentIndex={currentIndex}
+          getCurrentIndex={getCurrentIndex}
+        />
+        <LanternList lanterns={lanterns} />
+      </InfinifyScroll>
+      {/* 무한 스크롤을 적용한 내부 콘텐츠 */}
     </ScrollView>
   );
 }

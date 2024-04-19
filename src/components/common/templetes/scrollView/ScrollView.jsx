@@ -6,11 +6,6 @@ import { theme } from "../../../../recoil/theme";
 const ScrollViewWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  padding-top: 60px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   position: relative;
 
@@ -18,7 +13,6 @@ const ScrollViewWrapper = styled.div`
 
   background-size: cover;
   background-image: ${props => `url(/img/fixBg/${props.$theme}.png)`};
-  padding-bottom: 80px;
 `;
 
 function ScrollView({ children }) {
