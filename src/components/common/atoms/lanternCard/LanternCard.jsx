@@ -22,7 +22,7 @@ function LanternCard({ lanternSize = 170, lanternData }) {
           $size={lanternSize / 10 / 400 + "em"}
         >
           <LanternCardName $size={lanternSize / 10 / 400 + "em"}>
-            <p>{lanternData.id}</p>
+            <p>{lanternData.nickname}</p>
           </LanternCardName>
 
           <LanternCardContent $size={lanternSize / 10 / 400 + "em"}>

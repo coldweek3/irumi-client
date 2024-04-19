@@ -8,6 +8,9 @@ import InitView from "../../components/common/templetes/initView/InitView";
 import { getLanterns } from "../../apis/api/lantern";
 import { PaginationTotalPage } from "../../emun/pagination";
 import InfinifyScroll from "../../components/lanterns/organisms/infinityScroll/InfinifyScroll";
+import RoundBtn from "../../components/common/atoms/button/RoundBtn";
+import { Link } from "react-router-dom";
+import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
 
 function LanternsPage() {
   // 최신순, 인기순 토글
@@ -71,6 +74,12 @@ function LanternsPage() {
     <InitView />
   ) : (
     <ScrollView>
+      <ButtonList className={"fixBottom"}>
+        <Link to={"/lanternWrite"}>
+          <RoundBtn className={"primary"} icon={"/icon/pen.svg"} />
+        </Link>
+      </ButtonList>
+
       <SearchHeader className={"scroll"} />
 
       {/* 무한 스크롤을 적용한 내부 콘텐츠 */}
