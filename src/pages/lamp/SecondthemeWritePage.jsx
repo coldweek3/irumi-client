@@ -23,7 +23,7 @@ const Background = styled.div`
   background-size: cover;
 `;
 
-const ThirdthemeWrite = () => {
+const SecondthemeWritePage = () => {
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState); // 이메일 상태 추가
@@ -41,7 +41,7 @@ const ThirdthemeWrite = () => {
           nickname: nickname,
           content: wish,
           email: email, // 질문
-          theme: 3
+          theme: 2
         };
 
         // 백엔드 데이터 전송
@@ -62,7 +62,7 @@ const ThirdthemeWrite = () => {
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
       <Header title="등불 작성하기" />
-      <DescriptionText preText="내년의 오늘 난 어떤 모습일까?" />
+      <DescriptionText preText="올해가 지나고 난 어떤 것을 이뤘을까?" />
       <LanternWishPaper inputType="email" />
       <LanternWritebutton
         onClick={nextBtnOnClick}
@@ -73,4 +73,4 @@ const ThirdthemeWrite = () => {
   );
 };
 
-export default ThirdthemeWrite;
+export default SecondthemeWritePage;

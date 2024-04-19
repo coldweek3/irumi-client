@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
 import {
   nicknameState,
   wishState,
@@ -24,12 +23,11 @@ const Background = styled.div`
   background-size: cover;
 `;
 
-const FirstthemeWrite = () => {
+const ThirdthemeWritePage = () => {
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState); // 이메일 상태 추가
   const { backgroundImageUrl } = GradientBackground();
-  const navigate = useNavigate();
 
   // 모든 입력란이 채워졌는지 확인하는 함수
   const isSatisfied = () => {
@@ -42,8 +40,8 @@ const FirstthemeWrite = () => {
         const postData = {
           nickname: nickname,
           content: wish,
-          email: email,
-          theme: 1
+          email: email, // 질문
+          theme: 3
         };
 
         // 백엔드 데이터 전송
@@ -51,10 +49,7 @@ const FirstthemeWrite = () => {
 
         // POST 성공 시
         console.log("등불이 저장되었습니다", response.data);
-        // alert("소원이 이뤄질 거예요");
-
-        // Navigate to /flyLamp
-        navigate("/flyLamp");
+        alert("소원이 이뤄질 거예요");
       } catch (error) {
         console.error("POST ERROR", error);
         alert("Failed to submit data. Please try again later.");
@@ -67,7 +62,7 @@ const FirstthemeWrite = () => {
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
       <Header title="등불 작성하기" />
-      <DescriptionText preText="이번 학기가 끝났을 때 나는 어떤 모습일까?" />
+      <DescriptionText preText="내년의 오늘 난 어떤 모습일까?" />
       <LanternWishPaper inputType="email" />
       <LanternWritebutton
         onClick={nextBtnOnClick}
@@ -78,4 +73,4 @@ const FirstthemeWrite = () => {
   );
 };
 
-export default FirstthemeWrite;
+export default ThirdthemeWritePage;

@@ -49,7 +49,7 @@ const GuideLineImg = styled.img`
   transform: translateX(-50%);
 `;
 
-function FlyLamp() {
+function FlyLampPage() {
   const { backgroundImageUrl } = GradientBackground();
   const [isDragMode, setIsDragMode] = useState(true);
   const [paperPosition, setPaperPosition] = useState({ x: 100, y: 100 }); // 초기 위치 설정
@@ -80,4 +80,4 @@ function FlyLamp() {
   );
 }
 
-export default FlyLamp;
+export default FlyLampPage;

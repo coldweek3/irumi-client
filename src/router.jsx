@@ -10,6 +10,11 @@ import LanternsPage from "./pages/lanterns/LanternsPage";
 import LanternsSearchPage from "./pages/lanterns/LanternsSearchPage";
 import LanternDetailPage from "./pages/lantern/LanternDetailPage";
 
+import LampMainPage from "./pages/lamp/LampMainPage";
+import FirstthemeWritePage from "./pages/lamp/FirstthemeWritePage";
+import SecondthemeWritePage from "./pages/lamp/SecondthemeWritePage";
+import ThirdthemeWritePage from "./pages/lamp/ThirdthemeWritePage";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,13 +30,13 @@ const router = createBrowserRouter([
 
       // 연등(렌턴) 둘러보기 페이지
       { path: "/lanterns", element: <LanternsPage /> },
-      { path: "/lanterns/:keyword", element: <LanternsSearchPage /> }
+      { path: "/lanterns/:keyword", element: <LanternsSearchPage /> },
 
-      // 등불(램프) 관련 페이지
-      // { path: "/lampMain", element: <LampMain /> },
-      // { path: "/firstthemeWrite", element: <FirstthemeWrite /> },
-      // { path: "/secondthemeWrite", element: <SecondthemeWrite /> },
-      // { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> }
+      // 등불(램프) 둘러보기 페이지
+      { path: "/lampMain", element: <LampMainPage /> },
+      { path: "/firstthemeWrite", element: <FirstthemeWritePage /> },
+      { path: "/secondthemeWrite", element: <SecondthemeWritePage /> },
+      { path: "/thirdthemeWrite", element: <ThirdthemeWritePage /> }
     ]
   }
 ]);
