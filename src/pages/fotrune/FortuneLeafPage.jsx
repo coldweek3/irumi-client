@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import { API } from "../../apis/utils";
+import fetchFortuneMessage from "../../apis/api/fortune";
 
 const LeafContainer = styled.div`
   position: relative;
@@ -70,24 +71,17 @@ const QuitButton = styled.img`
   /* border: 3px solid blue; */
 `;
 
-function FortuneLeaf() {
+function FortuneLeafPage() {
   const [fortuneMessage, setFortuneMessage] = useState(
     "당신은 웃는 얼굴이 참 예뻐요 당신의 미소가 힘이 돼요"
   );
+  const { lantern_id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const response = await API.get("/api/lanterns/cookie");
-        console.log("API 응답 데이터:", response.data); // 응답 데이터를 콘솔에 출력
-        setFortuneMessage(response.data.fortune);
-      } catch (error) {
-        console.error("API 요청 실패:", error);
-        // API 요청 실패 시 기본 메시지로 설정
-        setFortuneMessage(
-          "당신은 웃는 얼굴이 참 예뻐요 당신의 미소가 힘이 돼요"
-        );
-      }
+      // fetchFortuneMessage 모듈에서 운세 메시지 가져오기
+      const message = await fetchFortuneMessage();
+      setFortuneMessage(message);
     };
 
     fetchData();
@@ -102,7 +96,7 @@ function FortuneLeaf() {
           <RandomText>{fortuneMessage}</RandomText>
         </TextWrapper>
 
-        <Link to="/myDetail">
+        <Link to={`/myDetail/${lantern_id}`}>
           <QuitButton src="/img/Fortune/quit_button.png" />
         </Link>
       </LeafContainer>
@@ -110,4 +104,4 @@ function FortuneLeaf() {
   );
 }
 
-export default FortuneLeaf;
+export default FortuneLeafPage;

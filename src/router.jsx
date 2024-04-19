@@ -13,6 +13,11 @@ import LampMainPage from "./pages/lamp/LampMainPage";
 import FirstthemeWritePage from "./pages/lamp/FirstthemeWritePage";
 import SecondthemeWritePage from "./pages/lamp/SecondthemeWritePage";
 import ThirdthemeWritePage from "./pages/lamp/ThirdthemeWritePage";
+import FlyLampPage from "./pages/lamp/FlyLampPage";
+
+import FortuneIntroPage from "./pages/fotrune/FortuneIntroPage";
+import FortuneLeafPage from "./pages/fotrune/FortuneLeafPage";
+import MyDetailPage from "./pages/fotrune/MyDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +40,15 @@ const router = createBrowserRouter([
       { path: "/lampMain", element: <LampMainPage /> },
       { path: "/firstthemeWrite", element: <FirstthemeWritePage /> },
       { path: "/secondthemeWrite", element: <SecondthemeWritePage /> },
-      { path: "/thirdthemeWrite", element: <ThirdthemeWritePage /> }
+      { path: "/thirdthemeWrite", element: <ThirdthemeWritePage /> },
+      { path: "/flyLamp", element: <FlyLampPage /> },
+
+      //포춘연등 페이지
+      { path: "/fortuneIntro", element: <FortuneIntroPage /> },
+      { path: "/fortuneLeaf", element: <FortuneLeafPage /> },
+
+      //연등 이미지 저장 페이지
+      { path: "/myDetail/:lantern_id", element: <MyDetailPage /> }
     ]
   }
 ]);
