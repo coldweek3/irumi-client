@@ -11,8 +11,9 @@ const ScrollViewWrapper = styled.div`
 
   min-height: ${props => props.$heightSize}px;
 
-  background-size: cover;
-  background-image: ${props => `url(/img/fixBg/${props.$theme}.png)`};
+  background-size: contain;
+  background-repeat: repeat-y;
+  background-image: ${props => `url(/img/scrollBg/${props.$theme}.png)`};
 `;
 
 function ScrollView({ children }) {
