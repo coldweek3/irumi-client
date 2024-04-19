@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SearchBar from "../../atoms/searchBar/SearchBar";
 
 const HeaderWrapper = styled.div`
-  backdrop-filter: blur(4햐px);
+  backdrop-filter: blur(4px);
   z-index: 1000;
   width: 100%;
   height: 80px;
