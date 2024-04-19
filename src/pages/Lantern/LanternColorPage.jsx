@@ -21,7 +21,7 @@ const Background = styled.div`
   background-repeat: no-repeat;
 `;
 
-function wishWrite() {
+function LanternColorPage() {
   const { backgroundImageUrl } = GradientBackground();
   const navigate = useNavigate();
 
@@ -48,4 +48,4 @@ function wishWrite() {
   );
 }
 
-export default wishWrite;
+export default LanternColorPage;
