@@ -38,7 +38,7 @@ const LamplightBannerImg = styled.img`
 
 function LamplightBanner() {
   return (
-    <Link to={"/mailWrite"}>
+    <Link to={"/lampMain"}>
       <LamplightBannerWrapper>
         <LamplightBannerContent>
           <LamplightBannerImg src="/img/lamplightIcon.png" />
