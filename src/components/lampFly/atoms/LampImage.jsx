@@ -9,6 +9,19 @@ const ImageWrapper = styled.img`
     z-index: 10;
     transform: translate(${props => props.$left}, ${props => props.$top});
   }
+  &.fade_in {
+    animation-duration: 1.5s;
+    animation-name: fadeIn;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 100%;
+      }
+    }
+  }
 `;
 function LampImage({ width, top, left, url, className }) {
   return (

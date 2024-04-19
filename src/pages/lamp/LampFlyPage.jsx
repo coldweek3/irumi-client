@@ -25,10 +25,6 @@ function LampFlyPage() {
     }
   }, [position]);
 
-  useEffect(() => {
-    console.log(position);
-  }, [position]);
-
   return (
     <FixView>
       {isDragMode ? (
@@ -62,7 +58,7 @@ function LampFlyPage() {
           </LampDrag>
         </LampImageContainer>
       ) : (
-        <LampImageContainer>
+        <LampImageContainer className={"moving"}>
           <LampImage
             className={"absolute"}
             width={430}
@@ -70,8 +66,13 @@ function LampFlyPage() {
             left={0}
             url={"/img/Lamp/lamp_head.png"}
           />
+          {/* 이걸 리엑트가 라인컴포넌트가 변경된걸로 인식해서
+          사진이 새로생기는게 아니라 라인에서 램프로 바뀌어서 따로 넣었습니다. */}
+          <div></div>
+          <div></div>
+          {/* --- */}
           <LampImage
-            className={"absolute"}
+            className={"absolute fade_in"}
             width={430}
             top={20}
             left={0}
