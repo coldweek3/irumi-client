@@ -87,10 +87,7 @@ function LanternCard({ lanternSize = 127, lanternInfo }) {
       <Link to={`랜턴디테일/${lanternInfo.id}`}>
         <LanternCardWrapper
           $url={
-            "/img/wishCard/" +
-            lanternInfo.lanternColor +
-            (lanternInfo.light_bool ? "_light" : "_default") +
-            ".png"
+           `/img/wishCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`
           }
           $width={lanternSize / 10 + "em"}
           $size={lanternSize / 10 / 400 + "em"}
