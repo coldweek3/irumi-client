@@ -29,42 +29,63 @@ function LampFlyPage() {
     console.log(position);
   }, [position]);
 
-  return isDragMode ? (
+  return (
     <FixView>
-      <LampImageContainer>
-        <LampImage
-          className={"absolute"}
-          width={210}
-          top={30}
-          left={50}
-          url={"/img/Lamp/lamp_head.png"}
-        />
+      {isDragMode ? (
+        <LampImageContainer>
+          <LampImage
+            className={"absolute"}
+            width={430}
+            top={20}
+            left={0}
+            url={"/img/Lamp/lamp_head.png"}
+          />
+          <LampImage
+            className={"absolute"}
+            width={20}
+            top={360}
+            left={-60}
+            url={"/img/Lamp/line.png"}
+          />
+          <LampImage
+            className={"absolute"}
+            width={170}
+            top={420}
+            left={120}
+            url={"/img/Lamp/text.png"}
+          />
 
-        <LampDrag top={500} left={50}>
-          <Draggable onDrag={(e, data) => trackPos(data)}>
-            <img src={"/img/Lamp/lamp_paper.png"} />
-          </Draggable>
-        </LampDrag>
-      </LampImageContainer>
-    </FixView>
-  ) : (
-    <FixView>
-      <LampImageContainer>
-        <LampImage
-          className={"absolute"}
-          width={210}
-          top={30}
-          left={50}
-          url={"/img/Lamp/lamp_head.png"}
-        />
-        <LampImage
-          className={"absolute"}
-          width={140}
-          top={340}
-          left={50}
-          url={"/img/Lamp/lamp_paper.png"}
-        />
-      </LampImageContainer>
+          <LampDrag top={500} left={50}>
+            <Draggable onDrag={(e, data) => trackPos(data)}>
+              <img src={"/img/Lamp/lamp_paper.png"} width={140} />
+            </Draggable>
+          </LampDrag>
+        </LampImageContainer>
+      ) : (
+        <LampImageContainer>
+          <LampImage
+            className={"absolute"}
+            width={430}
+            top={20}
+            left={0}
+            url={"/img/Lamp/lamp_head.png"}
+          />
+          <LampImage
+            className={"absolute"}
+            width={430}
+            top={20}
+            left={0}
+            url={"/img/Lamp/lamp_light.png"}
+          />
+          <LampImage
+            className={"absolute"}
+            width={140}
+            top={340}
+            left={0}
+            url={"/img/Lamp/lamp_paper.png"}
+          />
+        </LampImageContainer>
+      )}
     </FixView>
   );
 }

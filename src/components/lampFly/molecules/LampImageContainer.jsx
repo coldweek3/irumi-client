@@ -13,6 +13,7 @@ const ImageContainerWrapper = styled.div`
 const ImageContainer = styled.div`
   width: 100%;
   display: flex;
+  justify-content: center;
   height: 800px;
   position: relative;
 `;

@@ -5,10 +5,9 @@ const ImageWrapper = styled.img`
   width: ${props => props.$width};
 
   &.absolute {
-    transform: translate(-50%, 0);
     position: absolute;
-    top: ${props => props.$top};
-    left: ${props => props.$left};
+    z-index: 10;
+    transform: translate(${props => props.$left}, ${props => props.$top});
   }
 `;
 function LampImage({ width, top, left, url, className }) {
@@ -18,7 +17,7 @@ function LampImage({ width, top, left, url, className }) {
       src={url}
       $width={width + "px"}
       $top={top + "px"}
-      $left={left + "%"}
+      $left={left + "px"}
     />
   );
 }

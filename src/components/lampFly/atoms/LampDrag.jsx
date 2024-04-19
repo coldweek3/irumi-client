@@ -10,6 +10,7 @@ const DraggWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 0;
 `;
 
 function LampDrag({ children, top, left }) {
