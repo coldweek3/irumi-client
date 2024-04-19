@@ -18,7 +18,7 @@ function LanternList({ lanterns }) {
   return (
     <LanternListWrapper>
       {lanterns.map((item, index) => (
-        <LanternCard key={index} lanternInfo={item} wishSize={150} />
+        <LanternCard key={index} lanternInfo={item} lanternSize={170} />
       ))}
     </LanternListWrapper>
   );

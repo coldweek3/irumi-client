@@ -3,6 +3,7 @@ import App from "./App";
 
 import LanternWrite from "./pages/Lantern/LanternWrite";
 import LanternColor from "./pages/Lantern/LanternColorPage";
+
 import MailWrite from "./pages/mailWirte/mailWrite";
 import MainPage from "./pages/main/MainPage";
 import LanternsPage from "./pages/lanterns/LanternsPage";
@@ -11,6 +12,7 @@ import LanternDetail from "./pages/Lantern/LanternDetail";
 
 import LanternWrite from "./pages/Lantern/LanternWrite";
 import LanternColor from "./pages/Lantern/LanternColorPage";
+
 import MainPage from "./pages/main/MainPage";
 import LanternsPage from "./pages/lanterns/LanternsPage";
 import LanternsSearchPage from "./pages/lanterns/LanternsSearchPage";

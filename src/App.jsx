@@ -15,7 +15,7 @@ import { heightSize } from "./recoil/heightSize.jsx";
 
 const Wrapper = styled.div`
   width: 100vw;
-  max-width: 500px;
+  max-width: 560px;
   background-color: ${props => props.theme.bg};
   color: ${props => props.theme.font1};
 
