@@ -20,6 +20,10 @@ import LampMain from "./pages/lamp/LampMain";
 import FirstthemeWrite from "./pages/lamp/FirstthemeWrite";
 import SecondthemeWrite from "./pages/lamp/SecondthemeWrite";
 import ThirdthemeWrite from "./pages/lamp/ThirdthemeWrite";
+import FlyLamp from "./pages/lamp/FlyLamp";
+import FortuneIntro from "./pages/fotrune/FortuneIntro";
+import FortuneLeaf from "./pages/fotrune/FotuneLeaf";
+import MyDetail from "./pages/fotrune/MyDetail";
 
 
 const router = createBrowserRouter([

@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { styled } from "styled-components";
 import PaperInput from "../atom/input";
 import LanternPw from "../atom/lanternPw";
+import LanternEmail from "../atom/lanternEmail";
 import { useRecoilState } from "recoil";
 import {
   nicknameState,
   wishState,
-  passwordState
+  passwordState,
+  emailState
 } from "../../../recoil/lanternContent";
 
 const LanternWishPaperWrapper = styled.div`
@@ -38,6 +40,7 @@ function LanternWishPaper({ inputType }) {
   const [password, setPassword] = useRecoilState(passwordState);
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
+  const [email, setEmail] = useRecoilState(emailState);
 
   //비밀번호는 숫자만 들어가도록 하는 함수
   const handlePasswordChange = event => {
@@ -59,6 +62,21 @@ function LanternWishPaper({ inputType }) {
   const handleWishChange = event => {
     const content = event.target.value;
     setWish(content);
+  };
+
+  // 이메일 형식만 입력 가능하게 하는 함수
+  const isValidEmail = email => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(String(email).toLowerCase());
+  };
+
+  // 이메일 입력 핸들러
+  const handleEmailChange = event => {
+    const inputValue = event.target.value;
+    // 입력된 값이 이메일 형식이면 setEmail 함수를 호출하여 상태 업데이트
+    if (isValidEmail(inputValue)) {
+      setEmail(inputValue);
+    }
   };
 
   return (
