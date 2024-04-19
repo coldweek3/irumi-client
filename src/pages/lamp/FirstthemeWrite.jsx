@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import {
   nicknameState,
   wishState,
@@ -42,7 +42,7 @@ const FirstthemeWrite = () => {
         const postData = {
           nickname: nickname,
           content: wish,
-          email: email, // 질문
+          email: email,
           theme: 1
         };
 
@@ -53,7 +53,7 @@ const FirstthemeWrite = () => {
         console.log("등불이 저장되었습니다", response.data);
         // alert("소원이 이뤄질 거예요");
 
-        // Navigate to /flyLamp upon successful POST
+        // Navigate to /flyLamp
         navigate("/flyLamp");
       } catch (error) {
         console.error("POST ERROR", error);
