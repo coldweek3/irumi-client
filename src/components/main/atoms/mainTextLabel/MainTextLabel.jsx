@@ -7,18 +7,17 @@ const TextLabelWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  position: absolute;
-  transform: translate(-50%, -50%);
   left: 50%;
 
   &.count {
-    top: 24%;
+    padding-top: 32px;
     font-size: 20px;
     font-family: "LotteMartDreamBold";
   }
 
   &.notice {
-    top: 30%;
+    padding-top: 16px;
+    padding-bottom: 20px;
     font-size: 14px;
     color: ${props => props.theme.hintColor};
   }

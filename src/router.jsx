@@ -3,6 +3,16 @@ import App from "./App";
 
 import LanternWrite from "./pages/Lantern/LanternWrite";
 import LanternColor from "./pages/Lantern/LanternColorPage";
+
+import MailWrite from "./pages/mailWirte/mailWrite";
+import MainPage from "./pages/main/MainPage";
+import LanternsPage from "./pages/lanterns/LanternsPage";
+import LanternsSearchPage from "./pages/lanterns/LanternsSearchPage";
+import LanternDetail from "./pages/Lantern/LanternDetail";
+
+import LanternWrite from "./pages/Lantern/LanternWrite";
+import LanternColor from "./pages/Lantern/LanternColorPage";
+
 import MainPage from "./pages/main/MainPage";
 import LanternsPage from "./pages/lanterns/LanternsPage";
 import LanternsSearchPage from "./pages/lanterns/LanternsSearchPage";
@@ -25,14 +35,11 @@ const router = createBrowserRouter([
       { path: "/lanternWrite", element: <LanternWrite /> },
       { path: "/lanterns", element: <LanternsPage /> },
       { path: "/lanterns/:keyword", element: <LanternsSearchPage /> },
+
       { path: "/lampMain", element: <LampMain /> },
       { path: "/firstthemeWrite", element: <FirstthemeWrite /> },
       { path: "/secondthemeWrite", element: <SecondthemeWrite /> },
-      { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> },
-      { path: "/flyLamp", element: <FlyLamp /> },
-      { path: "/fortuneIntro", element: <FortuneIntro /> },
-      { path: "/fortuneLeaf", element: <FortuneLeaf /> },
-      { path: "/myDetail", element: <MyDetail /> }
+      { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> }
     ]
   }
 ]);

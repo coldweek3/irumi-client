@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 
 const LanternCardEmWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
+  width: calc(${props => props.$width} * 1);
+  height: calc(${props => props.$size} * 820);
+  &:hover {
+    transform: scale(1.1) translateY(-5%);
+  }
 `;
 
 const LanternCardWrapper = styled.div`
@@ -13,81 +18,96 @@ const LanternCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 
-  width: ${props => props.$width}em;
-  height: ${props => props.$height}em;
-  padding: 0em ${props => props.$padding}em;
+  width: calc(${props => props.$width} * 1);
+  height: calc(${props => props.$size} * 820);
 
   background-size: cover;
-  background-image: ${props => `url(/img/wishCard/purple_light.png)`};
+  background-image: url(${props => props.$url});
 `;
 
 const LanternCardName = styled.div`
-  width: 100%;
-  padding-top: ${props => props.$yPosition}em;
-  div {
-    width: 100%;
-    font-size: ${props => props.$fontSize}em;
+  position: absolute;
+  top: calc(${props => props.$size} * 460);
+  p {
+    font-family: "LotteMartDreamBold";
+    font-size: calc(${props => props.$size} * 28);
+    line-height: calc(36 / 28);
   }
 `;
 const LanternCardContent = styled.div`
-  width: 100%;
-  flex-grow: 1;
-  padding-top: ${props => props.$yPosition}em;
-
-  div {
-    width: 100%;
-    height: 100%;
-    font-size: ${props => props.$fontSize}em;
-    line-height: 1.4;
+  position: absolute;
+  top: calc(${props => props.$size} * 505);
+  width: calc(${props => props.$size} * 210);
+  height: calc(${props => props.$size} * 210);
+  white-space: wrap;
+  overflow: hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  p {
+    font-size: calc(${props => props.$size} * 20);
+    line-height: calc(28 / 20);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
   }
 `;
 
 const LanternCardLikeWrapper = styled.div`
-  width: 100%;
-  padding-bottom: ${props => props.$yPosition}em;
+  position: absolute;
+  width: calc(${props => props.$size} * 210);
+  top: calc(${props => props.$size} * 760);
   display: flex;
   justify-content: end;
+  align-items: center;
+
+  gap: calc(${props => props.$size} * 8);
+
+  img {
+    width: calc(${props => props.$size} * 24);
+    height: calc(${props => props.$size} * 24);
+  }
   div {
-    font-size: ${props => props.$fontSize}em;
-    line-height: 1.4;
+    font-size: calc(${props => props.$size} * 20);
   }
 `;
 
-function LanternCard({ wishSize = 127, lanternInfo }) {
+function LanternCard({ lanternSize = 127, lanternInfo }) {
+  console.log(lanternInfo);
   const emSizeValue = useRecoilValue(emSize);
 
   return (
-    <Link to={`랜턴디테일/${lanternInfo.id}`}>
-      <LanternCardEmWrapper $emsize={emSizeValue}>
+    <LanternCardEmWrapper
+      $emsize={emSizeValue}
+      $width={lanternSize / 10 + "em"}
+      $size={lanternSize / 10 / 400 + "em"}
+    >
+      <Link to={`랜턴디테일/${lanternInfo.id}`}>
+
         <LanternCardWrapper
-          $padding={((92 / 344) * wishSize) / 10}
-          $width={wishSize / 10}
-          $height={((705 / 344) * wishSize) / 10}
+          $url={
+           `/img/wishCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`
+          }
+          $width={lanternSize / 10 + "em"}
+          $size={lanternSize / 10 / 400 + "em"}
         >
-          <LanternCardName
-            $yPosition={((412 / 344) * wishSize) / 10}
-            $fontSize={((24 / 344) * wishSize) / 10}
-          >
-            <div>{lanternInfo.nickname}</div>
+          <LanternCardName $size={lanternSize / 10 / 400 + "em"}>
+            <p>{lanternInfo.nickname}</p>
           </LanternCardName>
 
-          <LanternCardContent
-            $yPosition={((12 / 344) * wishSize) / 10}
-            $fontSize={((20 / 344) * wishSize) / 10}
-          >
-            <div>{lanternInfo.content}</div>
+          <LanternCardContent $size={lanternSize / 10 / 400 + "em"}>
+            {lanternInfo.content}
           </LanternCardContent>
 
-          <LanternCardLikeWrapper
-            $yPosition={((24 / 344) * wishSize) / 10}
-            $fontSize={((24 / 344) * wishSize) / 10}
-          >
-            <div>좋아요</div>
+          <LanternCardLikeWrapper $size={lanternSize / 10 / 400 + "em"}>
+            <img src="/icon/heart.svg" />
+            <div>{lanternInfo.like_cnt}</div>
           </LanternCardLikeWrapper>
         </LanternCardWrapper>
-      </LanternCardEmWrapper>
-    </Link>
+      </Link>
+    </LanternCardEmWrapper>
   );
 }
 
