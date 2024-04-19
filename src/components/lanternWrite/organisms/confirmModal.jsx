@@ -1,5 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
+
+function ConfirmModal({ onClose, onConfirm }) {
+  return (
+    <ConfirmModalWrapper>
+      <ConfirmBox>
+        <Question>
+          확인을 누르시면 연등이 달립니다! <br />
+          달린 연등은 수정이 불가능해요.
+        </Question>
+        <SelectBox>
+          <NoBtn onClick={onClose}>취소</NoBtn>
+          <YesBtn onClick={onConfirm}>확인</YesBtn>
+        </SelectBox>
+      </ConfirmBox>
+    </ConfirmModalWrapper>
+  );
+}
+export default ConfirmModal;
 
 const ConfirmModalWrapper = styled.div`
   position: fixed;
@@ -69,21 +87,3 @@ const YesBtn = styled(NoBtn)`
   border-bottom-right-radius: 15px;
   border-right: 0;
 `;
-
-function ConfirmModal({ onClose, onConfirm }) {
-  return (
-    <ConfirmModalWrapper>
-      <ConfirmBox>
-        <Question>
-          확인을 누르시면 연등이 달립니다! <br />
-          달린 연등은 수정이 불가능해요.
-        </Question>
-        <SelectBox>
-          <NoBtn onClick={onClose}>취소</NoBtn>
-          <YesBtn onClick={onConfirm}>확인</YesBtn>
-        </SelectBox>
-      </ConfirmBox>
-    </ConfirmModalWrapper>
-  );
-}
-export default ConfirmModal;

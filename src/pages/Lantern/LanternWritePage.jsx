@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import {
   nicknameState,
   wishState,
@@ -34,9 +34,9 @@ const Background = styled.div`
 
 function LanternWritePage() {
   const { backgroundImageUrl } = GradientBackground();
-  const [nickname, setNickname] = useRecoilState(nicknameState);
-  const [wish, setWish] = useRecoilState(wishState);
-  const [password, setPassword] = useRecoilState(passwordState);
+  const nickname = useRecoilValue(nicknameState);
+  const wish = useRecoilValue(wishState);
+  const password = useRecoilValue(passwordState);
   const clicked = useRecoilValue(clickedState);
 
   const navigate = useNavigate();
@@ -71,7 +71,7 @@ function LanternWritePage() {
         nickname: nickname,
         content: wish,
         password: password,
-        lanternColor: Object.keys(clicked).find(color => clicked[color]) // 선택된 연등 색상 가져오기
+        lanternColor: Object.keys(clicked).find(color => clicked[color])
       });
 
       // 포스트 요청 보내기
@@ -82,7 +82,7 @@ function LanternWritePage() {
         lanternColor: Object.keys(clicked).find(color => clicked[color])
       });
 
-      // 포춘쿠키로 이동
+      // 포춘쿠키로 이동 //경로 수정 필요
       navigate(`/lanterns`);
     } catch (error) {
       console.error("Failed to post lantern data:", error);

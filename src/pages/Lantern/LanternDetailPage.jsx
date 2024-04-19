@@ -1,20 +1,28 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
 
+//import component
 import Header from "../../components/common/molecules/header/header";
 import LanternDetailBg from "../../components/common/organisms/Background/LanternDetailBg";
 import LikeBtn from "../../components/lanternWrite/atom/likeBtn";
-import { useParams } from "react-router-dom";
+import InitView from "../../components/common/templetes/initView/InitView";
+
+//import api
 import { fetchLanternData } from "../../apis/api/lanternDetail";
 import { postLike } from "../../apis/api/likeBtn";
+
+//import modal component
 import MoreModal from "../../components/lanternWrite/organisms/moreModal";
 import DeleteModal from "../../components/lanternWrite/organisms/DeleteModal";
 import PwModal from "../../components/lanternWrite/organisms/PwModal";
 import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
 import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
+import CheckDeleteModal from "../../components/lanternWrite/organisms/CheckDeleteModal";
 
 function LanternDetailPage() {
+  const [isInit, setIsInit] = useState(true);
   const { backgroundImageUrl } = LanternDetailBg();
   const { detailId } = useParams();
   const [lanternData, setLanternData] = useState(null);
@@ -23,8 +31,8 @@ function LanternDetailPage() {
     const getLanternDetail = async () => {
       try {
         const data = await fetchLanternData(detailId);
-        console.log("get해온 연등 디테일:", data);
         setLanternData(data);
+        setIsInit(false);
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
       }
@@ -37,8 +45,8 @@ function LanternDetailPage() {
     try {
       // 좋아요 상태 업데이트
       const response = await postLike(detailId);
-      console.log("좋아요 요청:", response.config); // 요청 데이터 로그
-      console.log("좋아요 응답:", response.data); // 응답 데이터 로그
+      console.log("좋아요 요청:", response.config);
+      console.log("좋아요 응답:", response.data);
       if (response.status === 200) {
         setLanternData(prevData => ({
           ...prevData,
@@ -58,6 +66,7 @@ function LanternDetailPage() {
   // 삭제
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [pwModalOpen, setPwModalOpen] = useState(false);
+  const [showCheckDeleteModal, setShowCheckDeleteModal] = useState(false);
   // 신고
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [reportedModalOpen, setReportedModalOpen] = useState(false);
@@ -78,11 +87,13 @@ function LanternDetailPage() {
   const closeDeleteModal = () => {
     setDeleteModalOpen(false);
   };
+
   // 비밀번호 입력 모달
   const openPwModal = () => {
     setPwModalOpen(true);
     closeDeleteModal();
   };
+
   const closePwModal = () => {
     setPwModalOpen(false);
   };
@@ -112,7 +123,9 @@ function LanternDetailPage() {
     }, 1500);
   };
 
-  return (
+  return isInit ? (
+    <InitView />
+  ) : (
     <Background $backgroundImageUrl={backgroundImageUrl}>
       <Header />
       <LanternViewPaperContainer>
@@ -136,12 +149,19 @@ function LanternDetailPage() {
         )}
         {/* 비밀번호 입력 모달 */}
         {pwModalOpen && (
-          <PwModal
-            openPwModal={openPwModal}
-            closePwModal={closePwModal}
-            data={lanternData}
-          />
+          <>
+            <PwModal
+              openPwModal={openPwModal}
+              closePwModal={() => {
+                closePwModal();
+                setShowCheckDeleteModal(true);
+              }}
+              data={lanternData}
+            />
+            {showCheckDeleteModal && <CheckDeleteModal />}
+          </>
         )}
+
         {/* 신고 모달 */}
         {reportModalOpen && (
           <ReportModal
@@ -176,7 +196,7 @@ function LanternDetailPage() {
               // height: "100vh",
               height: "100%",
               backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 11,
+              zIndex: 7,
               display: "flex",
               justifyContent: "center",
               alignItems: "center"
