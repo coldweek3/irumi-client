@@ -10,7 +10,7 @@ const ImageContainerWrapper = styled.div`
   align-items: center;
 
   &.moving {
-    animation: moveTop 6s forwards ease-in;
+    animation: moveTop 3s forwards ease-in;
     animation-delay: 2s;
 
     @keyframes moveTop {
