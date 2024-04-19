@@ -1,5 +1,31 @@
 import React from "react";
 import styled from "styled-components";
+
+function DeleteModal({ closeDeleteModal, openPwModal, closePwModal }) {
+  const handleConfirm = () => {
+    // "확인" 버튼 클릭 시 PwModal 열기
+    openPwModal();
+    // DeleteModal 닫기
+    closeDeleteModal();
+  };
+
+  return (
+    <>
+      <DeleteModalWrapper>
+        <DeleteBox>
+          <Question>연등을 삭제하시겠습니까?</Question>
+          <SelectBox>
+            <NoBtn onClick={closeDeleteModal}>취소</NoBtn>
+            <YesBtn onClick={handleConfirm}>확인</YesBtn>
+          </SelectBox>
+        </DeleteBox>
+      </DeleteModalWrapper>
+    </>
+  );
+}
+
+export default DeleteModal;
+
 const DeleteModalWrapper = styled.div`
   position: fixed;
   transform: translate(-50%, -50%);
@@ -60,21 +86,3 @@ const YesBtn = styled(NoBtn)`
   border-bottom-right-radius: 15px;
   border-right: 0;
 `;
-
-function DeleteModal({ closeDeleteModal, openPwModal }) {
-  return (
-    <>
-      <DeleteModalWrapper>
-        <DeleteBox>
-          <Question>연등을 삭제하시겠습니까?</Question>
-          <SelectBox>
-            <NoBtn onClick={closeDeleteModal}>취소</NoBtn>
-            <YesBtn onClick={openPwModal}>확인</YesBtn>
-          </SelectBox>
-        </DeleteBox>
-      </DeleteModalWrapper>
-    </>
-  );
-}
-
-export default DeleteModal;
