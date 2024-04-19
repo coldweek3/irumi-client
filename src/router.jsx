@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 
 import MainPage from "./pages/main/MainPage";
-
 import LanternColorPage from "./pages/lantern/LanternColorPage";
 import LanternWritePage from "./pages/lantern/LanternWritePage";
 
