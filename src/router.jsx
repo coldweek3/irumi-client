@@ -25,6 +25,7 @@ import FortuneIntro from "./pages/fotrune/FortuneIntro";
 import FortuneLeaf from "./pages/fotrune/FotuneLeaf";
 import MyDetail from "./pages/fotrune/MyDetail";
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       { path: "/firstthemeWrite", element: <FirstthemeWrite /> },
       { path: "/secondthemeWrite", element: <SecondthemeWrite /> },
       { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> }
+
     ]
   }
 ]);
