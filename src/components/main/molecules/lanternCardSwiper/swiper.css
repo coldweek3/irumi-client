@@ -10,7 +10,7 @@
   align-items: center;
 }
 .swiper-slide .lantern {
-  display: flex !i;
+  display: flex;
   justify-self: center;
   align-items: center;
   overflow: visible;
