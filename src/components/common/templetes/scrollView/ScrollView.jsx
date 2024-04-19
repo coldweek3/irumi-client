@@ -11,8 +11,9 @@ const ScrollViewWrapper = styled.div`
 
   min-height: ${props => props.$heightSize}px;
 
-  background-size: contain;
-  background-repeat: repeat-y;
+  background-size: 100% auto; /* 가로는 태그 크기에 맞추고 세로는 100%로 설정 */
+  background-repeat: repeat-y; /* 세로로만 이미지 반복 */
+
   background-image: ${props => `url(/img/scrollBg/${props.$theme}.png)`};
 `;
 
