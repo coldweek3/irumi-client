@@ -38,7 +38,7 @@ function LanternCardSwiper({ lanterns }) {
       >
         {lanterns?.map((item, index) => (
           <SwiperSlide className="lantern" key={index}>
-            <LanternCard lanternInfo={item} lanternSize={180} />
+            <LanternCard lanternData={item} lanternSize={180} />
           </SwiperSlide>
         ))}
       </Swiper>

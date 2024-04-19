@@ -14,61 +14,7 @@ import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
 import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
 
-const Background = styled.div`
-  background-image: ${props => `url(${props.$backgroundImageUrl})`};
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-size: cover;
-`;
-
-const LanternViewPaperContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const LanternViewPaperImg = styled.img`
-  transform: scale(0.8);
-`;
-
-const LanternDotContainer = styled.div`
-  position: absolute;
-  transform: scale(0.2);
-  top: 50%;
-  margin-left: 120px;
-  z-index: 9;
-  cursor: pointer;
-`;
-
-const LanternDot = styled.img``;
-
-const LanternViewNickname = styled.div`
-  position: absolute;
-  top: 57%;
-  color: #5b3a1a;
-  font-size: 13px;
-`;
-
-const LanternViewWish = styled.div`
-  position: absolute;
-  top: 62%;
-  font-size: 10px;
-  color: #5b3a1a;
-  white-space: "pre-line";
-  width: 13em;
-  min-width: 3em;
-  line-height: 11px;
-`;
-
-function LanternDetail() {
+function LanternDetailPage() {
   const { backgroundImageUrl } = LanternDetailBg();
   const { detailId } = useParams();
   const [lanternData, setLanternData] = useState(null);
@@ -254,4 +200,58 @@ function LanternDetail() {
   );
 }
 
-export default LanternDetail;
+export default LanternDetailPage;
+
+const Background = styled.div`
+  background-image: ${props => `url(${props.$backgroundImageUrl})`};
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background-size: cover;
+`;
+
+const LanternViewPaperContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const LanternViewPaperImg = styled.img`
+  transform: scale(0.8);
+`;
+
+const LanternDotContainer = styled.div`
+  position: absolute;
+  transform: scale(0.2);
+  top: 50%;
+  margin-left: 120px;
+  z-index: 9;
+  cursor: pointer;
+`;
+
+const LanternDot = styled.img``;
+
+const LanternViewNickname = styled.div`
+  position: absolute;
+  top: 57%;
+  color: #5b3a1a;
+  font-size: 13px;
+`;
+
+const LanternViewWish = styled.div`
+  position: absolute;
+  top: 62%;
+  font-size: 10px;
+  color: #5b3a1a;
+  white-space: "pre-line";
+  width: 13em;
+  min-width: 3em;
+  line-height: 11px;
+`;

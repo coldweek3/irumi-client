@@ -47,7 +47,7 @@ function MainPage() {
           연등 둘러보기
         </LinkButton>
 
-        <LinkButton className={"middle primary"} herf={"/wishWrite"}>
+        <LinkButton className={"middle primary"} herf={"/lanternWrite"}>
           연등 작성하기
         </LinkButton>
       </ButtonList>

@@ -6,19 +6,15 @@ import { theme } from "../../../../recoil/theme";
 const ScrollViewWrapper = styled.div`
   width: 100%;
   min-height: 100vh;
-  padding-top: 60px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   position: relative;
 
   min-height: ${props => props.$heightSize}px;
 
-  background-size: cover;
-  background-image: ${props => `url(/img/fixBg/${props.$theme}.png)`};
-  padding-bottom: 80px;
+  background-size: 100% auto; /* 가로는 태그 크기에 맞추고 세로는 100%로 설정 */
+  background-repeat: repeat-y; /* 세로로만 이미지 반복 */
+
+  background-image: ${props => `url(/img/scrollBg/${props.$theme}.png)`};
 `;
 
 function ScrollView({ children }) {

@@ -31,7 +31,7 @@ const ThemeBox = styled.div`
   /* border: 1px solid red; */
 `;
 
-function LampMain() {
+function LampMainPage() {
   const { backgroundImageUrl } = GradientBackground();
 
   return (
@@ -45,4 +45,4 @@ function LampMain() {
   );
 }
 
-export default LampMain;
+export default LampMainPage;

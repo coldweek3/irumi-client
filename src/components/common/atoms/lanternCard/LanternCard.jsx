@@ -1,8 +1,45 @@
+// 메인, 둘러보기에 사용되는 렌턴 미리보기 컴포넌트
+
 import React from "react";
 import { useRecoilValue } from "recoil";
 import { emSize } from "../../../../recoil/emSize";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
+function LanternCard({ lanternSize = 170, lanternData }) {
+  const emSizeValue = useRecoilValue(emSize);
+
+  return (
+    <LanternCardEmWrapper
+      $emsize={emSizeValue}
+      $width={lanternSize / 10 + "em"}
+      $size={lanternSize / 10 / 400 + "em"}
+    >
+      <Link to={`/lanternDetail/${lanternData.id}`}>
+        <LanternCardWrapper
+          $url={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
+          $width={lanternSize / 10 + "em"}
+          $size={lanternSize / 10 / 400 + "em"}
+        >
+          <LanternCardName $size={lanternSize / 10 / 400 + "em"}>
+            <p>{lanternData.id}</p>
+          </LanternCardName>
+
+          <LanternCardContent $size={lanternSize / 10 / 400 + "em"}>
+            {lanternData.content}
+          </LanternCardContent>
+
+          <LanternCardLikeWrapper $size={lanternSize / 10 / 400 + "em"}>
+            <img src="/icon/heart.svg" />
+            <p>{lanternData.like_cnt}</p>
+          </LanternCardLikeWrapper>
+        </LanternCardWrapper>
+      </Link>
+    </LanternCardEmWrapper>
+  );
+}
+
+export default LanternCard;
 
 const LanternCardEmWrapper = styled.div`
   font-size: ${props => props.$emsize}px;
@@ -73,42 +110,3 @@ const LanternCardLikeWrapper = styled.div`
     font-size: calc(${props => props.$size} * 20);
   }
 `;
-
-function LanternCard({ lanternSize = 127, lanternInfo }) {
-  console.log(lanternInfo);
-  const emSizeValue = useRecoilValue(emSize);
-
-  return (
-    <LanternCardEmWrapper
-      $emsize={emSizeValue}
-      $width={lanternSize / 10 + "em"}
-      $size={lanternSize / 10 / 400 + "em"}
-    >
-      <Link to={`랜턴디테일/${lanternInfo.id}`}>
-
-        <LanternCardWrapper
-          $url={
-           `/img/wishCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`
-          }
-          $width={lanternSize / 10 + "em"}
-          $size={lanternSize / 10 / 400 + "em"}
-        >
-          <LanternCardName $size={lanternSize / 10 / 400 + "em"}>
-            <p>{lanternInfo.nickname}</p>
-          </LanternCardName>
-
-          <LanternCardContent $size={lanternSize / 10 / 400 + "em"}>
-            {lanternInfo.content}
-          </LanternCardContent>
-
-          <LanternCardLikeWrapper $size={lanternSize / 10 / 400 + "em"}>
-            <img src="/icon/heart.svg" />
-            <div>{lanternInfo.like_cnt}</div>
-          </LanternCardLikeWrapper>
-        </LanternCardWrapper>
-      </Link>
-    </LanternCardEmWrapper>
-  );
-}
-
-export default LanternCard;
