@@ -13,6 +13,7 @@ import ThirdthemeWrite from "./pages/lamp/ThirdthemeWrite";
 import FlyLamp from "./pages/lamp/FlyLamp";
 import FortuneIntro from "./pages/fotrune/FortuneIntro";
 import FortuneLeaf from "./pages/fotrune/FotuneLeaf";
+import MyDetail from "./pages/fotrune/MyDetail";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,8 @@ const router = createBrowserRouter([
       { path: "/thirdthemeWrite", element: <ThirdthemeWrite /> },
       { path: "/flyLamp", element: <FlyLamp /> },
       { path: "/fortuneIntro", element: <FortuneIntro /> },
-      { path: "/fortuneLeaf", element: <FortuneLeaf /> }
+      { path: "/fortuneLeaf", element: <FortuneLeaf /> },
+      { path: "/myDetail", element: <MyDetail /> }
     ]
   }
 ]);

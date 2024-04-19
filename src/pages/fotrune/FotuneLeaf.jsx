@@ -12,7 +12,7 @@ const LeafContainer = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  border: 3px solid yellow;
+  /* border: 3px solid yellow; */
 `;
 
 const LeafImg = styled.img`
@@ -23,18 +23,19 @@ const LeafImg = styled.img`
   max-height: 550px;
   /* justify-content: center; */
   align-items: center;
-  border: 3px solid red;
+  /* border: 3px solid red; */
 `;
 
 const TextWrapper = styled.div`
   display: flex;
   position: absolute;
   width: 200px;
+  height: 200px;
   justify-content: center;
   align-items: center;
   white-space: pre-line;
   top: 35%;
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 `;
 
 const RandomText = styled.div`
@@ -66,7 +67,7 @@ const QuitButton = styled.img`
   justify-content: center;
   bottom: 10%;
   align-items: center;
-  border: 3px solid blue;
+  /* border: 3px solid blue; */
 `;
 
 function FortuneLeaf() {
@@ -78,6 +79,7 @@ function FortuneLeaf() {
     const fetchData = async () => {
       try {
         const response = await API.get("/api/lanterns/cookie");
+        console.log("API 응답 데이터:", response.data); // 응답 데이터를 콘솔에 출력
         setFortuneMessage(response.data.fortune);
       } catch (error) {
         console.error("API 요청 실패:", error);
@@ -100,7 +102,9 @@ function FortuneLeaf() {
           <RandomText>{fortuneMessage}</RandomText>
         </TextWrapper>
 
-        <QuitButton src="/img/Fortune/quit_button.png" />
+        <Link to="/myDetail">
+          <QuitButton src="/img/Fortune/quit_button.png" />
+        </Link>
       </LeafContainer>
     </FixView>
   );
