@@ -75,7 +75,7 @@ function LanternsPage() {
   ) : (
     <ScrollView>
       <ButtonList className={"fixBottom"}>
-        <Link to={"/lanternWrite"}>
+        <Link to={"/lanternColor"}>
           <RoundBtn className={"primary"} icon={"/icon/pen.svg"} />
         </Link>
       </ButtonList>
