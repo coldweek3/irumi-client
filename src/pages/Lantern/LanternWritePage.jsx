@@ -32,7 +32,7 @@ const Background = styled.div`
   background-size: cover;
 `;
 
-function LanternWrite() {
+function LanternWritePage() {
   const { backgroundImageUrl } = GradientBackground();
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
@@ -113,4 +113,4 @@ function LanternWrite() {
   );
 }
 
-export default LanternWrite;
+export default LanternWritePage;

@@ -68,7 +68,7 @@ const LanternViewWish = styled.div`
   line-height: 11px;
 `;
 
-function LanternDetail() {
+function LanternDetailPage() {
   const { backgroundImageUrl } = LanternDetailBg();
   const { detailId } = useParams();
   const [lanternData, setLanternData] = useState(null);
@@ -254,4 +254,4 @@ function LanternDetail() {
   );
 }
 
-export default LanternDetail;
+export default LanternDetailPage;
