@@ -11,13 +11,14 @@ const LanternWriteEmailWrapper = styled.div`
 `;
 
 const LanternWriteEmailTitle = styled.div`
-  font-size: 10px;
+  font-size: 9px;
   margin-right: 5px;
   color: #5b3a1a;
 `;
 
 const LanternWriteEmailInput = styled.input`
   width: 82%;
+  min-width: 187px;
   background-color: #f1f1f1;
   border-radius: 5px;
   border: 1px solid #898989;
@@ -25,7 +26,7 @@ const LanternWriteEmailInput = styled.input`
   height: 2em;
 
   &::placeholder {
-    font-size: 10px;
+    font-size: 8px;
     color: #898989;
   }
 `;
