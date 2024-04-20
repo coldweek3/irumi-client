@@ -32,7 +32,7 @@ const router = createBrowserRouter([
 
       // 연등(렌턴) 둘러보기 페이지
       { path: "/lanterns", element: <LanternsPage /> },
-      { path: "/lanterns/:keyword", element: <LanternsSearchPage /> },
+      { path: "/lanterns/:nickname", element: <LanternsSearchPage /> },
 
       // 등불(램프) 둘러보기 페이지
       { path: "/lampMain", element: <LampMainPage /> },

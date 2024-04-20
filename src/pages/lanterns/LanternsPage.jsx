@@ -11,16 +11,17 @@ import InfinifyScroll from "../../components/lanterns/organisms/infinityScroll/I
 import RoundBtn from "../../components/common/atoms/button/RoundBtn";
 import { Link } from "react-router-dom";
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
+import { sortEng, sortKor } from "../../emun/sort";
 
 function LanternsPage() {
-  // 최신순, 인기순 토글
-  const indexKor = ["최신순", "인기순"];
-  const indexEng = ["recent", "pop"];
-
   const [currentIndex, setCurrentIndex] = useState(0);
   const getCurrentIndex = data => {
     setCurrentIndex(data);
   };
+
+  useEffect(() => {
+    fetchData();
+  }, [currentIndex]);
 
   // 초기 API 호출 관련
   const [isInit, setIsInit] = useState(true);
@@ -34,7 +35,7 @@ function LanternsPage() {
   }, []);
 
   const fetchData = async () => {
-    await getLanterns(`${indexEng[currentIndex]}?page=${currentPage}`).then(
+    await getLanterns(`${sortEng[currentIndex]}?page=${currentPage}`).then(
       result => {
         if (result.type == "clear") {
           setLanterns(result.data.results);
@@ -57,7 +58,7 @@ function LanternsPage() {
   // 다음 페이지를 불러오는 함수
   const loadData = async () => {
     setIsLoading(true);
-    await getLanterns(`${indexEng[currentIndex]}?page=${currentPage}`).then(
+    await getLanterns(`${sortEng[currentIndex]}?page=${currentPage}`).then(
       result => {
         setIsLoading(false);
         if (result.type == "clear") {
@@ -89,7 +90,7 @@ function LanternsPage() {
         onBottom={() => setCurrentPage(currentPage + 1)}
       >
         <ToggleButton
-          index={indexKor}
+          index={sortKor}
           currentIndex={currentIndex}
           getCurrentIndex={getCurrentIndex}
         />
