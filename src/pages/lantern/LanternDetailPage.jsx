@@ -43,10 +43,21 @@ function LanternDetailPage() {
   // 좋아요 처리 함수
   const handleLikeClick = async () => {
     try {
-      // 좋아요 상태 업데이트
-      const response = await postLike(detailId);
+      // 로컬 스토리지에서 사용자 ID 확인
+      let userId = localStorage.getItem("user_id");
+
+      // 사용자 ID가 없다면 임의의 ID 생성
+      if (!userId) {
+        userId = Math.random().toString(36).substring(7);
+        localStorage.setItem("user_id", userId);
+      }
+
+      // 좋아요 요청 시에 사용자 ID와 함께 백엔드에 전송
+      const response = await postLike(detailId, userId);
       console.log("좋아요 요청:", response.config);
       console.log("좋아요 응답:", response.data);
+      console.log(userId);
+
       if (response.status === 200) {
         setLanternData(prevData => ({
           ...prevData,

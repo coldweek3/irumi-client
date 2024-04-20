@@ -116,20 +116,28 @@ function ReportModal({
 
   const handleReport = async () => {
     try {
-      const response = await reportLantern(
-        detailId,
-        selectedCategories,
-        userId
-      );
-      openReportedModal();
-      console.log(response);
-    } catch (error) {
-      if (error.response && error.response.status === 400) {
-        // 이미 신고된 경우
+      // 사용자가 이미 해당 게시글을 신고했는지 확인
+      const isAlreadyReported = localStorage.getItem(`reported_${detailId}`);
+      if (isAlreadyReported) {
         openIsReportedModal();
-      } else {
-        console.error(error);
+        setTimeout(() => {
+          closeReportModal();
+        }, 2000);
+        return;
       }
+
+      // 사용자가 해당 게시글을 신고하지 않은 경우에만 처리
+      await reportLantern(detailId, selectedCategories, userId);
+      openReportedModal();
+
+      // 사용자가 해당 게시글을 신고한 표시를 로컬 스토리지에 저장
+      localStorage.setItem(`reported_${detailId}`, true);
+
+      setTimeout(() => {
+        closeReportModal(); // 2초 후에 모달 닫기
+      }, 2000);
+    } catch (error) {
+      console.error("Error reporting lantern:", error);
     }
   };
 

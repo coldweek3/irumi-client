@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   nicknameState,
   wishState,
@@ -38,6 +38,10 @@ function LanternWritePage() {
   const wish = useRecoilValue(wishState);
   const password = useRecoilValue(passwordState);
   const clicked = useRecoilValue(clickedState);
+  const setNickname = useSetRecoilState(nicknameState);
+  const setWish = useSetRecoilState(wishState);
+  const setPassword = useSetRecoilState(passwordState);
+  const setClicked = useSetRecoilState(clickedState);
 
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -66,24 +70,24 @@ function LanternWritePage() {
     console.log("모달 확인 버튼 클릭");
     setShowModal(false);
     try {
-      // 포스트할 데이터 콘솔에 출력
-      console.log("포스트할 데이터:", {
-        nickname: nickname,
-        content: wish,
-        password: password,
-        lanternColor: Object.keys(clicked).find(color => clicked[color])
-      });
-
       // 포스트 요청 보내기
-      await postLanternData({
+      const response = await postLanternData({
         nickname: nickname,
         content: wish,
         password: password,
         lanternColor: Object.keys(clicked).find(color => clicked[color])
       });
 
+      const detailId = response.id;
+
+      // 포스트 성공 후 Recoil 상태 초기화
+      setNickname("");
+      setWish("");
+      setPassword("");
+      setClicked({});
+      console.log(response.id);
       // fortuneIntro 페이지로 이동
-      navigate(`/fortuneIntro`);
+      navigate(`/fortuneIntro/${detailId}`);
     } catch (error) {
       console.error("Failed to post lantern data:", error);
     }
