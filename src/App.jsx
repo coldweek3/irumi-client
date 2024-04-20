@@ -12,6 +12,7 @@ import "./style/fontStyle.css";
 import { useEffect, useState } from "react";
 import { getEmSize } from "./utils/getEmSize.jsx";
 import { heightSize } from "./recoil/heightSize.jsx";
+import HandleTheme from "./components/dev/handleTheme/HandleTheme.jsx";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -56,6 +57,7 @@ function App() {
 
   return (
     <>
+      <HandleTheme />
       <ThemeProvider
         theme={
           themeValue == "DAY" ? day : themeValue == "SUNSET" ? sunset : night

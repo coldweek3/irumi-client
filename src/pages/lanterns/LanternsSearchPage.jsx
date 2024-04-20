@@ -74,7 +74,6 @@ function LanternsPage() {
         onBottom={() => setCurrentPage(currentPage + 1)}
       >
         {/* 검색 결과 분기 설정 */}
-
         {lanterns.length == 0 ? (
           <LanternsTextLabel className={"none"}>
             '{params.nickname}' 에 대한 검색 결과가 없습니다.
