@@ -32,7 +32,7 @@ const ButtonListWrapper = styled.div`
   }
   &.fixBottom {
     position: fixed;
-    width: 100vh;
+    width: 100%;
     max-width: 560px;
     bottom: 0;
     left: 50%;
