@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import { API } from "../../apis/utils";
 import fetchFortuneMessage from "../../apis/api/fortune";
+import { fetchLanternData } from "../../apis/api/lanternDetail";
 
 const LeafContainer = styled.div`
   position: relative;

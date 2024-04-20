@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
+import { fetchLanternData } from "../../apis/api/lanternDetail";
 
 const IrumiViewWrapper = styled.div`
   width: 100%;
@@ -54,43 +55,19 @@ const ContentSec = styled(TitleSec)`
 
 function MyDetailPage() {
   const LinkRef = useRef();
-  const [lanternDetail, setLanternDetail] = useState([]);
-
   const { detailId } = useParams();
+  const [lanternData, setLanternData] = useState(null);
 
   useEffect(() => {
-    // 더미 데이터 생성
-    const dummyData = {
-      id: 1,
-      lanternColor: 2,
-      light_bool: true,
-      nickname: "킼",
-      content: "잘 자게 해주세요"
-    };
-
-    // 더미 데이터를 lanternDetail 상태에 설정
-    setLanternDetail([dummyData]);
-  }, [detailId]);
-
-  useEffect(() => {
-    const fetchLanternDetailData = async () => {
+    const getLanternDetail = async () => {
       try {
-        if (detailId) {
-          const response = await API.get(`/api/lanterns/${detailId}`, {
-            withCredentials: true
-          });
-
-          setLanternDetail(response.data);
-        }
+        const data = await fetchLanternData(detailId);
+        setLanternData(data);
       } catch (error) {
-        console.error(
-          "각 id에 해당하는 연등 디테일 가져오는 중 에러 발생",
-          error
-        );
+        console.error("Error fetching lantern detail:", error);
       }
     };
-
-    fetchLanternDetailData();
+    getLanternDetail();
   }, [detailId]);
 
   return (
@@ -101,15 +78,15 @@ function MyDetailPage() {
         style={{ position: "fixed", top: "-123px" }}
       />
       <IrumiViewWrapper id="detailWrapper">
-        {lanternDetail.map(item => (
-          <DetailLanternWrapper key={item.id}>
+        {lanternData && (
+          <DetailLanternWrapper>
             <DetailLanternImg
-              src={`/detail_${item.lanternColor}_${item.light_bool}.png`}
+              src={`/detail_${lanternData.lanternColor}_${lanternData.light_bool}.png`}
             />
-            <TitleSec>{item.nickname}</TitleSec>
-            <ContentSec>{item.content}</ContentSec>
+            <TitleSec>{lanternData.nickname}</TitleSec>
+            <ContentSec>{lanternData.content}</ContentSec>
           </DetailLanternWrapper>
-        ))}
+        )}
       </IrumiViewWrapper>
 
       <MyBtn />
