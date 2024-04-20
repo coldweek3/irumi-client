@@ -51,10 +51,10 @@ const FirstthemeWritePage = () => {
 
         // POST 성공 시
         console.log("등불이 저장되었습니다", response.data);
+
         // alert("소원이 이뤄질 거예요");
-        alert("소원이 이뤄질 거예요");
-        // Navigate to /flyLamp
-        navigate("/flyLamp");
+
+        navigate("/lampFly");
       } catch (error) {
         console.error("POST ERROR", error);
         alert("Failed to submit data. Please try again later.");

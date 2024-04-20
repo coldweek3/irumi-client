@@ -4,6 +4,65 @@ import styled from "styled-components";
 import { deleteLantern } from "../../../apis/api/deleteLantern";
 import CheckDeleteModal from "./CheckDeleteModal";
 
+function PwModal({ closePwModal, data }) {
+  const [password, setPassword] = useState("");
+  const [status, setStatus] = useState(null);
+  const [showCheckDeleteModal, setShowCheckDeleteModal] = useState(false);
+  const navigate = useNavigate();
+
+  const openCheckDeleteModal = async () => {
+    try {
+      const response = await deleteLantern(data.id, password);
+      console.log("응답상태: ", response.status);
+      closePwModal();
+      if (response.status === 204) {
+        setShowCheckDeleteModal(true);
+        alert("삭제되었습니다.");
+        setTimeout(() => {
+          navigate("/lanterns");
+        }, 1000);
+      }
+    } catch (error) {
+      setStatus(401);
+      setShowCheckDeleteModal(true);
+      alert("비밀번호가 일치하지 않습니다.");
+      console.error("비밀번호 확인 중 오류 발생:", error);
+      closePwModal();
+    }
+  };
+
+  return (
+    <>
+      <PwModalWrapper>
+        <PwBox>
+          <PwInputBox>
+            <p>비밀번호 입력</p>
+            <input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </PwInputBox>
+          <SelectBox>
+            <NoBtn onClick={closePwModal}>취소</NoBtn>
+            <YesBtn onClick={openCheckDeleteModal}>삭제</YesBtn>
+            {/* 삭제를 눌렀을 때만 CheckDeleteModal을 렌더링 */}
+            {showCheckDeleteModal && (
+              <CheckDeleteModal
+                status={status}
+                showCheckDeleteModal={true}
+                setShowCheckDeleteModal={true}
+              />
+            )}
+          </SelectBox>
+        </PwBox>
+      </PwModalWrapper>
+    </>
+  );
+}
+
+export default PwModal;
+
 const PwModalWrapper = styled.div`
   position: fixed;
   transform: translate(-50%, -50%);
@@ -12,7 +71,7 @@ const PwModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  z-index: 9;
 `;
 
 const PwBox = styled.div`
@@ -74,6 +133,7 @@ const NoBtn = styled.div`
   font-weight: 400;
   border-right: 0.5px solid #3d4353;
   border-left: 0;
+  cursor: pointer;
 `;
 
 const YesBtn = styled(NoBtn)`
@@ -81,72 +141,5 @@ const YesBtn = styled(NoBtn)`
   border-radius: 0;
   border-bottom-right-radius: 15px;
   border-right: 0;
+  cursor: pointer;
 `;
-
-function PwModal({ openPwModal, closePwModal, data }) {
-  const [password, setPassword] = useState("");
-  const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
-  const [alertOpen, setAlertOpen] = useState(true);
-  const navigate = useNavigate();
-
-  const closeAlert = () => {
-    setAlertOpen(false);
-  };
-
-  const handleDelete = async () => {
-    try {
-      const Response = await deleteLantern(data.id, password);
-      console.log(Response);
-      if (Response.status === 204) {
-        setIsPasswordCorrect(true);
-        console.log("비밀번호가 일치합니다.");
-        closePwModal();
-        setAlertOpen(true);
-        navigate("/lanterns");
-      } else if (Response.status === 401) {
-        setIsPasswordCorrect(false);
-        console.log("비밀번호가 일치하지 않습니다.");
-        setAlertOpen(true);
-      }
-    } catch (error) {
-      // 비밀번호 불일치
-      setIsPasswordCorrect(false);
-      setAlertOpen(true);
-
-      setTimeout(() => {
-        closeAlert();
-        openPwModal();
-      }, 2000);
-    }
-  };
-
-  return (
-    <>
-      <PwModalWrapper>
-        <PwBox>
-          <PwInputBox>
-            <p>비밀번호 입력</p>
-            <input
-              type="password"
-              value={password}
-              onChange={e => setPassword(e.target.value)}
-            />
-          </PwInputBox>
-          <SelectBox>
-            <NoBtn onClick={closePwModal}>취소</NoBtn>
-            <YesBtn onClick={handleDelete}>삭제</YesBtn>
-          </SelectBox>
-        </PwBox>
-      </PwModalWrapper>
-
-      {alertOpen && (
-        <CheckDeleteModal
-          isPasswordCorrect={isPasswordCorrect}
-          closeAlert={closeAlert}
-        />
-      )}
-    </>
-  );
-}
-
-export default PwModal;

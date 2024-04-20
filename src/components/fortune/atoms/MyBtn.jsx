@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import html2canvas from "html2canvas";
 import saveAs from "file-saver";
+import { useNavigate } from "react-router-dom";
 
 const MyBtnsBox = styled.div`
   width: 300px;
@@ -59,6 +60,10 @@ function MyBtn() {
     LinkRef.current.select();
     document.execCommand("copy");
   };
+  //메인 이동
+  const navigate = useNavigate();
+  //링크 복사
+  const LinkRef = useRef(null);
   return (
     <MyBtnsBox>
       <Button>

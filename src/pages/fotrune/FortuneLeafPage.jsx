@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import FixView from "../../components/common/templetes/fixView/FixView";
@@ -75,7 +75,7 @@ function FortuneLeafPage() {
   const [fortuneMessage, setFortuneMessage] = useState(
     "당신은 웃는 얼굴이 참 예뻐요 당신의 미소가 힘이 돼요"
   );
-  const { lantern_id } = useParams();
+  const { detailId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,7 +96,7 @@ function FortuneLeafPage() {
           <RandomText>{fortuneMessage}</RandomText>
         </TextWrapper>
 
-        <Link to={`/myDetail/${lantern_id}`}>
+        <Link to={`/myDetail/${detailId}`}>
           <QuitButton src="/img/Fortune/quit_button.png" />
         </Link>
       </LeafContainer>

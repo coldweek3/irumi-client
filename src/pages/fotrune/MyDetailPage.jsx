@@ -56,7 +56,7 @@ function MyDetailPage() {
   const LinkRef = useRef();
   const [lanternDetail, setLanternDetail] = useState([]);
 
-  const { lantern_id } = useParams();
+  const { detailId } = useParams();
 
   useEffect(() => {
     // 더미 데이터 생성
@@ -70,13 +70,13 @@ function MyDetailPage() {
 
     // 더미 데이터를 lanternDetail 상태에 설정
     setLanternDetail([dummyData]);
-  }, [lantern_id]);
+  }, [detailId]);
 
   useEffect(() => {
     const fetchLanternDetailData = async () => {
       try {
-        if (lantern_id) {
-          const response = await API.get(`/api/lanterns/${lantern_id}`, {
+        if (detailId) {
+          const response = await API.get(`/api/lanterns/${detailId}`, {
             withCredentials: true
           });
 
@@ -91,13 +91,13 @@ function MyDetailPage() {
     };
 
     fetchLanternDetailData();
-  }, [lantern_id]);
+  }, [detailId]);
 
   return (
     <FixView>
       <textarea
         ref={LinkRef}
-        value={`iirumi.com/irumi/${lantern_id}`}
+        value={`/${detailId}`}
         style={{ position: "fixed", top: "-123px" }}
       />
       <IrumiViewWrapper id="detailWrapper">

@@ -6,6 +6,7 @@ import {
   wishState,
   emailState
 } from "../../recoil/lanternContent";
+import { useNavigate } from "react-router-dom";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import Header from "../../components/common/molecules/header/header";
 import DescriptionText from "../../components/lanternWrite/atom/DescriptionText";
@@ -28,6 +29,7 @@ const ThirdthemeWritePage = () => {
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState); // 이메일 상태 추가
   const { backgroundImageUrl } = GradientBackground();
+  const navigate = useNavigate();
 
   // 모든 입력란이 채워졌는지 확인하는 함수
   const isSatisfied = () => {
@@ -49,7 +51,8 @@ const ThirdthemeWritePage = () => {
 
         // POST 성공 시
         console.log("등불이 저장되었습니다", response.data);
-        alert("소원이 이뤄질 거예요");
+        // alert("소원이 이뤄질 거예요");
+        navigate("/lampFly");
       } catch (error) {
         console.error("POST ERROR", error);
         alert("Failed to submit data. Please try again later.");
