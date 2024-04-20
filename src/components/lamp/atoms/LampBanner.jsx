@@ -28,14 +28,29 @@ const LampBannerDesign = styled.div`
       : props.$theme === "SUNSET"
       ? "linear-gradient(180deg, rgba(105, 98, 138, 0.5) 0%, rgba(144, 110, 137, 0.5) 100%)"
       : "linear-gradient(180deg, rgba(16, 41, 81, 0.5) 0%, rgba(93, 109, 124, 0.5) 100%)"};
-  overflow: hidden;
+  overflow: auto;
+`;
+
+const TextContainer = styled.div`
+  padding: 16px;
+  font-family: LotteMartDreamLight;
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  max-width: 27em;
+  height: 150px;
+  justify-content: center;
+  gap: 17px;
 `;
 
 const TextWrapper = styled.div`
-  padding: 10px;
-  font-family: LotteMartDreamLight;
-  line-height: 267%;
-  flex-direction: column;
+  line-height: 179%;
+  font-size: 15px;
+`;
+
+const TextWrapper2 = styled.div`
+  line-height: 179%;
+  font-size: 17px;
 `;
 
 function LampBanner() {
@@ -44,11 +59,13 @@ function LampBanner() {
   return (
     <Container>
       <LampBannerDesign $theme={currentTheme}>
-        <TextWrapper>
-          step1. 원하는 테마를 선택한 뒤, <br />
-          step2. 메일과 함께 해당 테마에 맞는 소원을 적어보세요! <br />
-          테마 시기에 맞게 메일이 전송됩니다! 💌
-        </TextWrapper>
+        <TextContainer>
+          <TextWrapper>
+            step1. 원하는 테마를 선택한 뒤, <br />
+            step2. 메일과 함께 해당 테마에 맞는 소원을 적어보세요!
+          </TextWrapper>
+          <TextWrapper2>테마 시기에 맞게 메일이 전송됩니다! 💌</TextWrapper2>
+        </TextContainer>
       </LampBannerDesign>
     </Container>
   );

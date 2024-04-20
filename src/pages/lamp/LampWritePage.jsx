@@ -1,6 +1,8 @@
+// LampWritePage.jsx
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   nicknameState,
   wishState,
@@ -23,15 +25,41 @@ const Background = styled.div`
   background-size: cover;
 `;
 
-const SecondthemeWritePage = () => {
+const themeData = [
+  {
+    themeId: 1,
+    title: "이번 학기가 끝났을 때의 나는 어떤 모습일까?",
+    placeholder: "소원을 적어주세요"
+  },
+  {
+    themeId: 2,
+    title: "올해가 지나고 난 어떤 것을 이뤘을까?",
+    placeholder: "목표를 적어주세요"
+  },
+  {
+    themeId: 3,
+    title: "내년의 오늘 난 어떤 모습일까?",
+    placeholder: "상상 속 모습을 적어주세요"
+  }
+];
+
+function LampWritePage() {
+  const { backgroundImageUrl } = GradientBackground();
+  const navigate = useNavigate();
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
-  const [email, setEmail] = useRecoilState(emailState); // 이메일 상태 추가
-  const { backgroundImageUrl } = GradientBackground();
+  const [email, setEmail] = useRecoilState(emailState);
+  const { themeId } = useParams(); // useParams를 통해 URL의 themeId 가져오기
 
-  // 모든 입력란이 채워졌는지 확인하는 함수
+  const theme = themeData.find(item => item.themeId === parseInt(themeId)); // themeId를 정수로 변환하여 사용
+
   const isSatisfied = () => {
-    return nickname.trim() !== "" && wish.trim() !== "";
+    return nickname.trim() !== "" && wish.trim() !== "" && isValidEmail(email);
+  };
+
+  const isValidEmail = email => {
+    const regex = /^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return regex.test(email);
   };
 
   const nextBtnOnClick = async () => {
@@ -40,19 +68,22 @@ const SecondthemeWritePage = () => {
         const postData = {
           nickname: nickname,
           content: wish,
-          email: email, // 질문
-          theme: 2
+          email: email,
+          theme: parseInt(themeId) // 사용자가 선택한 테마 ID 전송
         };
 
-        // 백엔드 데이터 전송
         const response = await API.post("/api/lamplights", postData);
 
-        // POST 성공 시
         console.log("등불이 저장되었습니다", response.data);
-        alert("소원이 이뤄질 거예요");
+
+        navigate("/lampFly");
       } catch (error) {
-        console.error("POST ERROR", error);
-        alert("Failed to submit data. Please try again later.");
+        if (error.response.status === 400 && error.response.data.email) {
+          alert(error.response.data.email[0]);
+        } else {
+          console.error("POST ERROR", error);
+          alert("Failed to submit data. Please try again later.");
+        }
       }
     } else {
       alert("소원을 적어 주세요");
@@ -62,8 +93,8 @@ const SecondthemeWritePage = () => {
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
       <Header title="등불 작성하기" />
-      <DescriptionText preText="올해가 지나고 난 어떤 것을 이뤘을까?" />
-      <LanternWishPaper inputType="email" />
+      <DescriptionText preText={theme.title} />
+      <LanternWishPaper inputType="email" placeholder={theme.placeholder} />
       <LanternWritebutton
         onClick={nextBtnOnClick}
         isSatisfied={isSatisfied()}
@@ -71,6 +102,6 @@ const SecondthemeWritePage = () => {
       />
     </Background>
   );
-};
+}
 
-export default SecondthemeWritePage;
+export default LampWritePage;

@@ -1,8 +1,10 @@
+// LanternWishPaper.js
+
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import PaperInput from "../atom/input";
 import LanternPw from "../atom/lanternPw";
-import LanternEmail from "../atom/lanternEmail";
+import LanternEmail from "../../lamp/atoms/laternEmail";
 import { useRecoilState } from "recoil";
 import {
   nicknameState,
@@ -42,7 +44,13 @@ function LanternWishPaper({ inputType }) {
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState);
 
-  //비밀번호는 숫자만 들어가도록 하는 함수
+  //비밀번호와 이메일 입력 핸들러를 동일하게 사용
+  const handleInputChange = event => {
+    const content = event.target.value;
+    const trimmedContent = content.replace(/\s/g, "");
+    setNickname(trimmedContent);
+  };
+
   const handlePasswordChange = event => {
     const inputValue = event.target.value;
     if (/^[0-9]*$/.test(inputValue)) {
@@ -50,30 +58,13 @@ function LanternWishPaper({ inputType }) {
     }
   };
 
-  //닉네임 공백
-
-  const handleInputChange = event => {
-    const content = event.target.value;
-    const trimmedContent = content.replace(/\s/g, "");
-    setNickname(trimmedContent);
-  };
-
-  //소원 내용 작성
-  const handleWishChange = event => {
-    const content = event.target.value;
-    setWish(content);
-  };
-
-  // 이메일 형식만 입력 가능하게 하는 함수
-  const isValidEmail = email => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    return emailRegex.test(String(email).toLowerCase());
-  };
-
-  // 이메일 입력 핸들러
   const handleEmailChange = event => {
     const inputValue = event.target.value;
-    // 입력된 값이 이메일 형식이면 setEmail 함수를 호출하여 상태 업데이트
+    // 이메일 형식이면 setEmail 함수를 호출하여 상태 업데이트
+    const isValidEmail = email => {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      return emailRegex.test(String(email).toLowerCase());
+    };
     if (isValidEmail(inputValue)) {
       setEmail(inputValue);
     }
@@ -100,13 +91,14 @@ function LanternWishPaper({ inputType }) {
               inputHeight="17em"
               maxLength={300}
               value={wish}
-              onChange={handleWishChange}
+              onChange={e => setWish(e.target.value)}
             />
           </PaperInputContainer>
-          {/* 이거 가져다 쓸 때 inputType 정의해주면 됩니당. 저 LanternEmail은 임의로 써둔거고 바꿔도 됨!! */}
+
           {inputType === "password" && (
             <LanternPw value={password} onChange={handlePasswordChange} />
           )}
+
           {inputType === "email" && (
             <LanternEmail value={email} onChange={handleEmailChange} />
           )}

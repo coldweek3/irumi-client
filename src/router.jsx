@@ -10,10 +10,14 @@ import LanternsSearchPage from "./pages/lanterns/LanternsSearchPage";
 import LanternDetailPage from "./pages/lantern/LanternDetailPage";
 
 import LampMainPage from "./pages/lamp/LampMainPage";
-import FirstthemeWritePage from "./pages/lamp/FirstthemeWritePage";
-import SecondthemeWritePage from "./pages/lamp/SecondthemeWritePage";
-import ThirdthemeWritePage from "./pages/lamp/ThirdthemeWritePage";
+import LampWritePage from "./pages/lamp/LampWritePage";
+// import FirstthemeWritePage from "./pages/lamp/FirstthemeWritePage";
+// import SecondthemeWritePage from "./pages/lamp/SecondthemeWritePage";
+// import ThirdthemeWritePage from "./pages/lamp/ThirdthemeWritePage";
 import LampFlyPage from "./pages/lamp/LampFlyPage";
+import FortuneIntroPage from "./pages/fotrune/FortuneIntroPage";
+import FortuneLeafPage from "./pages/fotrune/FortuneLeafPage";
+import MyDetailPage from "./pages/fotrune/MyDetailPage";
 
 const router = createBrowserRouter([
   {
@@ -34,10 +38,13 @@ const router = createBrowserRouter([
 
       // 등불(램프) 둘러보기 페이지
       { path: "/lampMain", element: <LampMainPage /> },
-      { path: "/firstthemeWrite", element: <FirstthemeWritePage /> },
-      { path: "/secondthemeWrite", element: <SecondthemeWritePage /> },
-      { path: "/thirdthemeWrite", element: <ThirdthemeWritePage /> },
-      { path: "/lampFly", element: <LampFlyPage /> }
+      { path: "/lampWrite/:themeId", element: <LampWritePage /> },
+      { path: "/lampFly", element: <LampFlyPage /> },
+
+      //포춘 페이지
+      { path: "/fortuneIntro", element: <FortuneIntroPage /> },
+      { path: "/fortuneLeaf", element: <FortuneLeafPage /> },
+      { path: "/myDetail/:detailId", element: <MyDetailPage /> }
     ]
   }
 ]);

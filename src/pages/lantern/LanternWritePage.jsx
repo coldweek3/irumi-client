@@ -82,8 +82,8 @@ function LanternWritePage() {
         lanternColor: Object.keys(clicked).find(color => clicked[color])
       });
 
-      // 포춘쿠키로 이동 //경로 수정 필요
-      navigate(`/lanterns`);
+      // fortuneIntro 페이지로 이동
+      navigate(`/fortuneIntro`);
     } catch (error) {
       console.error("Failed to post lantern data:", error);
     }

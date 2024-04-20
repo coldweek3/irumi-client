@@ -47,7 +47,7 @@ const LotusLight = styled.img`
   animation: ${fadein} 1s linear;
 `;
 
-function FortuneIntro() {
+function FortuneIntroPage() {
   const { backgroundImageUrl } = GradientBackground();
 
   const [isLotusLightVisible, setIsLotusLightVisible] = useState(false);
@@ -78,4 +78,4 @@ function FortuneIntro() {
   );
 }
 
-export default FortuneIntro;
+export default FortuneIntroPage;
