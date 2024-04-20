@@ -165,11 +165,11 @@ function LanternDetailPage() {
               openPwModal={openPwModal}
               closePwModal={() => {
                 closePwModal();
-                setShowCheckDeleteModal(true);
+                // setShowCheckDeleteModal(true);
               }}
               data={lanternData}
             />
-            {showCheckDeleteModal && <CheckDeleteModal />}
+            {/* {showCheckDeleteModal && <CheckDeleteModal />} */}
           </>
         )}
 
