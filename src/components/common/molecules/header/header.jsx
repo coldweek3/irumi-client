@@ -11,20 +11,22 @@ const HeaderWrapper = styled.div`
 
 const HeaderTitle = styled.div`
   height: 100px;
-  width: 100%;
+  width: ${props => props.titleWidth || "100%"};
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   color: white;
-  font-size: 20px;
+  font-size: ${props => props.fontSize || "20px"};
 `;
 
 function Header(props) {
   return (
     <HeaderWrapper>
       <BackBtn />
-      <HeaderTitle>{props.title}</HeaderTitle>
+      <HeaderTitle titleWidth={props.titleWidth} fontSize={props.fontSize}>
+        {props.title}
+      </HeaderTitle>
     </HeaderWrapper>
   );
 }
