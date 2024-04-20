@@ -22,6 +22,10 @@ function LanternsPage() {
     setCurrentIndex(data);
   };
 
+  useEffect(() => {
+    fetchData();
+  }, [currentIndex]);
+
   // 초기 API 호출 관련
   const [isInit, setIsInit] = useState(true);
   const [lanterns, setLanterns] = useState([]);
