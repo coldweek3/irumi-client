@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from "react";
-import { API } from "../../apis/utils";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
 
-const IrumiViewWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url("/background_detail.png");
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 20px;
-`;
+// const IrumiViewWrapper = styled.div`
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   background-image: url("/background_detail.png");
+//   background-size: cover;
+//   background-position: center;
+//   margin-bottom: 20px;
+// `;
 
 const DetailLanternWrapper = styled.div`
   width: 84%;
@@ -28,11 +27,16 @@ const DetailLanternWrapper = styled.div`
   justify-content: center;
   align-items: center;
   top: -15px;
+  margin-top: 5em;
+  /* border: 1px solid yellow; */
+
+  overflow: hidden;
 `;
 
 const DetailLanternImg = styled.img`
-  width: 82%;
+  width: 267px;
   height: auto;
+  /* border: 1px solid pink; */
 `;
 
 const TitleSec = styled.div`
@@ -45,12 +49,14 @@ const TitleSec = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid brown; */
 `;
 
 const ContentSec = styled(TitleSec)`
   top: 65%;
   font-size: 14px;
   line-height: 130%;
+  /* border: 1px solid white; */
 `;
 
 function MyDetailPage() {
@@ -61,8 +67,10 @@ function MyDetailPage() {
   useEffect(() => {
     const getLanternDetail = async () => {
       try {
-        const data = await fetchLanternData(detailId);
-        setLanternData(data);
+        if (detailId) {
+          const data = await fetchLanternData(detailId);
+          setLanternData(data);
+        }
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
       }
@@ -74,20 +82,20 @@ function MyDetailPage() {
     <FixView>
       <textarea
         ref={LinkRef}
-        value={`/${detailId}`}
+        value={`/myDetail/${detailId}`}
         style={{ position: "fixed", top: "-123px" }}
       />
-      <IrumiViewWrapper id="detailWrapper">
-        {lanternData && (
-          <DetailLanternWrapper>
-            <DetailLanternImg
-              src={`/detail_${lanternData.lanternColor}_${lanternData.light_bool}.png`}
-            />
-            <TitleSec>{lanternData.nickname}</TitleSec>
-            <ContentSec>{lanternData.content}</ContentSec>
-          </DetailLanternWrapper>
-        )}
-      </IrumiViewWrapper>
+
+      {lanternData && (
+        <DetailLanternWrapper>
+          <DetailLanternImg
+            src={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
+          />
+
+          <TitleSec>{lanternData.nickname}</TitleSec>
+          <ContentSec>{lanternData.content}</ContentSec>
+        </DetailLanternWrapper>
+      )}
 
       <MyBtn />
     </FixView>
