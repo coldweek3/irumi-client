@@ -23,6 +23,9 @@ import LanternWritebutton from "../../components/lanternWrite/atom/button";
 import LanternWishPaper from "../../components/lanternWrite/organisms/lanternWishPaper";
 import FixView from "../../components/common/templetes/fixView/FixView";
 
+import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
+
+
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};
   background-size: cover;
@@ -103,11 +106,15 @@ function LanternWritePage() {
         nextText="작성해주세요"
       />
       <LanternWishPaper inputType="password" />
-      <LanternWritebutton
-        onClick={nextBtnOnClick}
-        isSatisfied={isSatisfied()}
-        text="다음"
-      />
+
+      <ButtonList className={"layout-1 bottom"}>
+        <LanternWritebutton
+          onClick={nextBtnOnClick}
+          isSatisfied={isSatisfied()}
+          text="다음"
+        />
+      </ButtonList>
+
       {showModal && (
         <ConfirmModal
           onClose={handleCloseModal}

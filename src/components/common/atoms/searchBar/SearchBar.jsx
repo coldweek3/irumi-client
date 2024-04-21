@@ -18,7 +18,7 @@ const SearhIcon = styled.img`
   z-index: 1;
 `;
 const SearchWrapper = styled.form`
-  width: 80%;
+  flex-grow: 1;
 
   position: relative;
   gap: 8px;
@@ -64,7 +64,7 @@ function SearchBar() {
         value={keyword}
         onChange={keywordChangeHandler}
       />
-      <SearhIcon src={"/icon/search.svg"} />
+      <SearhIcon src={"/icon/search.svg"} onClick={handleSubmit} />
       <SearchBackground />
     </SearchWrapper>
   );

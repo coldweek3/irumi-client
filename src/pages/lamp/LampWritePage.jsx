@@ -14,16 +14,8 @@ import DescriptionText from "../../components/lanternWrite/atom/DescriptionText"
 import LanternWritebutton from "../../components/lanternWrite/atom/button";
 import LanternWishPaper from "../../components/lanternWrite/organisms/lanternWishPaper";
 import { API } from "../../apis/utils";
-
-const Background = styled.div`
-  background-image: ${props => `url(${props.$backgroundImageUrl})`};
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-size: cover;
-`;
+import FixView from "../../components/common/templetes/fixView/FixView";
+import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
 
 const themeData = [
   {
@@ -91,16 +83,19 @@ function LampWritePage() {
   };
 
   return (
-    <Background $backgroundImageUrl={backgroundImageUrl}>
+    <FixView $backgroundImageUrl={backgroundImageUrl}>
       <Header title="등불 작성하기" />
       <DescriptionText preText={theme.title} />
       <LanternWishPaper inputType="email" placeholder={theme.placeholder} />
-      <LanternWritebutton
-        onClick={nextBtnOnClick}
-        isSatisfied={isSatisfied()}
-        text="다음"
-      />
-    </Background>
+
+      <ButtonList className={"layout-1 bottom"}>
+        <LanternWritebutton
+          onClick={nextBtnOnClick}
+          isSatisfied={isSatisfied()}
+          text="다음"
+        />
+      </ButtonList>
+    </FixView>
   );
 }
 

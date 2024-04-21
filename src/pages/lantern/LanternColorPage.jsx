@@ -9,6 +9,10 @@ import DescriptionText from "../../components/lanternWrite/atom/DescriptionText"
 import LanternColor from "../../components/lanternWrite/molecules/LanternColorChoice";
 import LanternColorConfirm from "../../components/lanternWrite/molecules/LanternColorConfirm";
 import LanternWritebutton from "../../components/lanternWrite/atom/button";
+
+import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
+
+
 import FixView from "../../components/common/templetes/fixView/FixView";
 
 const Background = styled.div`
@@ -31,7 +35,7 @@ function LanternColorPage() {
   };
 
   return (
-    // <Background $backgroundImageUrl={backgroundImageUrl}>
+
     <FixView>
       <Header title="연등 작성하기" />
       <DescriptionText
@@ -41,11 +45,14 @@ function LanternColorPage() {
       />
       <LanternColor />
       <LanternColorConfirm />
-      <LanternWritebutton
-        onClick={handleButtonClick}
-        isSatisfied={true}
-        text="확인"
-      />
+      <ButtonList className={"layout-1 bottom"}>
+        <LanternWritebutton
+          onClick={handleButtonClick}
+          isSatisfied={true}
+          text="확인"
+        />
+      </ButtonList>
+
     </FixView>
   );
 }

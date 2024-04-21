@@ -5,6 +5,7 @@ import { theme } from "../../../recoil/theme";
 
 const Container = styled.div`
   display: flex;
+  width: 100%;
   /* border: 1px solid red; */
   justify-content: center;
   align-items: center;

@@ -2,19 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const BackBtnContainer = styled.div`
-  height: 100px;
+const BackBtnWrapper = styled.div`
   display: flex;
   align-items: center;
-  position: absolute;
-  width: 100%;
-`;
-
-const BackBtnImg = styled.img`
-  width: 7%;
-  margin-left: 24px;
+  height: 100%;
+  width: 44px;
   cursor: pointer;
-  z-index: 9;
+`;
+const BackBtnImg = styled.img`
+  width: 24px;
+  height: 24px;
 `;
 
 function BackBtn() {
@@ -25,9 +22,9 @@ function BackBtn() {
   };
 
   return (
-    <BackBtnContainer onClick={handleBackClick}>
+    <BackBtnWrapper onClick={handleBackClick}>
       <BackBtnImg src="/common/backBtnImg.png" />
-    </BackBtnContainer>
+    </BackBtnWrapper>
   );
 }
 

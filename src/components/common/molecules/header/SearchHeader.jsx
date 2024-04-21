@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import SearchBar from "../../atoms/searchBar/SearchBar";
+import BackBtn from "../../atoms/button/BackBtn";
 
 const HeaderWrapper = styled.div`
   backdrop-filter: blur(4px);
@@ -10,8 +11,10 @@ const HeaderWrapper = styled.div`
   padding-top: 4px;
 
   display: flex;
-  justify-content: center;
+
   align-items: center;
+
+  padding: 16px;
 
   &.scroll {
     position: fixed;
@@ -30,7 +33,7 @@ function SearchHeader({ className }) {
   useEffect(() => {
     const handleScroll = () => {
       const currentScorllY = window.scrollY;
-      if (currentScorllY > lastScrollY) {
+      if (currentScorllY > lastScrollY && currentScorllY > 30) {
         setIsVisible(false);
       } else {
         setIsVisible(true);
@@ -44,6 +47,7 @@ function SearchHeader({ className }) {
 
   return isVisible ? (
     <HeaderWrapper className={className}>
+      <BackBtn />
       <SearchBar />
     </HeaderWrapper>
   ) : (
