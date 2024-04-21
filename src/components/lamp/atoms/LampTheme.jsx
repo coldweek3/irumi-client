@@ -3,57 +3,44 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const ThemeContainer = styled.div`
+const LampThemeWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+  padding: 40px 16px 64px 16px;
+  justify-content: space-between;
+`;
+
+const ThemeBox = styled(Link)`
+  padding: 60px 20px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const ThemeBox = styled.div`
-  width: 90%;
-  max-width: 24em;
-  height: 107px;
-  border-radius: 30px;
-  border: 1px solid #5b3a1a;
-  box-shadow: 0px 4px 10px 2px #ffffff33;
-  background: #fbedd0;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-`;
-
-const TextWrapper = styled.div`
+  border-radius: 20px;
   color: #5b3a1a;
-  font-size: 0.9em;
+
+  background: #fbedd0;
+
+  text-align: center;
+
+  box-shadow: 0px 4px 10px 2px rgba(255, 255, 255, 0.2);
 `;
 
 function LampTheme() {
   return (
-    <>
-      <Link to={"/lampWrite/1"}>
-        <ThemeContainer>
-          <ThemeBox>
-            <TextWrapper>
-              이번 학기가 끝났을 때 나는 어떤 모습일까?🤔
-            </TextWrapper>
-          </ThemeBox>
-        </ThemeContainer>
-      </Link>
-      <Link to={"/lampWrite/2"}>
-        <ThemeContainer>
-          <ThemeBox>
-            <TextWrapper>올해가 지나고 난 어떤 것을 이뤘을까?🎄</TextWrapper>
-          </ThemeBox>
-        </ThemeContainer>
-      </Link>
-      <Link to={"/lampWrite/3"}>
-        <ThemeContainer>
-          <ThemeBox>
-            <TextWrapper>내년의 오늘 난 어떤 모습일까?😎</TextWrapper>
-          </ThemeBox>
-        </ThemeContainer>
-      </Link>
-    </>
+    <LampThemeWrapper>
+      <ThemeBox to={"/lampWrite/1"}>
+        이번 학기가 끝났을 때 나는 어떤 모습일까?🤔
+      </ThemeBox>
+      <ThemeBox to={"/lampWrite/1"}>
+        올해가 지나고 난 어떤 것을 이뤘을까?🎄
+      </ThemeBox>
+      <ThemeBox to={"/lampWrite/1"}>내년의 오늘 난 어떤 모습일까?😎</ThemeBox>
+    </LampThemeWrapper>
   );
 }
 
