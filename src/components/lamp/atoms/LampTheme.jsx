@@ -11,11 +11,14 @@ const LampThemeWrapper = styled.div`
   align-items: center;
   flex-grow: 1;
   padding: 40px 16px 64px 16px;
+  gap: 16px;
   justify-content: space-between;
+  max-height: 500px;
 `;
 
 const ThemeBox = styled(Link)`
-  padding: 60px 20px;
+  padding: 40px 20px;
+  flex-grow: 1;
   width: 100%;
   display: flex;
   justify-content: center;
