@@ -5,7 +5,7 @@ const ButtonListWrapper = styled.div`
   display: grid;
 
   &.layout-1 {
-    width: 100%;
+    width: 80%;
   }
 
   &.layout-col-1-1 {
@@ -30,6 +30,7 @@ const ButtonListWrapper = styled.div`
 
     padding: 0 16px 40px 16px;
   }
+
   &.fixBottom {
     position: fixed;
     width: 100%;
@@ -42,7 +43,7 @@ const ButtonListWrapper = styled.div`
     justify-content: end;
     align-items: end;
     padding-right: 24px;
-    z-index: 0999;
+    z-index: 999;
   }
 `;
 
