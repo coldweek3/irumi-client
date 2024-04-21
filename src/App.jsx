@@ -57,7 +57,7 @@ function App() {
 
   return (
     <>
-      <HandleTheme />
+      {/* <HandleTheme /> */}
       <ThemeProvider
         theme={
           themeValue == "DAY" ? day : themeValue == "SUNSET" ? sunset : night
