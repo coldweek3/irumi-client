@@ -22,7 +22,9 @@ import DescriptionText from "../../components/lanternWrite/atom/DescriptionText"
 import LanternWritebutton from "../../components/lanternWrite/atom/button";
 import LanternWishPaper from "../../components/lanternWrite/organisms/lanternWishPaper";
 import FixView from "../../components/common/templetes/fixView/FixView";
+
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
+
 
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};
@@ -75,7 +77,7 @@ function LanternWritePage() {
       // 포스트 요청 보내기
       const response = await postLanternData({
         nickname: nickname,
-        content: wish,
+        content: wish + "\r\n",
         password: password,
         lanternColor: Object.keys(clicked).find(color => clicked[color])
       });

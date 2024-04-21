@@ -78,7 +78,6 @@ function LanternDetailPage() {
   // 삭제
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [pwModalOpen, setPwModalOpen] = useState(false);
-  const [showCheckDeleteModal, setShowCheckDeleteModal] = useState(false);
   // 신고
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [reportedModalOpen, setReportedModalOpen] = useState(false);
@@ -224,8 +223,8 @@ function LanternDetailPage() {
         </LanternViewWish>
         <LikeBtn
           handleLikeClick={handleLikeClick}
-          isLiked={lanternData ? lanternData.is_liked : ""}
-          LikeCount={lanternData ? lanternData.like_cnt : ""}
+          isLiked={lanternData ? lanternData.is_liked : false}
+          LikeCount={lanternData ? lanternData.like_cnt : 0}
         />
       </LanternViewPaperContainer>
     </FixView>
