@@ -5,6 +5,7 @@ import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
 
+
 const DetailLanternWrapper = styled.div`
   /* width: 84%; */
   /* height: auto; */
@@ -34,12 +35,14 @@ const TitleSec = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid brown; */
 `;
 
 const ContentSec = styled(TitleSec)`
   top: 65%;
   font-size: 14px;
   line-height: 130%;
+  /* border: 1px solid white; */
 `;
 
 function MyDetailPage() {
@@ -50,6 +53,7 @@ function MyDetailPage() {
   useEffect(() => {
     const getLanternDetail = async () => {
       try {
+
         const data = await fetchLanternData(detailId);
         setLanternData(data);
         console.log(data);

@@ -11,10 +11,8 @@ import LanternDetailPage from "./pages/lantern/LanternDetailPage";
 
 import LampMainPage from "./pages/lamp/LampMainPage";
 import LampWritePage from "./pages/lamp/LampWritePage";
-// import FirstthemeWritePage from "./pages/lamp/FirstthemeWritePage";
-// import SecondthemeWritePage from "./pages/lamp/SecondthemeWritePage";
-// import ThirdthemeWritePage from "./pages/lamp/ThirdthemeWritePage";
 import LampFlyPage from "./pages/lamp/LampFlyPage";
+
 import FortuneIntroPage from "./pages/fotrune/FortuneIntroPage";
 import FortuneLeafPage from "./pages/fotrune/FortuneLeafPage";
 import MyDetailPage from "./pages/fotrune/MyDetailPage";
