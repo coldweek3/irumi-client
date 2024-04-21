@@ -16,12 +16,6 @@ const Background = styled.div`
   background-size: cover;
 `;
 
-const HeaderComponent = styled.div`
-  @media (max-width: 470px) {
-    font-size: 0.9em;
-  }
-`;
-
 const ThemeBox = styled.div`
   display: flex;
   /* height: calc(100% - 250px); */
@@ -37,13 +31,11 @@ function LampMainPage() {
 
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
-      <HeaderComponent>
-        <Header
-          title="더 오래 간직할 수 있는 등불 쓰기 💌"
-          titleWidth="70%"
-          fontSize
-        />
-      </HeaderComponent>
+      <Header
+        title="더 오래 간직할 수 있는 등불 쓰기 💌"
+        titleWidth="70%"
+        fontSize
+      />
       <LampBanner />
       <ThemeBox>
         <LampTheme />
