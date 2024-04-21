@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import Header from "../../components/common/molecules/header/header";
@@ -16,12 +16,20 @@ const Background = styled.div`
   background-size: cover;
 `;
 
+const HeaderComponent = styled.div`
+  @media (max-width: 470px) {
+    font-size: 0.9em;
+  }
+`;
+
 const ThemeBox = styled.div`
   display: flex;
-  height: calc(100% - 250px);
+  /* height: calc(100% - 250px); */
+  gap: 2vw;
   flex-direction: column;
   justify-content: space-around;
   /* border: 1px solid; */
+  margin-top: 3em;
 `;
 
 function LampMainPage() {
@@ -29,7 +37,13 @@ function LampMainPage() {
 
   return (
     <Background $backgroundImageUrl={backgroundImageUrl}>
-      <Header title="더 오래 간직할 수 있는 등불 쓰기💌" />
+      <HeaderComponent>
+        <Header
+          title="더 오래 간직할 수 있는 등불 쓰기 💌"
+          titleWidth="70%"
+          fontSize
+        />
+      </HeaderComponent>
       <LampBanner />
       <ThemeBox>
         <LampTheme />

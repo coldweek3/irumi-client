@@ -9,12 +9,13 @@ const ReportAlertWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  background-color: #f1f1f1;
   border-radius: 15px;
+  z-index: 99;
 `;
 
 const ReportAlertBox = styled.div`
-  width: 3em;
+  width: 15em;
   height: 64px;
   color: #000;
   font-size: 16px;

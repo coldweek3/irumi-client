@@ -5,38 +5,24 @@ import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
 
-// const IrumiViewWrapper = styled.div`
-//   width: 100%;
-//   height: 100%;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   background-image: url("/background_detail.png");
-//   background-size: cover;
-//   background-position: center;
-//   margin-bottom: 20px;
-// `;
 
 const DetailLanternWrapper = styled.div`
-  width: 84%;
-  height: auto;
-  position: relative;
+  /* width: 84%; */
+  /* height: auto; */
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: -15px;
-  margin-top: 5em;
-  /* border: 1px solid yellow; */
-
-  overflow: hidden;
+  left: 50%;
+  top: 41%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 `;
 
 const DetailLanternImg = styled.img`
-  width: 267px;
   height: auto;
-  /* border: 1px solid pink; */
+  transform: scale(0.6);
 `;
 
 const TitleSec = styled.div`
@@ -67,10 +53,10 @@ function MyDetailPage() {
   useEffect(() => {
     const getLanternDetail = async () => {
       try {
-        if (detailId) {
-          const data = await fetchLanternData(detailId);
-          setLanternData(data);
-        }
+
+        const data = await fetchLanternData(detailId);
+        setLanternData(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
       }
@@ -85,7 +71,6 @@ function MyDetailPage() {
         value={`/myDetail/${detailId}`}
         style={{ position: "fixed", top: "-123px" }}
       />
-
       {lanternData && (
         <DetailLanternWrapper>
           <DetailLanternImg
