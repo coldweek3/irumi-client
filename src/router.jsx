@@ -42,8 +42,8 @@ const router = createBrowserRouter([
       { path: "/lampFly", element: <LampFlyPage /> },
 
       //포춘 페이지
-      { path: "/fortuneIntro", element: <FortuneIntroPage /> },
-      { path: "/fortuneLeaf", element: <FortuneLeafPage /> },
+      { path: "/fortuneIntro/:detailId", element: <FortuneIntroPage /> },
+      { path: "/fortuneLeaf/:detailId", element: <FortuneLeafPage /> },
       { path: "/myDetail/:detailId", element: <MyDetailPage /> }
     ]
   }

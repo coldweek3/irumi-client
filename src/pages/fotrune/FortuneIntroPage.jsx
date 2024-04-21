@@ -56,7 +56,7 @@ function FortuneIntroPage() {
   useEffect(() => {
     if (isLotusLightVisible) {
       setTimeout(() => {
-        window.location.href = `/fortuneLeaf`;
+        window.location.href = `/fortuneLeaf/${detailId}`;
       }, 2000);
     }
   }, [isLotusLightVisible]); // useEffect 괄호가 닫혀야 합니다.

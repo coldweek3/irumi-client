@@ -14,7 +14,7 @@ const ThemeBox = styled.div`
   max-width: 24em;
   height: 107px;
   border-radius: 30px;
-  border: 2px solid #5b3a1a;
+  border: 1px solid #5b3a1a;
   box-shadow: 0px 4px 10px 2px #ffffff33;
   background: #fbedd0;
   justify-content: center;
@@ -24,6 +24,7 @@ const ThemeBox = styled.div`
 
 const TextWrapper = styled.div`
   color: #5b3a1a;
+  font-size: 0.9em;
 `;
 
 function LampTheme() {

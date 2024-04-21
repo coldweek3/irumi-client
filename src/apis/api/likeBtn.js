@@ -1,10 +1,12 @@
 import { API } from "../utils";
 
 // 좋아요를 추가하거나 제거하는 함수
-export const postLike = async detailId => {
+export const postLike = async (detailId, userId) => {
   try {
     // 백엔드로 POST 요청을 보냅니다.
-    const data = await API.post(`/api/lanterns/${detailId}/likes`);
+    const data = await API.post(`/api/lanterns/${detailId}/likes`, {
+      user_id: userId
+    });
 
     // 백엔드에서 보내준 데이터를 반환합니다.
     console.log("좋아요 버튼 로그: ", data);

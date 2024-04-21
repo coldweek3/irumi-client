@@ -7,14 +7,14 @@ const BackBtnContainer = styled.div`
   display: flex;
   align-items: center;
   position: absolute;
-  z-index: 9;
   width: 100%;
 `;
 
 const BackBtnImg = styled.img`
-  width: 2em;
+  width: 7%;
   margin-left: 24px;
   cursor: pointer;
+  z-index: 9;
 `;
 
 function BackBtn() {

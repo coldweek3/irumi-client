@@ -1,38 +1,27 @@
 import React, { useEffect, useRef, useState } from "react";
-import { API } from "../../apis/utils";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
 
-const IrumiViewWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-image: url("/background_detail.png");
-  background-size: cover;
-  background-position: center;
-  margin-bottom: 20px;
-`;
-
 const DetailLanternWrapper = styled.div`
-  width: 84%;
-  height: auto;
-  position: relative;
+  /* width: 84%; */
+  /* height: auto; */
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: -15px;
+  left: 50%;
+  top: 41%;
+  transform: translate(-50%, -50%);
+  position: absolute;
 `;
 
 const DetailLanternImg = styled.img`
-  width: 82%;
   height: auto;
+  transform: scale(0.6);
 `;
 
 const TitleSec = styled.div`
@@ -63,6 +52,7 @@ function MyDetailPage() {
       try {
         const data = await fetchLanternData(detailId);
         setLanternData(data);
+        console.log(data);
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
       }
@@ -74,20 +64,19 @@ function MyDetailPage() {
     <FixView>
       <textarea
         ref={LinkRef}
-        value={`/${detailId}`}
+        value={`/myDetail/${detailId}`}
         style={{ position: "fixed", top: "-123px" }}
       />
-      <IrumiViewWrapper id="detailWrapper">
-        {lanternData && (
-          <DetailLanternWrapper>
-            <DetailLanternImg
-              src={`/detail_${lanternData.lanternColor}_${lanternData.light_bool}.png`}
-            />
-            <TitleSec>{lanternData.nickname}</TitleSec>
-            <ContentSec>{lanternData.content}</ContentSec>
-          </DetailLanternWrapper>
-        )}
-      </IrumiViewWrapper>
+      {lanternData && (
+        <DetailLanternWrapper>
+          <DetailLanternImg
+            src={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
+          />
+
+          <TitleSec>{lanternData.nickname}</TitleSec>
+          <ContentSec>{lanternData.content}</ContentSec>
+        </DetailLanternWrapper>
+      )}
 
       <MyBtn />
     </FixView>

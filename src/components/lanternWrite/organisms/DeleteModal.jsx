@@ -78,6 +78,7 @@ const NoBtn = styled(DeleteBox)`
   font-weight: 400;
   border-right: 0.5px solid #3d4353;
   border-left: 0;
+  cursor: pointer;
 `;
 
 const YesBtn = styled(NoBtn)`
@@ -85,4 +86,5 @@ const YesBtn = styled(NoBtn)`
   border-radius: 0;
   border-bottom-right-radius: 15px;
   border-right: 0;
+  cursor: pointer;
 `;
