@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link, useParams } from "react-router-dom";
-import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
-
-const Background = styled.div`
-  background-image: ${props => `url(${props.$backgroundImageUrl})`};
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-`;
+import FixView from "../../components/common/templetes/fixView/FixView";
 
 const FortuneTitle = styled.div`
   display: flex;
-  position: relative;
+  position: absolute;
   justify-content: center;
   font-size: 20px;
   top: 20%;
@@ -40,16 +31,13 @@ const fadein = keyframes`
 `;
 
 const LotusLight = styled.img`
-  flex-grow: 1;
   position: absolute;
-  top: 44%;
-  width: 330px;
+  top: 50%;
+  width: 302px;
   animation: ${fadein} 1s linear;
 `;
 
 function FortuneIntroPage() {
-  const { backgroundImageUrl } = GradientBackground();
-
   const [isLotusLightVisible, setIsLotusLightVisible] = useState(false);
   const { detailId } = useParams();
 
@@ -66,7 +54,7 @@ function FortuneIntroPage() {
   };
 
   return (
-    <Background $backgroundImageUrl={backgroundImageUrl}>
+    <FixView>
       <FortuneTitle>행운의 연꽃잎을 뽑아보세요</FortuneTitle>
       <ImgContainer>
         <Lotus src="/img/Fortune/lotus.png" onClick={handleLotusClick} />
@@ -74,7 +62,7 @@ function FortuneIntroPage() {
           <LotusLight src="/img/Fortune/lightlotus.png" />
         )}
       </ImgContainer>
-    </Background>
+    </FixView>
   );
 }
 
