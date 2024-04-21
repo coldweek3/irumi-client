@@ -20,6 +20,7 @@ import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
 import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
 import CheckDeleteModal from "../../components/lanternWrite/organisms/CheckDeleteModal";
+import FixView from "../../components/common/templetes/fixView/FixView";
 
 function LanternDetailPage() {
   const [isInit, setIsInit] = useState(true);
@@ -77,7 +78,6 @@ function LanternDetailPage() {
   // 삭제
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [pwModalOpen, setPwModalOpen] = useState(false);
-  const [showCheckDeleteModal, setShowCheckDeleteModal] = useState(false);
   // 신고
   const [reportModalOpen, setReportModalOpen] = useState(false);
   const [reportedModalOpen, setReportedModalOpen] = useState(false);
@@ -137,7 +137,7 @@ function LanternDetailPage() {
   return isInit ? (
     <InitView />
   ) : (
-    <Background $backgroundImageUrl={backgroundImageUrl}>
+    <FixView>
       <Header />
       <LanternViewPaperContainer>
         <LanternDotContainer onClick={openModal}>
@@ -223,11 +223,11 @@ function LanternDetailPage() {
         </LanternViewWish>
         <LikeBtn
           handleLikeClick={handleLikeClick}
-          isLiked={lanternData ? lanternData.is_liked : ""}
-          LikeCount={lanternData ? lanternData.like_cnt : ""}
+          isLiked={lanternData ? lanternData.is_liked : false}
+          LikeCount={lanternData ? lanternData.like_cnt : 0}
         />
       </LanternViewPaperContainer>
-    </Background>
+    </FixView>
   );
 }
 

@@ -88,7 +88,7 @@ function LanternWishPaper({ inputType }) {
             <PaperInput
               inputTitle="소원 내용"
               inputPlaceholder="소원 내용을 입력해주세요.(300자 이내)"
-              inputHeight="17em"
+              inputHeight="13rem"
               maxLength={300}
               value={wish}
               onChange={e => setWish(e.target.value)}
