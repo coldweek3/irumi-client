@@ -20,11 +20,7 @@ const Background = styled.div`
 function LampMainPage() {
   return (
     <FixView>
-      <Header
-        title="더 오래 간직할 수 있는 등불 쓰기 💌"
-        titleWidth="70%"
-        fontSize
-      />
+      <Header title="등불 쓰기" />
       <LampBanner />
       <LampTheme />
     </FixView>
