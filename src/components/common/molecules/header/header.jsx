@@ -3,14 +3,22 @@ import styled from "styled-components";
 import BackBtn from "../../atoms/button/BackBtn";
 
 const HeaderWrapper = styled.div`
+  z-index: 1000;
+  width: 100%;
+  height: 80px;
+
+  padding: 0px 16px;
+  padding-top: 4px;
+
   height: 80px;
   flex-direction: row;
   display: flex;
-  justify-content: center;
+  align-items: center;
 `;
 
 const HeaderTitle = styled.div`
-  height: 80px;
+  flex-grow: 1;
+  padding-right: 44px;
   width: ${props => props.titleWidth || "100%"};
   display: flex;
   justify-content: center;
@@ -23,7 +31,7 @@ const HeaderTitle = styled.div`
 function Header(props) {
   return (
     <HeaderWrapper>
-      {/* <BackBtn /> */}
+      <BackBtn />
       <HeaderTitle titleWidth={props.titleWidth} fontSize={props.fontSize}>
         {props.title}
       </HeaderTitle>

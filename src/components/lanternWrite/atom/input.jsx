@@ -9,7 +9,7 @@ const InputTitle = styled.div`
   font-size: 12px;
 `;
 
-const InputContainer = styled.input`
+const InputContainer = styled.textarea`
   background-color: #f1f1f1;
   width: 100%;
   padding: ${props => props.$inputpadding || "0.5em"};
