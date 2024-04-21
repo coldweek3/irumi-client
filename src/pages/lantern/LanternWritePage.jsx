@@ -21,6 +21,7 @@ import Header from "../../components/common/molecules/header/header";
 import DescriptionText from "../../components/lanternWrite/atom/DescriptionText";
 import LanternWritebutton from "../../components/lanternWrite/atom/button";
 import LanternWishPaper from "../../components/lanternWrite/organisms/lanternWishPaper";
+import FixView from "../../components/common/templetes/fixView/FixView";
 
 const Background = styled.div`
   background-image: ${props => `url(${props.$backgroundImageUrl})`};
@@ -73,7 +74,7 @@ function LanternWritePage() {
       // 포스트 요청 보내기
       const response = await postLanternData({
         nickname: nickname,
-        content: wish,
+        content: wish + "\r\n",
         password: password,
         lanternColor: Object.keys(clicked).find(color => clicked[color])
       });
@@ -94,7 +95,7 @@ function LanternWritePage() {
   };
 
   return (
-    <Background $backgroundImageUrl={backgroundImageUrl}>
+    <FixView>
       <Header title="연등 작성하기" />
       <DescriptionText
         preText="이루고 싶은 "
@@ -113,7 +114,7 @@ function LanternWritePage() {
           onConfirm={handleConfirmModal}
         />
       )}
-    </Background>
+    </FixView>
   );
 }
 

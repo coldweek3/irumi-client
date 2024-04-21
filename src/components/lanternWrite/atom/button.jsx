@@ -20,7 +20,9 @@ const NextBtn = styled.div`
   height: 39px;
   bottom: 0;
   position: absolute;
-  margin-bottom: 2em;
+  /* margin-bottom: 2em; */
+  top: 90%;
+
   cursor: pointer;
   z-index: 99;
 `;
