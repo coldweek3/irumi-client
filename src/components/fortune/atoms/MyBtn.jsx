@@ -12,7 +12,7 @@ const MyBtnsBox = styled.div`
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  bottom: 3%;
+  bottom: 4%;
 `;
 
 const Button = styled.div`

@@ -30,7 +30,7 @@ function SearchHeader({ className }) {
   useEffect(() => {
     const handleScroll = () => {
       const currentScorllY = window.scrollY;
-      if (currentScorllY > lastScrollY) {
+      if (currentScorllY > lastScrollY && currentScorllY > 30) {
         setIsVisible(false);
       } else {
         setIsVisible(true);

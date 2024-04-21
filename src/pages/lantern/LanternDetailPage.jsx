@@ -20,6 +20,7 @@ import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
 import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
 import CheckDeleteModal from "../../components/lanternWrite/organisms/CheckDeleteModal";
+import FixView from "../../components/common/templetes/fixView/FixView";
 
 function LanternDetailPage() {
   const [isInit, setIsInit] = useState(true);
@@ -137,7 +138,7 @@ function LanternDetailPage() {
   return isInit ? (
     <InitView />
   ) : (
-    <Background $backgroundImageUrl={backgroundImageUrl}>
+    <FixView>
       <Header />
       <LanternViewPaperContainer>
         <LanternDotContainer onClick={openModal}>
@@ -227,7 +228,7 @@ function LanternDetailPage() {
           LikeCount={lanternData ? lanternData.like_cnt : ""}
         />
       </LanternViewPaperContainer>
-    </Background>
+    </FixView>
   );
 }
 
