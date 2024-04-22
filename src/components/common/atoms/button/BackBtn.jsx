@@ -16,21 +16,24 @@ function BackBtn({ to }) {
 
   return (
     <BackBtnWrapper onClick={handleBackClick}>
-      <BackBtnImg src="/common/backBtnImg.png" />
+      <BackBtnImg onClick={handleBackClick} src="/common/backBtnImg.png" />
     </BackBtnWrapper>
   );
 }
 
 export default BackBtn;
 
-const BackBtnWrapper = styled.div`
+const BackBtnWrapper = styled.button`
   display: flex;
   align-items: center;
+  justify-content: center;
   height: 100%;
   width: 44px;
   cursor: pointer;
+  min-height: 70px;
 `;
 const BackBtnImg = styled.img`
   width: 24px;
   height: 24px;
+  z-index: 6;
 `;

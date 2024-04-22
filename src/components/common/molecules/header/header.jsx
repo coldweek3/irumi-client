@@ -6,10 +6,8 @@ const HeaderWrapper = styled.div`
   z-index: 1000;
   width: 100%;
   height: 80px;
-
-  padding: 0px 16px;
+  padding: 16px;
   padding-top: 4px;
-
   height: 80px;
   flex-direction: row;
   display: flex;

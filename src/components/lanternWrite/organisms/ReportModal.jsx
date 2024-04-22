@@ -145,6 +145,7 @@ const ReportTitle = styled.div`
 
 const ReportCheckBoxs = styled.div`
   width: 100%;
+  cursor: pointer;
 `;
 
 const CheckBox = styled.div`
@@ -152,13 +153,13 @@ const CheckBox = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
   input {
     width: 28px;
     height: 28px;
     border-radius: 5px;
     background-color: #d9d9d9;
     margin-right: 14px;
-    cursor: pointer;
   }
   input:checked {
     background-image: url("/img/Lantern/checked.png");
@@ -198,6 +199,7 @@ const ReportNoBtn = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  cursor: pointer;
 `;
 const ReportYesBtn = styled.div`
   color: #c31010;
@@ -209,4 +211,5 @@ const ReportYesBtn = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  cursor: pointer;
 `;

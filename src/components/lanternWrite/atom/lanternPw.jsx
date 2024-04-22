@@ -51,7 +51,7 @@ const LanternWritePwInput = styled.input`
   background-color: #f1f1f1;
   border-radius: 5px;
   border: 1px solid #898989;
-  text-indent: 5px;
+  padding: 3px;
   height: 2em;
 
   &::placeholder {

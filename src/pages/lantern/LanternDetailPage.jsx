@@ -19,6 +19,7 @@ import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
 import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
 import FixView from "../../components/common/templetes/fixView/FixView";
+import ModalBackground from "../../components/lanternWrite/atom/ModalBg";
 
 function LanternDetailPage() {
   const [isInit, setIsInit] = useState(true);
@@ -31,7 +32,6 @@ function LanternDetailPage() {
         const userId = localStorage.getItem("userid");
         const data = await fetchLanternData(detailId, userId);
         setLanternData(data);
-        console.log(data);
         setIsInit(false);
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
@@ -183,26 +183,12 @@ function LanternDetailPage() {
               : ""
           }
         />
+        {/* ModalBackground 컴포넌트 사용 */}
         {(deleteModalOpen ||
           pwModalOpen ||
-          reportModalOpen ||
+          pwModalOpen ||
           reportedModalOpen ||
-          isReportedModalOpen) && (
-          <div
-            style={{
-              position: "fixed",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 7,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          />
-        )}
+          isReportedModalOpen) && <ModalBackground />}
 
         <LanternViewNickname>
           {lanternData ? lanternData.nickname : ""}
@@ -240,9 +226,14 @@ const LanternViewPaperImg = styled.img`
 const LanternDotContainer = styled.div`
   position: absolute;
   transform: scale(0.2);
-  top: 50%;
+  top: 48%;
   margin-left: 120px;
   z-index: 9;
+  min-width: 70px;
+  min-height: 100px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
   cursor: pointer;
 `;
 
