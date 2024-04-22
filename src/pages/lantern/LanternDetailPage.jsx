@@ -32,6 +32,7 @@ function LanternDetailPage() {
         const userId = localStorage.getItem("userid");
         const data = await fetchLanternData(detailId, userId);
         setLanternData(data);
+        console.log(data);
         setIsInit(false);
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
@@ -251,8 +252,10 @@ const LanternViewWish = styled.div`
   top: 62%;
   font-size: 10px;
   color: #5b3a1a;
-  white-space: "pre-line";
+  white-space: pre-line;
   width: 13em;
   min-width: 3em;
   line-height: 11px;
+  max-height: 15em;
+  overflow: scroll;
 `;
