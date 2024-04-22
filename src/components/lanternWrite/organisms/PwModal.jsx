@@ -6,8 +6,6 @@ import CheckDeleteModal from "./CheckDeleteModal";
 
 function PwModal({ closePwModal, data }) {
   const [password, setPassword] = useState("");
-  const [status, setStatus] = useState(null);
-  // const [showCheckDeleteModal, setShowCheckDeleteModal] = useState(false);
   const navigate = useNavigate();
 
   const openCheckDeleteModal = async () => {
@@ -16,17 +14,11 @@ function PwModal({ closePwModal, data }) {
       console.log("응답상태: ", response.status);
       closePwModal();
       if (response.status === 204) {
-        // setShowCheckDeleteModal(true);
         alert("삭제되었습니다.");
-        // setTimeout(() => {
         navigate("/lanterns");
-        // }, 1000);
       }
     } catch (error) {
-      setStatus(401);
-      // setShowCheckDeleteModal(true);
       alert("비밀번호가 일치하지 않습니다.");
-      // console.error("비밀번호 확인 중 오류 발생:", error);
       closePwModal();
     }
   };
@@ -46,14 +38,6 @@ function PwModal({ closePwModal, data }) {
           <SelectBox>
             <NoBtn onClick={closePwModal}>취소</NoBtn>
             <YesBtn onClick={openCheckDeleteModal}>삭제</YesBtn>
-            {/* 삭제를 눌렀을 때만 CheckDeleteModal을 렌더링 */}
-            {/* {showCheckDeleteModal && (
-              <CheckDeleteModal
-                status={status}
-                showCheckDeleteModal={true}
-                setShowCheckDeleteModal={true}
-              />
-            )} */}
           </SelectBox>
         </PwBox>
       </PwModalWrapper>

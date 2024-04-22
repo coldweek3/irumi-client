@@ -1,8 +1,8 @@
 // LanternWishPaper.js
 
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "styled-components";
-import PaperInput from "../atom/input";
+
 import LanternPw from "../atom/lanternPw";
 import LanternEmail from "../../lamp/atoms/laternEmail";
 import { useRecoilState } from "recoil";
@@ -13,30 +13,7 @@ import {
   emailState
 } from "../../../recoil/lanternContent";
 
-const LanternWishPaperWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5em;
-  height: 50%;
-  align-items: center;
-`;
-
-const LanternWishPaperForm = styled.form``;
-
-const LanternWishPaperContainer = styled.div`
-  max-width: 250px;
-  background-color: #fbedd0;
-  border-radius: 5px;
-  max-height: 450px;
-  padding: 15px 17px;
-`;
-
-const PaperInputContainer = styled.div`
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-`;
+import WishPaperInput from "../atom/WishPaperInput";
 
 function LanternWishPaper({ inputType }) {
   const [password, setPassword] = useRecoilState(passwordState);
@@ -75,17 +52,19 @@ function LanternWishPaper({ inputType }) {
       <LanternWishPaperForm>
         <LanternWishPaperContainer>
           <PaperInputContainer>
-            <PaperInput
+            <WishPaperInput
+              inputType="text"
               inputTitle="닉네임"
               inputPlaceholder="닉네임을 입력하세요.(최대 10글자,공백 불가)"
               inputHeight="2em"
-              inputPadding="6px"
+              inputPadding="0.3em"
               maxLength={10}
               inputoverflow="hidden"
               onChange={handleInputChange}
               value={nickname}
             />
-            <PaperInput
+            <WishPaperInput
+              inputType="textarea"
               inputTitle="소원 내용"
               inputPlaceholder="소원 내용을 입력해주세요.(300자 이내)"
               inputHeight="13rem"
@@ -109,3 +88,28 @@ function LanternWishPaper({ inputType }) {
 }
 
 export default LanternWishPaper;
+
+const LanternWishPaperWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+  height: 50%;
+  align-items: center;
+`;
+
+const LanternWishPaperForm = styled.form``;
+
+const LanternWishPaperContainer = styled.div`
+  max-width: 250px;
+  background-color: #fbedd0;
+  border-radius: 5px;
+  max-height: 450px;
+  padding: 15px 17px;
+`;
+
+const PaperInputContainer = styled.div`
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+`;

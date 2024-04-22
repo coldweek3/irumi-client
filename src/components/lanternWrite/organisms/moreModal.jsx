@@ -1,6 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+function MoreModal({ closeModal, openDeleteModal, openReportModal }) {
+  return (
+    <MoreModalWrapper>
+      <MoreBtnBox>
+        <MoreTitle>더보기</MoreTitle>
+        <DeleteBtn onClick={openDeleteModal}>삭제</DeleteBtn>
+        <ReportBtn onClick={openReportModal}>신고</ReportBtn>
+      </MoreBtnBox>
+      <CloseBtn onClick={closeModal}>닫기</CloseBtn>
+    </MoreModalWrapper>
+  );
+}
+
+export default MoreModal;
+
 const MoreModalWrapper = styled.div`
   position: fixed;
   bottom: 0;
@@ -33,8 +48,10 @@ export const DeleteBtn = styled.div`
   align-items: center;
   font-size: 16px;
   font-weight: 400;
-  line-height: 26px; /* 162.5% */
+  line-height: 26px;
+  cursor: pointer;
 `;
+
 const MoreTitle = styled(DeleteBtn)`
   height: 46px;
   border-top-right-radius: 15px;
@@ -47,6 +64,7 @@ const ReportBtn = styled(DeleteBtn)`
   border-bottom-right-radius: 15px;
   border-bottom-left-radius: 15px;
   border-bottom: none;
+  cursor: pointer;
 `;
 
 const CloseBtn = styled(MoreBtnBox)`
@@ -59,19 +77,5 @@ const CloseBtn = styled(MoreBtnBox)`
   justify-content: center;
   align-items: center;
   margin-bottom: 0;
+  cursor: pointer;
 `;
-
-function MoreModal({ closeModal, openDeleteModal, openReportModal }) {
-  return (
-    <MoreModalWrapper>
-      <MoreBtnBox>
-        <MoreTitle>더보기</MoreTitle>
-        <DeleteBtn onClick={openDeleteModal}>삭제</DeleteBtn>
-        <ReportBtn onClick={openReportModal}>신고</ReportBtn>
-      </MoreBtnBox>
-      <CloseBtn onClick={closeModal}>닫기</CloseBtn>
-    </MoreModalWrapper>
-  );
-}
-
-export default MoreModal;

@@ -1,8 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
 import Button from "../../common/atoms/button/Button";
-
 
 function LanternWritebutton(props) {
   return props.isSatisfied ? (
