@@ -1,10 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
+import html2canvas from "html2canvas";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
-import html2canvas from "html2canvas";
+
+const Container = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 const DetailLanternWrapper = styled.div`
   position: absolute;
@@ -37,7 +42,7 @@ const TitleSec = styled.div`
 const ContentSec = styled.div`
   position: absolute;
   display: flex;
-  top: 62%;
+  top: 60%;
   width: 33%;
   color: #5b3a1a;
   font-size: 14px;
@@ -47,11 +52,7 @@ const ContentSec = styled.div`
 `;
 
 function MyDetailPage() {
-  const LinkRef = useRef();
-  const LanternRef = useRef(); // 이미지 요소를 참조하는 Ref
-  const TitleSecRef = useRef(); // 제목 요소를 참조하는 Ref
-  const ContentSecRef = useRef(); // 내용 요소를 참조하는 Ref
-  const DetailLanternWrapperRef = useRef(); // DetailLanternWrapper 요소를 참조하는 Ref
+  const FixViewRef = useRef(); // FixView의 ref 추가
   const { detailId } = useParams();
   const [lanternData, setLanternData] = useState(null);
 
@@ -68,20 +69,10 @@ function MyDetailPage() {
   }, [detailId]);
 
   const handleDownload = async () => {
-    if (!LanternRef.current || !DetailLanternWrapperRef.current) return;
+    if (!FixViewRef.current) return;
 
     try {
-      const canvas = await html2canvas(DetailLanternWrapperRef.current); // DetailLanternWrapper 캡쳐
-      const ctx = canvas.getContext("2d");
-
-      // 제목 텍스트 가져오기 및 그리기
-      const titleText = lanternData.nickname;
-      ctx.fillText(titleText, 10, 250);
-
-      // 내용 텍스트 가져오기 및 그리기
-      const contentText = lanternData.content;
-      ctx.fillText(contentText, 10, 270);
-
+      const canvas = await html2canvas(FixViewRef.current); // FixView의 내용 캡처
       const imageUrl = canvas.toDataURL();
       const a = document.createElement("a");
       a.href = imageUrl;
@@ -96,31 +87,27 @@ function MyDetailPage() {
   };
 
   return (
-    <FixView>
-      <textarea
-        ref={LinkRef}
-        value={`/myDetail/${detailId}`}
-        style={{ position: "fixed", top: "-123px" }}
-      />
-      {lanternData && (
-        <DetailLanternWrapper ref={DetailLanternWrapperRef}>
-          <DetailLanternImg
-            ref={LanternRef}
-            src={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
-          />
-          <TitleSec ref={TitleSecRef}>{lanternData.nickname}</TitleSec>
-          <ContentSec ref={ContentSecRef}>{lanternData.content}</ContentSec>
-        </DetailLanternWrapper>
-      )}
+    <Container>
       {lanternData && (
         <MyBtn
           handleDownload={handleDownload}
-          LanternRef={LanternRef}
-          TitleSecRef={TitleSecRef}
-          ContentSecRef={ContentSecRef}
+          FixViewRef={FixViewRef} // FixView의 ref 전달
         />
       )}
-    </FixView>
+      <FixView ref={FixViewRef}>
+        {" "}
+        {/* FixView에 ref 추가 */}
+        {lanternData && (
+          <DetailLanternWrapper>
+            <DetailLanternImg
+              src={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
+            />
+            <TitleSec>{lanternData.nickname}</TitleSec>
+            <ContentSec>{lanternData.content}</ContentSec>
+          </DetailLanternWrapper>
+        )}
+      </FixView>
+    </Container>
   );
 }
 

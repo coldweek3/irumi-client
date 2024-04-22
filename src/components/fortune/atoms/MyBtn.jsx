@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { theme } from "../../../recoil/theme";
+import { day } from "../../../style/theme";
 
 const MyBtnsBox = styled.div`
   width: 300px;
@@ -13,6 +14,7 @@ const MyBtnsBox = styled.div`
   align-items: center;
   position: fixed;
   bottom: 4%;
+  z-index: 10000;
 `;
 
 const Button = styled.div`
