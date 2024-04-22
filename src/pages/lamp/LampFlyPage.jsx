@@ -49,7 +49,7 @@ function LampFlyPage() {
             url={"/img/Lamp/line.png"}
           />
           <LampImage
-            className={"absolute"}
+            className={"absolute ani_twinkling"}
             width={170}
             top={0}
             left={80}
@@ -64,7 +64,7 @@ function LampFlyPage() {
         </LampImageContainer>
       ) : (
         <>
-          <LampImageContainer className={"moving"}>
+          <LampImageContainer className={"ani_lampFly_moveUp"}>
             <LampImage
               className={"absolute"}
               width={380}

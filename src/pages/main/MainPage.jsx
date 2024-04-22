@@ -32,11 +32,12 @@ function MainPage() {
   ) : (
     <FixView>
       <LamplightBanner />
+
       <MainTextLabel className={"count"}>
         지금까지 '{data.totCount}'개의 연등이 달렸어요!
       </MainTextLabel>
 
-      <MainTextLabel className={"notice"}>
+      <MainTextLabel className={"notice  ani_twinkling"}>
         좌우로 드래그 해보세요.
       </MainTextLabel>
 

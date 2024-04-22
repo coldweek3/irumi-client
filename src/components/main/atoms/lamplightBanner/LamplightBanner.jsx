@@ -39,7 +39,7 @@ const LamplightBannerImg = styled.img`
 function LamplightBanner() {
   return (
     <Link to={"/lampMain"}>
-      <LamplightBannerWrapper>
+      <LamplightBannerWrapper className="ani_clickPlz">
         <LamplightBannerContent>
           <LamplightBannerImg src="/img/lamplightIcon.png" />
           <p>나만의 등불을 메일로 간직하세요.</p>
