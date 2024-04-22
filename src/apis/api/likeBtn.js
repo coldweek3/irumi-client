@@ -4,7 +4,7 @@ import { API } from "../utils";
 export const postLike = async (detailId, userId) => {
   const headers = {
     "Content-Type": "application/json",
-    user_id: userId
+    userid: userId
   };
 
   try {
@@ -14,6 +14,7 @@ export const postLike = async (detailId, userId) => {
       {},
       { headers: headers }
     );
+    console.log("백엔드의 헤더: ", headers);
 
     // 백엔드에서 보내준 데이터를 반환합니다.
     console.log("좋아요 버튼 로그: ", data);

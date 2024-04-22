@@ -24,15 +24,16 @@ import FixView from "../../components/common/templetes/fixView/FixView";
 
 function LanternDetailPage() {
   const [isInit, setIsInit] = useState(true);
-  const { backgroundImageUrl } = LanternDetailBg();
   const { detailId } = useParams();
   const [lanternData, setLanternData] = useState(null);
 
   useEffect(() => {
     const getLanternDetail = async () => {
       try {
-        const data = await fetchLanternData(detailId);
+        const userId = localStorage.getItem("userid");
+        const data = await fetchLanternData(detailId, userId);
         setLanternData(data);
+        console.log(data);
         setIsInit(false);
       } catch (error) {
         console.error("Error fetching lantern detail:", error);
@@ -45,16 +46,16 @@ function LanternDetailPage() {
   const handleLikeClick = async () => {
     try {
       // 로컬 스토리지에서 사용자 ID 확인
-      let userId = localStorage.getItem("user_id");
 
-      // 사용자 ID가 없다면 임의의 ID 생성
+      let userId = localStorage.getItem("userid");
+
       if (!userId) {
         userId = Math.random().toString(36).substring(7);
-        localStorage.setItem("user_id", userId);
+        localStorage.setItem("userid", userId);
       }
 
-      // 좋아요 요청 시에 사용자 ID와 함께 백엔드에 전송
       const response = await postLike(detailId, userId);
+
       console.log("좋아요 요청:", response.config);
       console.log("좋아요 응답:", response.data);
       console.log(userId);
@@ -232,16 +233,6 @@ function LanternDetailPage() {
 }
 
 export default LanternDetailPage;
-
-const Background = styled.div`
-  background-image: ${props => `url(${props.$backgroundImageUrl})`};
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-size: cover;
-`;
 
 const LanternViewPaperContainer = styled.div`
   display: flex;
