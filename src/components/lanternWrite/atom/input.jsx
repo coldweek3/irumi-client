@@ -1,6 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
+function PaperInput(props) {
+  const { onChange, value } = props;
+
+  return (
+    <InputWrapper>
+      <InputTitle>{props.inputTitle}</InputTitle>
+      <InputContainer
+        placeholder={props.inputPlaceholder}
+        $inputheight={props.inputHeight}
+        $inputpadding={props.inputPadding}
+        $inputoverflow={props.inputoverflow}
+        maxLength={props.maxLength}
+        onChange={onChange}
+        value={value}
+      ></InputContainer>
+    </InputWrapper>
+  );
+}
+
+export default PaperInput;
+
 const InputWrapper = styled.div``;
 
 const InputTitle = styled.div`
@@ -26,24 +47,3 @@ const InputContainer = styled.textarea`
     word-spacing: 0.1px;
   }
 `;
-
-function PaperInput(props) {
-  const { onChange, value } = props;
-
-  return (
-    <InputWrapper>
-      <InputTitle>{props.inputTitle}</InputTitle>
-      <InputContainer
-        placeholder={props.inputPlaceholder}
-        $inputheight={props.inputHeight}
-        $inputpadding={props.inputPadding}
-        $inputoverflow={props.inputoverflow}
-        maxLength={props.maxLength}
-        onChange={onChange}
-        value={value}
-      ></InputContainer>
-    </InputWrapper>
-  );
-}
-
-export default PaperInput;

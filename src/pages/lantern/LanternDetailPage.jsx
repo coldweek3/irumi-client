@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 
 //import component
 import Header from "../../components/common/molecules/header/header";
-import LanternDetailBg from "../../components/common/organisms/Background/LanternDetailBg";
 import LikeBtn from "../../components/lanternWrite/atom/likeBtn";
 import InitView from "../../components/common/templetes/initView/InitView";
 
@@ -19,7 +18,6 @@ import PwModal from "../../components/lanternWrite/organisms/PwModal";
 import ReportModal from "../../components/lanternWrite/organisms/ReportModal";
 import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAlertModal";
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
-import CheckDeleteModal from "../../components/lanternWrite/organisms/CheckDeleteModal";
 import FixView from "../../components/common/templetes/fixView/FixView";
 
 function LanternDetailPage() {
@@ -45,20 +43,13 @@ function LanternDetailPage() {
   // 좋아요 처리 함수
   const handleLikeClick = async () => {
     try {
-      // 로컬 스토리지에서 사용자 ID 확인
-
       let userId = localStorage.getItem("userid");
-
       if (!userId) {
         userId = Math.random().toString(36).substring(7);
         localStorage.setItem("userid", userId);
       }
 
       const response = await postLike(detailId, userId);
-
-      console.log("좋아요 요청:", response.config);
-      console.log("좋아요 응답:", response.data);
-      console.log(userId);
 
       if (response.status === 200) {
         setLanternData(prevData => ({
@@ -166,11 +157,9 @@ function LanternDetailPage() {
               openPwModal={openPwModal}
               closePwModal={() => {
                 closePwModal();
-                // setShowCheckDeleteModal(true);
               }}
               data={lanternData}
             />
-            {/* {showCheckDeleteModal && <CheckDeleteModal />} */}
           </>
         )}
 
@@ -205,7 +194,6 @@ function LanternDetailPage() {
               top: 0,
               left: 0,
               width: "100%",
-              // height: "100vh",
               height: "100%",
               backgroundColor: "rgba(0, 0, 0, 0.5)",
               zIndex: 7,

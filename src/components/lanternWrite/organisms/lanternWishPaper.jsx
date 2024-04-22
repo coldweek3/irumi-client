@@ -1,6 +1,6 @@
 // LanternWishPaper.js
 
-import React, { useState } from "react";
+import React from "react";
 import { styled } from "styled-components";
 import PaperInput from "../atom/input";
 import LanternPw from "../atom/lanternPw";
@@ -12,31 +12,6 @@ import {
   passwordState,
   emailState
 } from "../../../recoil/lanternContent";
-
-const LanternWishPaperWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5em;
-  height: 50%;
-  align-items: center;
-`;
-
-const LanternWishPaperForm = styled.form``;
-
-const LanternWishPaperContainer = styled.div`
-  max-width: 250px;
-  background-color: #fbedd0;
-  border-radius: 5px;
-  max-height: 450px;
-  padding: 15px 17px;
-`;
-
-const PaperInputContainer = styled.div`
-  gap: 10px;
-  display: flex;
-  flex-direction: column;
-`;
 
 function LanternWishPaper({ inputType }) {
   const [password, setPassword] = useRecoilState(passwordState);
@@ -109,3 +84,28 @@ function LanternWishPaper({ inputType }) {
 }
 
 export default LanternWishPaper;
+
+const LanternWishPaperWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5em;
+  height: 50%;
+  align-items: center;
+`;
+
+const LanternWishPaperForm = styled.form``;
+
+const LanternWishPaperContainer = styled.div`
+  max-width: 250px;
+  background-color: #fbedd0;
+  border-radius: 5px;
+  max-height: 450px;
+  padding: 15px 17px;
+`;
+
+const PaperInputContainer = styled.div`
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+`;

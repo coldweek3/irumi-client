@@ -3,22 +3,6 @@ import styled from "styled-components";
 import { useRecoilValue } from "recoil";
 import { clickedState } from "../../../recoil/lanternColor";
 
-const LanternColorConfirmWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9;
-  width: 100%;
-  margin-top: 3em;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-`;
-
-const LanternImg = styled.img`
-  width: 50%;
-`;
-
 function LanternColorConfirm() {
   // 선택한 이미지의 상태를 Recoil로부터 가져옴
   const clicked = useRecoilValue(clickedState);
@@ -38,3 +22,19 @@ function LanternColorConfirm() {
 }
 
 export default LanternColorConfirm;
+
+const LanternColorConfirmWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  width: 100%;
+  margin-top: 3em;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+`;
+
+const LanternImg = styled.img`
+  width: 50%;
+`;

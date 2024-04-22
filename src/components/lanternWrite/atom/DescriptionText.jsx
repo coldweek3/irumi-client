@@ -1,6 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
+function DescriptionText(props) {
+  return (
+    <LanternWriteDesWrapper>
+      <DesTextContainer style={{ whiteSpace: "pre-wrap" }}>
+        <DesText>{props.preText}</DesText>
+        <DesTextYellow>{props.Yellowtext}</DesTextYellow>
+        <DesText>{props.nextText}</DesText>
+      </DesTextContainer>
+    </LanternWriteDesWrapper>
+  );
+}
+
+export default DescriptionText;
+
 const LanternWriteDesWrapper = styled.div`
   height: 4em;
   justify-content: center;
@@ -27,17 +41,3 @@ const DesTextYellow = styled.div`
   color: #fcd300;
   font-size: 1em;
 `;
-
-function DescriptionText(props) {
-  return (
-    <LanternWriteDesWrapper>
-      <DesTextContainer style={{ whiteSpace: "pre-wrap" }}>
-        <DesText>{props.preText}</DesText>
-        <DesTextYellow>{props.Yellowtext}</DesTextYellow>
-        <DesText>{props.nextText}</DesText>
-      </DesTextContainer>
-    </LanternWriteDesWrapper>
-  );
-}
-
-export default DescriptionText;

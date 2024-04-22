@@ -1,38 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const LanternWritePwWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-top: 10px;
-`;
-
-const LanternWritePwTitle = styled.div`
-  font-size: 10px;
-  margin-right: 5px;
-  color: #5b3a1a;
-`;
-
-const LanternWritePwInput = styled.input`
-  width: 60%;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  border: 1px solid #898989;
-  text-indent: 5px;
-  height: 2em;
-
-  &::placeholder {
-    font-size: 10px;
-    color: #898989;
-  }
-`;
-
-const LanternWritePwEye = styled.img`
-  width: 1.3em;
-  margin-left: 15px;
-  cursor: pointer;
-`;
-
 function LanternPw({ value, onChange }) {
   const [showPassword, setShowPassword] = useState(false);
 
@@ -65,3 +33,35 @@ function LanternPw({ value, onChange }) {
 }
 
 export default LanternPw;
+
+const LanternWritePwWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+`;
+
+const LanternWritePwTitle = styled.div`
+  font-size: 10px;
+  margin-right: 5px;
+  color: #5b3a1a;
+`;
+
+const LanternWritePwInput = styled.input`
+  width: 60%;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  border: 1px solid #898989;
+  text-indent: 5px;
+  height: 2em;
+
+  &::placeholder {
+    font-size: 10px;
+    color: #898989;
+  }
+`;
+
+const LanternWritePwEye = styled.img`
+  width: 1.3em;
+  margin-left: 15px;
+  cursor: pointer;
+`;

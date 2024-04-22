@@ -31,7 +31,7 @@ const HeaderTitle = styled.div`
 function Header(props) {
   return (
     <HeaderWrapper>
-      <BackBtn />
+      <BackBtn to={props.to} />
       <HeaderTitle titleWidth={props.titleWidth} fontSize={props.fontSize}>
         {props.title}
       </HeaderTitle>

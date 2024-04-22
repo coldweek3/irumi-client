@@ -1,31 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { clickedState } from "../../../recoil/lanternColor";
-
-const LanternColorWrapper = styled.div`
-  height: 4em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9;
-  width: 100%;
-  gap: 1em;
-`;
-
-const LanternText = styled.div`
-  color: white;
-`;
-
-const LanternImgContainer = styled.div`
-  gap: 1em;
-  display: flex;
-`;
-
-const LanternImg = styled.img`
-  width: 2em;
-  cursor: pointer;
-`;
 
 function LanternColor() {
   //recoil로 선택한 연등 색상 관리
@@ -84,3 +60,27 @@ function LanternColor() {
 }
 
 export default LanternColor;
+
+const LanternColorWrapper = styled.div`
+  height: 4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+  width: 100%;
+  gap: 1em;
+`;
+
+const LanternText = styled.div`
+  color: white;
+`;
+
+const LanternImgContainer = styled.div`
+  gap: 1em;
+  display: flex;
+`;
+
+const LanternImg = styled.img`
+  width: 2em;
+  cursor: pointer;
+`;

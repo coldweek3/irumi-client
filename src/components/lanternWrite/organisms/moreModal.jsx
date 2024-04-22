@@ -1,6 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 
+function MoreModal({ closeModal, openDeleteModal, openReportModal }) {
+  return (
+    <MoreModalWrapper>
+      <MoreBtnBox>
+        <MoreTitle>더보기</MoreTitle>
+        <DeleteBtn onClick={openDeleteModal}>삭제</DeleteBtn>
+        <ReportBtn onClick={openReportModal}>신고</ReportBtn>
+      </MoreBtnBox>
+      <CloseBtn onClick={closeModal}>닫기</CloseBtn>
+    </MoreModalWrapper>
+  );
+}
+
+export default MoreModal;
+
 const MoreModalWrapper = styled.div`
   position: fixed;
   bottom: 0;
@@ -60,18 +75,3 @@ const CloseBtn = styled(MoreBtnBox)`
   align-items: center;
   margin-bottom: 0;
 `;
-
-function MoreModal({ closeModal, openDeleteModal, openReportModal }) {
-  return (
-    <MoreModalWrapper>
-      <MoreBtnBox>
-        <MoreTitle>더보기</MoreTitle>
-        <DeleteBtn onClick={openDeleteModal}>삭제</DeleteBtn>
-        <ReportBtn onClick={openReportModal}>신고</ReportBtn>
-      </MoreBtnBox>
-      <CloseBtn onClick={closeModal}>닫기</CloseBtn>
-    </MoreModalWrapper>
-  );
-}
-
-export default MoreModal;
