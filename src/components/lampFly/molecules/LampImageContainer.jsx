@@ -4,16 +4,15 @@ import styled from "styled-components";
 const ImageContainerWrapper = styled.div`
   width: 100%;
   flex-grow: 1;
-  padding-bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &.moving {
-    animation: moveTop 3s forwards ease-in;
-    animation-delay: 2s;
+  &.ani_lampFly_moveUp {
+    animation: ani_lampFly_moveUp 3s forwards ease-in;
+    animation-delay: 1.2s;
 
-    @keyframes moveTop {
+    @keyframes ani_lampFly_moveUp {
       0% {
         transform: translate(0, 0);
       }
@@ -26,15 +25,16 @@ const ImageContainerWrapper = styled.div`
 
 const ImageContainer = styled.div`
   width: 100%;
+
   display: flex;
   justify-content: center;
-  height: 800px;
   position: relative;
-  &.moving {
-    animation: vibration 2s linear infinite alternate,
-      motion 0.6s linear infinite alternate;
+
+  &.ani_lampFly_moveUp {
+    animation: ani_lampFly_vibration 2s linear infinite alternate,
+      ani_lampFly_motion 0.6s linear infinite alternate;
     animation-delay: 2s;
-    @keyframes vibration {
+    @keyframes ani_lampFly_vibration {
       0% {
         transform: rotate(0deg);
       }
@@ -49,7 +49,7 @@ const ImageContainer = styled.div`
       }
     }
 
-    @keyframes motion {
+    @keyframes ani_lampFly_motion {
       0% {
         margin-top: 0px;
       }
