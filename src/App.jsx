@@ -8,11 +8,15 @@ import { theme } from "./recoil/theme.jsx";
 import { emSize } from "./recoil/emSize.jsx";
 
 import { day, sunset, night } from "./style/theme.js";
-import "./style/fontStyle.css";
+
 import { useEffect, useState } from "react";
 import { getEmSize } from "./utils/getEmSize.jsx";
 import { heightSize } from "./recoil/heightSize.jsx";
+
 import HandleTheme from "./components/dev/handleTheme/HandleTheme.jsx";
+
+import "./style/fontStyle.css";
+import "./style/animation.css";
 
 const Wrapper = styled.div`
   width: 100vw;

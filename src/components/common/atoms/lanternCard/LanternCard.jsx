@@ -6,14 +6,16 @@ import { emSize } from "../../../../recoil/emSize";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-function LanternCard({ lanternSize = 170, lanternData }) {
+function LanternCard({ lanternSize = 170, lanternData, className, delay }) {
   const emSizeValue = useRecoilValue(emSize);
 
   return (
     <LanternCardEmWrapper
+      className={className}
       $emsize={emSizeValue}
       $width={lanternSize / 10 + "em"}
       $size={lanternSize / 10 / 400 + "em"}
+      $delay={delay + "s"}
     >
       <Link to={`/lanternDetail/${lanternData.id}`}>
         <LanternCardWrapper
@@ -48,6 +50,8 @@ const LanternCardEmWrapper = styled.div`
   &:hover {
     transform: scale(1.1) translateY(-5%);
   }
+  animation-delay: ${props => props.$delay};
+  opacity: 0%;
 `;
 
 const LanternCardWrapper = styled.div`

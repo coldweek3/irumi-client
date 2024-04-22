@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -38,7 +38,12 @@ function LanternCardSwiper({ lanterns }) {
       >
         {lanterns?.map((item, index) => (
           <SwiperSlide className="lantern" key={index}>
-            <LanternCard lanternData={item} lanternSize={180} />
+            <LanternCard
+              delay={index == 0 ? 0.2 : index == 1 || index == 19 ? 0.4 : 0.6}
+              className={"ani_main_lantern_appear"}
+              lanternData={item}
+              lanternSize={180}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

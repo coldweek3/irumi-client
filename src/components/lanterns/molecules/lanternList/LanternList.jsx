@@ -18,7 +18,13 @@ function LanternList({ lanterns }) {
   return (
     <LanternListWrapper>
       {lanterns.map((item, index) => (
-        <LanternCard key={index} lanternData={item} lanternSize={170} />
+        <LanternCard
+          delay={((index % 26) + 1) * 0.2}
+          className={"ani_main_lantern_appear"}
+          key={index}
+          lanternData={item}
+          lanternSize={170}
+        />
       ))}
     </LanternListWrapper>
   );
