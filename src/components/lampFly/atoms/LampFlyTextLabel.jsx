@@ -10,6 +10,18 @@ const TextLableWrapper = styled.div`
   top: 50%;
   font-size: 24px;
   line-height: 2;
+  opacity: 0%;
+  animation: ani_lampFly_appear 0.8s ease-in forwards;
+  animation-delay: 3s;
+
+  @keyframes ani_lampFly_appear {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
 `;
 function LampFlyTextLabel({ children }) {
   return <TextLableWrapper>{children}</TextLableWrapper>;
