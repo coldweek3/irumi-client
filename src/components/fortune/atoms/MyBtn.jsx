@@ -40,13 +40,19 @@ const Button = styled.div`
   }
 `;
 
-const MyBtn = ({ handleDownload, LanternRef, TitleSecRef, ContentSecRef }) => {
+const MyBtn = ({
+  handleDownload,
+  LanternRef,
+  TitleSecRef,
+  ContentSecRef,
+  detailId
+}) => {
   const navigate = useNavigate();
   const currentTheme = useRecoilValue(theme);
 
   const handleCopyLink = async () => {
     try {
-      const currentURL = window.location.href;
+      const currentURL = `${window.location.origin}/lanternDetail/${detailId}`;
       if (currentURL) {
         await navigator.clipboard.writeText(currentURL);
         alert("링크가 복사되었습니다!");

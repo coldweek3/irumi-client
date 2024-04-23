@@ -92,6 +92,7 @@ function MyDetailPage() {
         <MyBtn
           handleDownload={handleDownload}
           FixViewRef={FixViewRef} // FixView의 ref 전달
+          detailId={detailId}
         />
       )}
       <FixView ref={FixViewRef}>
