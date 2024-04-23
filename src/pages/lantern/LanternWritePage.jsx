@@ -78,7 +78,7 @@ function LanternWritePage() {
       setClicked({});
       localStorage.setItem("Lanternid", Lanternid);
 
-      navigate(`/fortuneIntro/${detailId}`, {});
+      navigate(`/fortuneIntro/${detailId}`);
     } catch (error) {
       console.error("Failed to post lantern data:", error);
     }
