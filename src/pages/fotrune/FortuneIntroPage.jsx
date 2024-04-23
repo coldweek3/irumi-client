@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import FixView from "../../components/common/templetes/fixView/FixView";
 
@@ -13,7 +13,6 @@ const FortuneTitle = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,14 +27,19 @@ const Lotus = styled.img`
 
 const fadein = keyframes`
   from { opacity: 0; }
-  to   { opacity: 1; }
+  to { opacity: 1; }
 `;
 
 const LotusLight = styled.img`
   position: absolute;
   top: 50%;
   width: 302px;
-  animation: ${fadein} 0.5s linear;
+  animation: ${({ isVisible }) =>
+    isVisible
+      ? css`
+          ${fadein} 0.5s linear
+        `
+      : "none"};
 `;
 
 function FortuneIntroPage() {
@@ -60,7 +64,10 @@ function FortuneIntroPage() {
       <ImgContainer>
         <Lotus src="/img/Fortune/lotus.png" onClick={handleLotusClick} />
         {isLotusLightVisible && (
-          <LotusLight src="/img/Fortune/lightlotus.png" />
+          <LotusLight
+            src="/img/Fortune/lightlotus.png"
+            isVisible={isLotusLightVisible}
+          />
         )}
       </ImgContainer>
     </FixView>
