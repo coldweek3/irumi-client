@@ -69,7 +69,7 @@ const MyBtn = ({
     <MyBtnsBox>
       <Button theme={currentTheme}>
         <img
-          src="/img/Fortune/my_saveImg.png"
+          src="/img/Fortune/my_saveImg.svg"
           onClick={() => handleDownload(LanternRef, TitleSecRef, ContentSecRef)}
           alt="Save Image"
         />
@@ -77,19 +77,19 @@ const MyBtn = ({
       </Button>
       <Button theme={currentTheme}>
         <img
-          src="/img/Fortune/my_goMain.png"
+          src="/img/Fortune/my_goMain.svg"
           onClick={() => navigate("/")}
           alt="Go to Main"
         />
-        <p>메인페이지</p>
+        <p>메인 페이지</p>
       </Button>
       <Button theme={currentTheme}>
         <img
-          src="/img/Fortune/my_copyUrl.png"
+          src="/img/Fortune/my_copyUrl.svg"
           onClick={handleCopyLink}
           alt="Copy URL"
         />
-        <p>이루미 링크복사</p>
+        <p>내 연등 링크 복사</p>
       </Button>
     </MyBtnsBox>
   );

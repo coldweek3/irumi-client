@@ -49,6 +49,7 @@ const ContentSec = styled.div`
   justify-content: center;
   align-items: center;
   line-height: 130%;
+  padding: 10px;
 `;
 
 function MyDetailPage() {

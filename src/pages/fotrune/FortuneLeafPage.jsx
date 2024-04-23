@@ -79,7 +79,7 @@ function FortuneLeafPage() {
 
       <ButtonList className={"bottom"}>
         <Link to={`/myDetail/${detailId}`}>
-          <QuitButton src="/img/Fortune/quit_button.png" />
+          <QuitButton src="/img/Fortune/quit_button.svg" />
         </Link>
       </ButtonList>
     </FixView>
