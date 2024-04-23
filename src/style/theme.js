@@ -48,7 +48,7 @@ export const night = {
   hintColor: "#FCD300",
 
   bannerGradient1: "#102951",
-  bannerGradient2: "#5d6d7c",
+  bannerGradient2: "#39638C",
   bannerShadow: "#ffffff26",
 
   btn_primary: "#FFB5BE",

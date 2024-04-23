@@ -26,8 +26,8 @@ const LamplightBannerContent = styled.div`
 
   background: linear-gradient(
     180deg,
-    ${props => props.theme.bannerGradient1} 0.02%,
-    ${props => props.theme.bannerGradient2} 99.98%
+    ${props => props.theme.bannerGradient1} 20%,
+    ${props => props.theme.bannerGradient2} 80%
   );
   box-shadow: 0px 4px 10px 2px ${props => props.theme.bannerShadow};
 `;
