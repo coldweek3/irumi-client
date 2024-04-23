@@ -34,7 +34,7 @@ const LotusLight = styled.img`
   position: absolute;
   top: 50%;
   width: 302px;
-  animation: ${fadein} 0.5s linear;
+  animation: ${fadein} 1s linear;
 `;
 
 function FortuneIntroPage() {
