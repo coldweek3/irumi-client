@@ -20,6 +20,7 @@ import ReportAlertModal from "../../components/lanternWrite/organisms/ReportAler
 import ReportedAlertModal from "../../components/lanternWrite/organisms/ReportedAlertModal";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import ModalBackground from "../../components/lanternWrite/atom/ModalBg";
+import NoLanternDetail from "../../components/common/templetes/initView/noLantern";
 
 function LanternDetailPage() {
   const [isInit, setIsInit] = useState(true);
@@ -132,77 +133,81 @@ function LanternDetailPage() {
   ) : (
     <FixView>
       <Header />
-      <LanternViewPaperContainer>
-        <LanternDotContainer onClick={openModal}>
-          <LanternDot src="/img/Lantern/Dot.png" />
-        </LanternDotContainer>
-        {/* 더보기 모달 */}
-        {modalOpen && (
-          <MoreModal
-            closeModal={closeModal}
-            openDeleteModal={openDeleteModal}
-            openReportModal={openReportModal}
-          />
-        )}
-        {/* 연등 삭제 모달*/}
-        {deleteModalOpen && (
-          <DeleteModal
-            closeDeleteModal={closeDeleteModal}
-            openPwModal={openPwModal}
-          />
-        )}
-        {/* 비밀번호 입력 모달 */}
-        {pwModalOpen && (
-          <>
-            <PwModal
-              openPwModal={openPwModal}
-              closePwModal={() => {
-                closePwModal();
-              }}
-              data={lanternData}
+      {lanternData ? (
+        <LanternViewPaperContainer>
+          <LanternDotContainer onClick={openModal}>
+            <LanternDot src="/img/Lantern/Dot.png" />
+          </LanternDotContainer>
+          {/* 더보기 모달 */}
+          {modalOpen && (
+            <MoreModal
+              closeModal={closeModal}
+              openDeleteModal={openDeleteModal}
+              openReportModal={openReportModal}
             />
-          </>
-        )}
+          )}
+          {/* 연등 삭제 모달*/}
+          {deleteModalOpen && (
+            <DeleteModal
+              closeDeleteModal={closeDeleteModal}
+              openPwModal={openPwModal}
+            />
+          )}
+          {/* 비밀번호 입력 모달 */}
+          {pwModalOpen && (
+            <>
+              <PwModal
+                openPwModal={openPwModal}
+                closePwModal={() => {
+                  closePwModal();
+                }}
+                data={lanternData}
+              />
+            </>
+          )}
 
-        {/* 신고 모달 */}
-        {reportModalOpen && (
-          <ReportModal
-            closeReportModal={closeReportModal}
-            openReportedModal={openReportedModal}
-            openIsReportedModal={openIsReportedModal}
-            detailId={detailId}
+          {/* 신고 모달 */}
+          {reportModalOpen && (
+            <ReportModal
+              closeReportModal={closeReportModal}
+              openReportedModal={openReportedModal}
+              openIsReportedModal={openIsReportedModal}
+              detailId={detailId}
+            />
+          )}
+          {/* 신고 완료 모달 */}
+          {reportedModalOpen && <ReportAlertModal />}
+          {/* 이미 신고한 게시글 모달 */}
+          {isReportedModalOpen && <ReportedAlertModal />}
+          <LanternViewPaperImg
+            src={
+              lanternData
+                ? `/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`
+                : ""
+            }
           />
-        )}
-        {/* 신고 완료 모달 */}
-        {reportedModalOpen && <ReportAlertModal />}
-        {/* 이미 신고한 게시글 모달 */}
-        {isReportedModalOpen && <ReportedAlertModal />}
-        <LanternViewPaperImg
-          src={
-            lanternData
-              ? `/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`
-              : ""
-          }
-        />
-        {/* ModalBackground 컴포넌트 사용 */}
-        {(deleteModalOpen ||
-          pwModalOpen ||
-          pwModalOpen ||
-          reportedModalOpen ||
-          isReportedModalOpen) && <ModalBackground />}
+          {/* ModalBackground 컴포넌트 사용 */}
+          {(deleteModalOpen ||
+            pwModalOpen ||
+            pwModalOpen ||
+            reportedModalOpen ||
+            isReportedModalOpen) && <ModalBackground />}
 
-        <LanternViewNickname>
-          {lanternData ? lanternData.nickname : ""}
-        </LanternViewNickname>
-        <LanternViewWish>
-          {lanternData ? lanternData.content : ""}
-        </LanternViewWish>
-        <LikeBtn
-          handleLikeClick={handleLikeClick}
-          isLiked={lanternData ? lanternData.is_liked : false}
-          LikeCount={lanternData ? lanternData.like_cnt : 0}
-        />
-      </LanternViewPaperContainer>
+          <LanternViewNickname>
+            {lanternData ? lanternData.nickname : ""}
+          </LanternViewNickname>
+          <LanternViewWish>
+            {lanternData ? lanternData.content : ""}
+          </LanternViewWish>
+          <LikeBtn
+            handleLikeClick={handleLikeClick}
+            isLiked={lanternData ? lanternData.is_liked : false}
+            LikeCount={lanternData ? lanternData.like_cnt : 0}
+          />
+        </LanternViewPaperContainer>
+      ) : (
+        <NoLanternDetail />
+      )}
     </FixView>
   );
 }
