@@ -1,9 +1,15 @@
 import { API } from "../../apis/utils";
 
-const fetchFortuneMessage = async () => {
+const fetchFortuneMessage = async Lanternid => {
+  const headers = {
+    "Content-Type": "application/json",
+    Lanternid: Lanternid
+  };
+
   try {
-    const response = await API.get("/api/lanterns/cookie");
-    console.log("API 응답 데이터:", response.data);
+    const response = await API.get("/api/lanterns/cookie", {
+      headers: headers
+    });
     return response.data.fortune;
   } catch (error) {
     console.error("API 요청 실패:", error);
