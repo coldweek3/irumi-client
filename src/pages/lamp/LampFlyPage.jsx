@@ -100,6 +100,8 @@ function LampFlyPage() {
             등불을 하늘에 날려보냈습니다!
             <br />
             {DateList[themeId - 1]} , 메일함을 확인해주세요.
+            <br />
+            지금 쓴 소원을 이룰 때까지 이루미가 응원합니다!
           </LampFlyTextLabel>
 
           <ButtonList className={"bottom layout-1"}>
