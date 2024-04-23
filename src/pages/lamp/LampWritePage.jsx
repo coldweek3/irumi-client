@@ -1,12 +1,13 @@
-// LampWritePage.jsx
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   nicknameState,
   wishState,
-  emailState
+  emailState,
+  passwordState,
+  clickedState
 } from "../../recoil/lanternContent";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import Header from "../../components/common/molecules/header/header";
@@ -41,7 +42,10 @@ function LampWritePage() {
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState);
-  const { themeId } = useParams(); // useParams를 통해 URL의 themeId 가져오기
+  const [password, setPassword] = useRecoilState(passwordState);
+  const [clicked, setClicked] = useRecoilState(clickedState);
+
+  const { themeId, detailId } = useParams();
 
   const theme = themeData.find(item => item.themeId === parseInt(themeId)); // themeId를 정수로 변환하여 사용
 
@@ -68,14 +72,16 @@ function LampWritePage() {
 
         console.log("등불이 저장되었습니다", response.data);
 
+        // 포스트 성공 후 Recoil 상태 초기화
+        setNickname("");
+        setWish("");
+        setPassword("");
+        setEmail("");
+        setClicked({});
+        console.log(response.id);
         navigate(`/lampFly/${parseInt(themeId)}`);
       } catch (error) {
-        if (error.response.status === 400 && error.response.data.email) {
-          alert(error.response.data.email[0]);
-        } else {
-          console.error("POST ERROR", error);
-          alert("Failed to submit data. Please try again later.");
-        }
+        console.error("Failed to post lantern data:", error);
       }
     } else {
       alert("소원을 적어 주세요");
