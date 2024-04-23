@@ -5,6 +5,7 @@ import html2canvas from "html2canvas";
 import FixView from "../../components/common/templetes/fixView/FixView";
 import MyBtn from "../../components/fortune/atoms/MyBtn";
 import { fetchLanternData } from "../../apis/api/lanternDetail";
+import NoLanternDetail from "../../components/common/templetes/initView/noLantern";
 
 const Container = styled.div`
   display: flex;
@@ -96,19 +97,23 @@ function MyDetailPage() {
           detailId={detailId}
         />
       )}
-      <FixView ref={FixViewRef}>
-        {" "}
-        {/* FixView에 ref 추가 */}
-        {lanternData && (
-          <DetailLanternWrapper>
-            <DetailLanternImg
-              src={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
-            />
-            <TitleSec>{lanternData.nickname}</TitleSec>
-            <ContentSec>{lanternData.content}</ContentSec>
-          </DetailLanternWrapper>
-        )}
-      </FixView>
+      {lanternData ? (
+        <FixView ref={FixViewRef}>
+          {" "}
+          {/* FixView에 ref 추가 */}
+          {lanternData && (
+            <DetailLanternWrapper>
+              <DetailLanternImg
+                src={`/img/lanternCard/${lanternData.lanternColor}_${lanternData.light_bool}.png`}
+              />
+              <TitleSec>{lanternData.nickname}</TitleSec>
+              <ContentSec>{lanternData.content}</ContentSec>
+            </DetailLanternWrapper>
+          )}
+        </FixView>
+      ) : (
+        <NoLanternDetail />
+      )}
     </Container>
   );
 }

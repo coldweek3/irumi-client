@@ -69,14 +69,16 @@ function LanternWritePage() {
       });
 
       const detailId = response.id;
+      const Lanternid = response.id;
 
       // 포스트 성공 후 Recoil 상태 초기화
       setNickname("");
       setWish("");
       setPassword("");
       setClicked({});
-      console.log(response.id);
-      navigate(`/fortuneIntro/${detailId}`);
+      localStorage.setItem("Lanternid", Lanternid);
+
+      navigate(`/fortuneIntro/${detailId}`, {});
     } catch (error) {
       console.error("Failed to post lantern data:", error);
     }
