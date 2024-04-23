@@ -86,6 +86,7 @@ const LanternCardContent = styled.div`
   overflow: hidden;
   word-break: break-all;
   text-overflow: ellipsis;
+  line-height: 1.4;
   p {
     font-size: calc(${props => props.$size} * 20);
     line-height: calc(28 / 20);
