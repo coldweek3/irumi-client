@@ -10,7 +10,7 @@ const ImageWrapper = styled.img`
     transform: translate(${props => props.$left}, ${props => props.$top});
   }
   &.fade_in {
-    animation-duration: 1.5s;
+    animation-duration: 0.7s;
     animation-name: fadeIn;
     @keyframes fadeIn {
       from {

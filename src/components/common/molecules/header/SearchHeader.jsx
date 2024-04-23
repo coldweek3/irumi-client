@@ -37,7 +37,7 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-function SearchHeader({ className }) {
+function SearchHeader({ className, to }) {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -58,7 +58,7 @@ function SearchHeader({ className }) {
 
   return isVisible ? (
     <HeaderWrapper className={className}>
-      <BackBtn />
+      <BackBtn to={to} />
       <SearchBar />
     </HeaderWrapper>
   ) : (

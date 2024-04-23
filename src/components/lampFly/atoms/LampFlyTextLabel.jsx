@@ -8,11 +8,15 @@ const TextLableWrapper = styled.div`
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 2;
   opacity: 0%;
   animation: ani_lampFly_appear 0.8s ease-in forwards;
   animation-delay: 3s;
+
+  @media (max-width: 425px) {
+    font-size: 15px;
+  }
 
   @keyframes ani_lampFly_appear {
     0% {
