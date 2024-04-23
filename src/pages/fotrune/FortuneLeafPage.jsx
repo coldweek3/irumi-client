@@ -13,6 +13,17 @@ const LeafContainer = styled.div`
   align-items: center;
 
   flex-grow: 1;
+  animation: ani_leaf 0.8s forwards ease-in;
+  @keyframes ani_leaf {
+    0% {
+      opacity: 60%;
+      transform: scale(0.9) translate(0, +60px);
+    }
+    100% {
+      opacity: 100%;
+      transform: scale(1) translate(0, 0px);
+    }
+  }
 `;
 
 const LeafImg = styled.img`
