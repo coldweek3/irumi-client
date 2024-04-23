@@ -14,8 +14,7 @@
 }
 
 .ani_clickPlz {
-  animation: ani_clickPlz 1s infinite alternate ease-in;
-  animation-duration: 1s;
+  animation: ani_clickPlz 0.5s infinite alternate ease-in;
 }
 
 @keyframes ani_clickPlz {
@@ -23,7 +22,7 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(1.02);
+    transform: scale(1.04);
   }
 }
 

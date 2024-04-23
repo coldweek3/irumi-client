@@ -14,10 +14,12 @@ const ImageContainerWrapper = styled.div`
 
     @keyframes ani_lampFly_moveUp {
       0% {
-        transform: translate(0, 0);
+        transform: scale(1) translate(0, 0);
+        opacity: 1;
       }
       100% {
-        transform: translate(0, -800px);
+        transform: scale(0.6) translate(0, -1200px);
+        opacity: 0.7;
       }
     }
   }

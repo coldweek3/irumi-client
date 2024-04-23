@@ -1,11 +1,12 @@
 export const day = {
   bg: "#000000",
   font1: "#ffffff",
-  font2: "#9C9C9C",
+  font2: "#4D9AC6",
   font3: "#5B3A1A",
 
   searchBg: "#FBEDD0",
   searchFont: "#5B3A1A",
+  placeholderFont: "#744A21",
 
   hintColor: "#FCD300",
 
@@ -18,13 +19,14 @@ export const day = {
 };
 
 export const sunset = {
-  bg: "#ff0000",
+  bg: "#000000",
   font1: "#ffffff",
   font2: "#9C9C9C",
   font3: "#5B3A1A",
 
   searchBg: "#FBEDD0",
   searchFont: "#5B3A1A",
+  placeholderFont: "#744A21",
 
   hintColor: "#FCD300",
 
@@ -39,16 +41,17 @@ export const sunset = {
 export const night = {
   bg: "#000000",
   font1: "#ffffff",
-  font2: "#9C9C9C",
+  font2: "#435B80",
   font3: "#5B3A1A",
 
   searchBg: "#FBEDD0",
   searchFont: "#5B3A1A",
+  placeholderFont: "#744A21",
 
   hintColor: "#FCD300",
 
   bannerGradient1: "#102951",
-  bannerGradient2: "#5d6d7c",
+  bannerGradient2: "#39638C",
   bannerShadow: "#ffffff26",
 
   btn_primary: "#FFB5BE",

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const SearchInput = styled.input`
   flex-grow: 1;
-  font-size: 14px;
+  font-size: 16px;
 
   display: flex;
   align-items: center;
@@ -11,6 +11,9 @@ const SearchInput = styled.input`
   z-index: 1;
 
   color: ${props => props.theme.searchFont};
+  &::placeholder {
+    color: ${props => props.theme.placeholderFont};
+  }
 `;
 const SearhIcon = styled.img`
   width: 24px;
@@ -36,7 +39,7 @@ const SearchBackground = styled.div`
   background-color: ${props => props.theme.searchBg};
   border-radius: 100000px;
 
-  opacity: 70%;
+  opacity: 80%;
   z-index: 0;
 `;
 
