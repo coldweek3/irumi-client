@@ -19,3 +19,8 @@ export const emailState = atom({
   key: "emailState",
   default: ""
 });
+
+export const clickedState = atom({
+  key: "clickedState",
+  default: {} // 기본값은 빈 객체입니다.
+});

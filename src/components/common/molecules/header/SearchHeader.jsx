@@ -24,6 +24,17 @@ const HeaderWrapper = styled.div`
     left: 50%;
     top: 0%;
   }
+  animation: ani_slide_in_top 0.2s ease-out forwards;
+  @keyframes ani_slide_in_top {
+    0% {
+      opacity: 0%;
+      top: -80px;
+    }
+    100% {
+      opacity: 100%;
+      top: 0%;
+    }
+  }
 `;
 
 function SearchHeader({ className }) {
