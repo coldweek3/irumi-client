@@ -84,7 +84,7 @@ function LampWritePage() {
 
   return (
     <FixView $backgroundImageUrl={backgroundImageUrl}>
-      <Header title="등불 작성하기" />
+      <Header title="등불 작성하기" to="/lampMain" />
       <DescriptionText preText={theme.title} />
       <LanternWishPaper inputType="email" placeholder={theme.placeholder} />
 
