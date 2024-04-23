@@ -84,7 +84,7 @@ function LampWritePage() {
         console.error("Failed to post lantern data:", error);
       }
     } else {
-      alert("소원을 적어 주세요");
+      alert("닉네임, 소원, 올바른 비밀번호 형식을 작성했는지 확인해주세요");
     }
   };
 
