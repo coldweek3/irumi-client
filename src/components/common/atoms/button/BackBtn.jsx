@@ -9,8 +9,7 @@ function BackBtn({ to }) {
     if (to) {
       navigate(to);
     } else {
-      // to props가 전달되지 않은 경우 메인 페이지로 이동
-      navigate("/");
+      navigate("/lanterns");
     }
   };
 
