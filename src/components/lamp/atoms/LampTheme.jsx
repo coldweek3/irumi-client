@@ -30,19 +30,32 @@ const ThemeBox = styled(Link)`
 
   text-align: center;
 
+  opacity: 0%;
   box-shadow: 0px 4px 10px 2px rgba(255, 255, 255, 0.2);
+  animation: ani_slide_in_top 0.5s ease-out forwards;
+  animation-delay: ${props => props.$delay};
+  @keyframes ani_slide_in_top {
+    0% {
+      opacity: 0%;
+    }
+    100% {
+      opacity: 100%;
+    }
+  }
 `;
 
 function LampTheme() {
   return (
     <LampThemeWrapper>
-      <ThemeBox to={"/lampWrite/1"}>
+      <ThemeBox $delay={"0s"} x to={"/lampWrite/1"}>
         이번 학기가 끝났을 때 나는 어떤 모습일까?🤔
       </ThemeBox>
-      <ThemeBox to={"/lampWrite/1"}>
+      <ThemeBox $delay={"0.5s"} to={"/lampWrite/1"}>
         올해가 지나고 난 어떤 것을 이뤘을까?🎄
       </ThemeBox>
-      <ThemeBox to={"/lampWrite/1"}>내년의 오늘 난 어떤 모습일까?😎</ThemeBox>
+      <ThemeBox $delay={"1s"} to={"/lampWrite/1"}>
+        내년의 오늘 난 어떤 모습일까?😎
+      </ThemeBox>
     </LampThemeWrapper>
   );
 }

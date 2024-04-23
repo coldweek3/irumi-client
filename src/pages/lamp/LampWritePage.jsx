@@ -68,7 +68,7 @@ function LampWritePage() {
 
         console.log("등불이 저장되었습니다", response.data);
 
-        navigate("/lampFly");
+        navigate(`/lampFly/${parseInt(themeId)}`);
       } catch (error) {
         if (error.response.status === 400 && error.response.data.email) {
           alert(error.response.data.email[0]);
