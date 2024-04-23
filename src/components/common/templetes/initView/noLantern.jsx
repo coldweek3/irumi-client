@@ -33,7 +33,7 @@ function NoLanternDetail() {
         <Link to="/">
           <ImgWrapper src="/img/Lantern/Big_purple.png" width={80} />
         </Link>
-        연등이 삭제되었습니다!
+        삭제된 연등입니다!
         <br />
         연꽃을 눌러 홈으로 이동해주세요 :)
       </TextWapper>
