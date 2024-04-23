@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 //배경지 컴포넌트
 import Header from "../../components/common/molecules/header/header";
@@ -11,12 +12,21 @@ import LanternWritebutton from "../../components/lanternWrite/atom/button";
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
 
 import FixView from "../../components/common/templetes/fixView/FixView";
+import { clickedState } from "../../recoil/lanternColor";
 
 function LanternColorPage() {
   const navigate = useNavigate();
+  const [clicked, setClicked] = useRecoilState(clickedState);
 
   const handleButtonClick = () => {
-    navigate("/lanternWrite");
+    const selectedColors = Object.values(clicked);
+    const isAnyColorSelected = selectedColors.some(color => color === true);
+
+    if (isAnyColorSelected) {
+      navigate("/lanternWrite");
+    } else {
+      alert("연등색을 골라주세요");
+    }
   };
 
   return (
