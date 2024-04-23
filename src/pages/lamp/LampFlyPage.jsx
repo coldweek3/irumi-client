@@ -9,8 +9,12 @@ import LampImageContainer from "../../components/lampFly/molecules/LampImageCont
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
 import LinkButton from "../../components/common/atoms/button/LinkButton";
 import LampFlyTextLabel from "../../components/lampFly/atoms/LampFlyTextLabel";
+import { useParams } from "react-router-dom";
 
 function LampFlyPage() {
+  const DateList = ["6월 14일", "12월 31일", "내년의 오늘"];
+  const { themeId } = useParams();
+
   const [isDragMode, setIsDragMode] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   // 업데이트 되는 값을 set 해줌
@@ -19,7 +23,6 @@ function LampFlyPage() {
   };
 
   useEffect(() => {
-    console.log(position);
     if (
       position.x < 20 &&
       position.x > -20 &&
@@ -96,7 +99,7 @@ function LampFlyPage() {
           <LampFlyTextLabel>
             등불을 하늘에 날려보냈습니다!
             <br />
-            메일함을 확인해주세요!
+            {DateList[themeId - 1]} , 메일함을 확인해주세요.
           </LampFlyTextLabel>
 
           <ButtonList className={"bottom layout-1"}>

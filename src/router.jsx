@@ -37,7 +37,7 @@ const router = createBrowserRouter([
       // 등불(램프) 둘러보기 페이지
       { path: "/lampMain", element: <LampMainPage /> },
       { path: "/lampWrite/:themeId", element: <LampWritePage /> },
-      { path: "/lampFly", element: <LampFlyPage /> },
+      { path: "/lampFly/:themeId", element: <LampFlyPage /> },
 
       //포춘 페이지
       { path: "/fortuneIntro/:detailId", element: <FortuneIntroPage /> },
