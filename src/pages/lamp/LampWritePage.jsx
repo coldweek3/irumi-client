@@ -6,7 +6,6 @@ import {
   nicknameState,
   wishState,
   emailState,
-  passwordState,
   clickedState
 } from "../../recoil/lanternContent";
 import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
@@ -42,7 +41,6 @@ function LampWritePage() {
   const [nickname, setNickname] = useRecoilState(nicknameState);
   const [wish, setWish] = useRecoilState(wishState);
   const [email, setEmail] = useRecoilState(emailState);
-  const [password, setPassword] = useRecoilState(passwordState);
   const [clicked, setClicked] = useRecoilState(clickedState);
 
   const { themeId, detailId } = useParams();
@@ -75,7 +73,7 @@ function LampWritePage() {
         // 포스트 성공 후 Recoil 상태 초기화
         setNickname("");
         setWish("");
-        setPassword("");
+
         setEmail("");
         setClicked({});
         console.log(response.id);
