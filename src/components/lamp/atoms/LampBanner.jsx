@@ -81,7 +81,9 @@ function LampBanner() {
             step2. 메일과 함께 해당 테마에 맞는 소원을 <br class="smallWidth" />
             적어보세요!
           </TextWrapper>
-          <TextWrapper>테마 시기에 맞게 메일이 전송됩니다! 💌</TextWrapper>
+          <TextWrapper>
+            추후, 테마 시기에 맞춰 메일이 전송될 예정입니다! 💌
+          </TextWrapper>
         </TextContainer>
       </LampBannerDesign>
     </Container>
