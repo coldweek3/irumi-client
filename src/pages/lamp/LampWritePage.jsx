@@ -79,7 +79,7 @@ function LampWritePage() {
         setEmail("");
         setClicked({});
         console.log(response.id);
-        navigate(`/fortuneIntro/${detailId}`);
+        navigate(`/lampFly/${parseInt(themeId)}`);
       } catch (error) {
         console.error("Failed to post lantern data:", error);
       }
