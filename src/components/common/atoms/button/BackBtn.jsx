@@ -23,7 +23,7 @@ function BackBtn() {
 
   return (
     <BackBtnWrapper onClick={handleBackClick}>
-      <BackBtnImg src="/common/backBtnImg.png" />
+      <BackBtnImg src="/common/backBtnImg.svg" />
     </BackBtnWrapper>
   );
 }
