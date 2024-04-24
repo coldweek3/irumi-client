@@ -15,7 +15,9 @@ function BackBtn({ to }) {
 
   return (
     <BackBtnWrapper onClick={handleBackClick}>
-      <BackBtnImg onClick={handleBackClick} src="/common/backBtnImg.png" />
+
+      <BackBtnImg onClick={handleBackClick} src="/common/backBtnImg.svg" />
+
     </BackBtnWrapper>
   );
 }

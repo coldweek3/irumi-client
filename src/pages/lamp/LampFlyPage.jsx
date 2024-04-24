@@ -49,14 +49,14 @@ function LampFlyPage() {
             width={20}
             top={-60}
             left={-60}
-            url={"/img/Lamp/line.png"}
+            url={"/img/Lamp/line.svg"}
           />
           <LampImage
             className={"absolute ani_twinkling"}
             width={170}
             top={0}
             left={80}
-            url={"/img/Lamp/text.png"}
+            url={"/img/Lamp/text.svg"}
           />
 
           <LampDrag top={60} left={50}>
