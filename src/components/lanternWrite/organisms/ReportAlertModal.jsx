@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+function ReportAlertModal() {
+  return (
+    <ReportAlertWrapper>
+      <ReportAlertBox>신고가 접수되었습니다</ReportAlertBox>
+    </ReportAlertWrapper>
+  );
+}
+
+export default ReportAlertModal;
+
 const ReportAlertWrapper = styled.div`
   position: fixed;
   transform: translate(-50%, -50%);
@@ -24,13 +34,3 @@ const ReportAlertBox = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-function ReportAlertModal() {
-  return (
-    <ReportAlertWrapper>
-      <ReportAlertBox>신고가 접수되었습니다</ReportAlertBox>
-    </ReportAlertWrapper>
-  );
-}
-
-export default ReportAlertModal;

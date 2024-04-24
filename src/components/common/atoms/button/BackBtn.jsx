@@ -2,30 +2,39 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-const BackBtnWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  height: 100%;
-  width: 44px;
-  cursor: pointer;
-`;
-const BackBtnImg = styled.img`
-  width: 24px;
-  height: 24px;
-`;
-
-function BackBtn() {
+function BackBtn({ to }) {
   const navigate = useNavigate();
 
   const handleBackClick = () => {
-    navigate(-1);
+    if (to) {
+      navigate(to);
+    } else {
+      navigate("/lanterns");
+    }
   };
 
   return (
     <BackBtnWrapper onClick={handleBackClick}>
-      <BackBtnImg src="/common/backBtnImg.svg" />
+
+      <BackBtnImg onClick={handleBackClick} src="/common/backBtnImg.svg" />
+
     </BackBtnWrapper>
   );
 }
 
 export default BackBtn;
+
+const BackBtnWrapper = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 44px;
+  cursor: pointer;
+  min-height: 70px;
+`;
+const BackBtnImg = styled.img`
+  width: 24px;
+  height: 24px;
+  z-index: 6;
+`;

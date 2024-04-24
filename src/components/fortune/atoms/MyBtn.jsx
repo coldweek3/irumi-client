@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react";
-import styled from "styled-components";
-import html2canvas from "html2canvas";
+import React, { useRef } from "react";
+import styled, { css } from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { saveAs } from "file-saver"; // FileSaver.js 라이브러리 추가
+import { useRecoilValue } from "recoil";
+import { theme } from "../../../recoil/theme";
+import { day } from "../../../style/theme";
 
 const MyBtnsBox = styled.div`
   width: 300px;
@@ -13,6 +14,7 @@ const MyBtnsBox = styled.div`
   align-items: center;
   position: fixed;
   bottom: 4%;
+  z-index: 10000;
 `;
 
 const Button = styled.div`
@@ -27,40 +29,30 @@ const Button = styled.div`
     cursor: pointer;
   }
   p {
-    color: #fafbfd;
     font-size: 12px;
     font-weight: 400;
     margin-top: 5px;
+
+    /* 테마 스타일링 */
+    ${({ theme }) => css`
+      color: ${theme === "DAY" ? "#5b3a1a" : "#fafbfd"};
+    `}
   }
 `;
 
-function MyBtn() {
-  // 메인 이동
+const MyBtn = ({
+  handleDownload,
+  LanternRef,
+  TitleSecRef,
+  ContentSecRef,
+  detailId
+}) => {
   const navigate = useNavigate();
+  const currentTheme = useRecoilValue(theme);
 
-  //이미지 저장
-  const LanternRef = useRef();
-
-  const handleDownload = async () => {
-    if (!LanternRef.current) return;
-
-    try {
-      const div = LanternRef.current;
-      const canvas = await html2canvas(div, { scale: 2 });
-      canvas.toBlob(blob => {
-        if (blob !== null) {
-          saveAs(blob, "당신의_연등.png"); // 파일 이름을 변경해도 됩니다.
-        }
-      });
-    } catch (error) {
-      console.error("Error capturing image:", error);
-    }
-  };
-
-  // 링크 복사
   const handleCopyLink = async () => {
     try {
-      const currentURL = window.location.href;
+      const currentURL = `${window.location.origin}/lanternDetail/${detailId}`;
       if (currentURL) {
         await navigator.clipboard.writeText(currentURL);
         alert("링크가 복사되었습니다!");
@@ -75,32 +67,32 @@ function MyBtn() {
 
   return (
     <MyBtnsBox>
-      <Button>
+      <Button theme={currentTheme}>
         <img
-          src="/img/Fortune/my_saveImg.png"
-          onClick={handleDownload}
+          src="/img/Fortune/my_saveImg.svg"
+          onClick={() => handleDownload(LanternRef, TitleSecRef, ContentSecRef)}
           alt="Save Image"
         />
         <p>이미지로 저장</p>
       </Button>
-      <Button>
+      <Button theme={currentTheme}>
         <img
-          src="/img/Fortune/my_goMain.png"
+          src="/img/Fortune/my_goMain.svg"
           onClick={() => navigate("/")}
           alt="Go to Main"
         />
-        <p>메인페이지</p>
+        <p>메인 페이지</p>
       </Button>
-      <Button>
+      <Button theme={currentTheme}>
         <img
-          src="/img/Fortune/my_copyUrl.png"
+          src="/img/Fortune/my_copyUrl.svg"
           onClick={handleCopyLink}
           alt="Copy URL"
         />
-        <p>이루미 링크복사</p>
+        <p>내 연등 링크 복사</p>
       </Button>
     </MyBtnsBox>
   );
-}
+};
 
 export default MyBtn;

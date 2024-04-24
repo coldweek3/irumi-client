@@ -81,7 +81,7 @@ function LanternsPage() {
         </Link>
       </ButtonList>
 
-      <SearchHeader className={"scroll"} />
+      <SearchHeader className={"scroll"} to="/" />
 
       {/* 무한 스크롤을 적용한 내부 콘텐츠 */}
       <InfinifyScroll

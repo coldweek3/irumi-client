@@ -1,34 +1,32 @@
 import React from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 //배경지 컴포넌트
-import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import Header from "../../components/common/molecules/header/header";
 import DescriptionText from "../../components/lanternWrite/atom/DescriptionText";
 import LanternColor from "../../components/lanternWrite/molecules/LanternColorChoice";
 import LanternColorConfirm from "../../components/lanternWrite/molecules/LanternColorConfirm";
 import LanternWritebutton from "../../components/lanternWrite/atom/button";
-import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
-import FixView from "../../components/common/templetes/fixView/FixView";
 
-const Background = styled.div`
-  background-image: ${props => `url(${props.$backgroundImageUrl})`};
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-size: cover;
-  background-repeat: no-repeat;
-`;
+import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
+
+import FixView from "../../components/common/templetes/fixView/FixView";
+import { clickedState } from "../../recoil/lanternColor";
 
 function LanternColorPage() {
-  const { backgroundImageUrl } = GradientBackground();
   const navigate = useNavigate();
+  const [clicked, setClicked] = useRecoilState(clickedState);
 
   const handleButtonClick = () => {
-    navigate("/lanternWrite");
+    const selectedColors = Object.values(clicked);
+    const isAnyColorSelected = selectedColors.some(color => color === true);
+
+    if (isAnyColorSelected) {
+      navigate("/lanternWrite");
+    } else {
+      alert("연등색을 골라주세요");
+    }
   };
 
   return (

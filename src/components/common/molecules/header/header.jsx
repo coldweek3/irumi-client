@@ -6,10 +6,8 @@ const HeaderWrapper = styled.div`
   z-index: 1000;
   width: 100%;
   height: 80px;
-
-  padding: 0px 16px;
+  padding: 16px;
   padding-top: 4px;
-
   height: 80px;
   flex-direction: row;
   display: flex;
@@ -31,7 +29,7 @@ const HeaderTitle = styled.div`
 function Header(props) {
   return (
     <HeaderWrapper>
-      <BackBtn />
+      <BackBtn to={props.to} />
       <HeaderTitle titleWidth={props.titleWidth} fontSize={props.fontSize}>
         {props.title}
       </HeaderTitle>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -16,26 +15,15 @@ import ConfirmModal from "../../components/lanternWrite/organisms/confirmModal";
 // API 함수 import
 import { postLanternData } from "../../apis/api/lanternPost";
 //import 컴포넌트
-import GradientBackground from "../../components/common/organisms/Background/GradientBackground";
 import Header from "../../components/common/molecules/header/header";
 import DescriptionText from "../../components/lanternWrite/atom/DescriptionText";
 import LanternWritebutton from "../../components/lanternWrite/atom/button";
 import LanternWishPaper from "../../components/lanternWrite/organisms/lanternWishPaper";
 import FixView from "../../components/common/templetes/fixView/FixView";
+
 import ButtonList from "../../components/common/molecules/buttonList/ButtonList";
 
-const Background = styled.div`
-  background-image: ${props => `url(${props.$backgroundImageUrl})`};
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  background-size: cover;
-`;
-
 function LanternWritePage() {
-  const { backgroundImageUrl } = GradientBackground();
   const nickname = useRecoilValue(nicknameState);
   const wish = useRecoilValue(wishState);
   const password = useRecoilValue(passwordState);
@@ -75,20 +63,21 @@ function LanternWritePage() {
       // 포스트 요청 보내기
       const response = await postLanternData({
         nickname: nickname,
-        content: wish,
+        content: wish + "\r\n",
         password: password,
         lanternColor: Object.keys(clicked).find(color => clicked[color])
       });
 
       const detailId = response.id;
+      const Lanternid = response.id;
 
       // 포스트 성공 후 Recoil 상태 초기화
       setNickname("");
       setWish("");
       setPassword("");
       setClicked({});
-      console.log(response.id);
-      // fortuneIntro 페이지로 이동
+      localStorage.setItem("Lanternid", Lanternid);
+
       navigate(`/fortuneIntro/${detailId}`);
     } catch (error) {
       console.error("Failed to post lantern data:", error);
@@ -97,7 +86,7 @@ function LanternWritePage() {
 
   return (
     <FixView>
-      <Header title="연등 작성하기" />
+      <Header title="연등 작성하기" to="/lanternColor" />
       <DescriptionText
         preText="이루고 싶은 "
         Yellowtext="소원을 "

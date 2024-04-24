@@ -2,101 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { reportLantern } from "../../../apis/api/postReport";
 
-const ReportModalWrapper = styled.div`
-  position: fixed;
-  z-index: 99;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-`;
-
-const ReportBox = styled.div`
-  width: 100%;
-  border-radius: 15px;
-  background-color: #fff;
-  transform: scale(0.7);
-`;
-
-const ReportTitle = styled.div`
-  width: 100%;
-  height: 130px;
-  padding: 44px;
-  color: #000;
-  font-size: 20px;
-  font-weight: 400;
-  line-height: 116.523%;
-  display: flex;
-  justify-content: center;
-`;
-
-const ReportCheckBoxs = styled.div`
-  width: 100%;
-`;
-
-const CheckBox = styled.div`
-  padding: 11px 44px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  input {
-    width: 28px;
-    height: 28px;
-    border-radius: 5px;
-    background-color: #d9d9d9;
-    margin-right: 14px;
-    cursor: pointer;
-  }
-  input:checked {
-    background-image: url("/img/Lantern/checked.png");
-    background-size: 28px;
-  }
-  p {
-    color: #000;
-    font-size: 16px;
-    font-weight: 400;
-  }
-`;
-const Explain = styled.div`
-  width: 100%;
-  padding-top: 27px;
-  padding-bottom: 47px;
-  display: flex;
-  justify-content: center;
-  color: #000;
-  text-align: center;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 18px;
-`;
-const ReportBtnBox = styled.div`
-  width: 100%;
-  height: 75px;
-  border-top: 1px solid #b0b0b0;
-  display: flex;
-  flex-direction: row;
-`;
-const ReportNoBtn = styled.div`
-  border-right: 1px solid #b0b0b0;
-  width: 166px;
-  height: 100%;
-  background-color: transparent;
-  color: black;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-`;
-const ReportYesBtn = styled.div`
-  color: #c31010;
-  width: 166px;
-  height: 100%;
-  border-radius: 0;
-  border-bottom-right-radius: 15px;
-  border-right: 0;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-`;
-
 function ReportModal({
   closeReportModal,
   openReportedModal,
@@ -134,7 +39,7 @@ function ReportModal({
       localStorage.setItem(`reported_${detailId}`, true);
 
       setTimeout(() => {
-        closeReportModal(); // 2초 후에 모달 닫기
+        closeReportModal();
       }, 2000);
     } catch (error) {
       console.error("Error reporting lantern:", error);
@@ -210,3 +115,101 @@ function ReportModal({
 }
 
 export default ReportModal;
+
+const ReportModalWrapper = styled.div`
+  position: fixed;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const ReportBox = styled.div`
+  width: 100%;
+  border-radius: 15px;
+  background-color: #fff;
+  transform: scale(0.7);
+`;
+
+const ReportTitle = styled.div`
+  width: 100%;
+  height: 130px;
+  padding: 44px;
+  color: #000;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 116.523%;
+  display: flex;
+  justify-content: center;
+`;
+
+const ReportCheckBoxs = styled.div`
+  width: 100%;
+  cursor: pointer;
+`;
+
+const CheckBox = styled.div`
+  padding: 11px 44px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  input {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    margin-right: 14px;
+  }
+  input:checked {
+    background-image: url("/img/Lantern/checked.png");
+    background-size: 28px;
+  }
+  p {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+  }
+`;
+const Explain = styled.div`
+  width: 100%;
+  padding-top: 27px;
+  padding-bottom: 47px;
+  display: flex;
+  justify-content: center;
+  color: #000;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+`;
+const ReportBtnBox = styled.div`
+  width: 100%;
+  height: 75px;
+  border-top: 1px solid #b0b0b0;
+  display: flex;
+  flex-direction: row;
+`;
+const ReportNoBtn = styled.div`
+  border-right: 1px solid #b0b0b0;
+  width: 166px;
+  height: 100%;
+  background-color: transparent;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+`;
+const ReportYesBtn = styled.div`
+  color: #c31010;
+  width: 166px;
+  height: 100%;
+  border-radius: 0;
+  border-bottom-right-radius: 15px;
+  border-right: 0;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+`;

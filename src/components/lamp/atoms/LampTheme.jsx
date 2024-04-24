@@ -50,10 +50,10 @@ function LampTheme() {
       <ThemeBox $delay={"0s"} x to={"/lampWrite/1"}>
         이번 학기가 끝났을 때 나는 어떤 모습일까?🤔
       </ThemeBox>
-      <ThemeBox $delay={"0.5s"} to={"/lampWrite/1"}>
+      <ThemeBox $delay={"0.5s"} to={"/lampWrite/2"}>
         올해가 지나고 난 어떤 것을 이뤘을까?🎄
       </ThemeBox>
-      <ThemeBox $delay={"1s"} to={"/lampWrite/1"}>
+      <ThemeBox $delay={"1s"} to={"/lampWrite/3"}>
         내년의 오늘 난 어떤 모습일까?😎
       </ThemeBox>
     </LampThemeWrapper>

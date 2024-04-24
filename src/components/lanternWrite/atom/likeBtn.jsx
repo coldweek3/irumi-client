@@ -1,6 +1,18 @@
 import React from "react";
 import styled from "styled-components";
-import { postLike } from "../../../apis/api/likeBtn";
+
+function LikeBtn({ handleLikeClick, isLiked, LikeCount }) {
+  return (
+    <LikeBtnWrapper onClick={handleLikeClick}>
+      <LikeBtnImg
+        src={isLiked ? "/img/Lantern/like_fill.png" : "/img/Lantern/like.png"}
+      />
+      <LikeCountNum>{LikeCount}</LikeCountNum>
+    </LikeBtnWrapper>
+  );
+}
+
+export default LikeBtn;
 
 const LikeBtnWrapper = styled.div`
   position: absolute;
@@ -21,16 +33,3 @@ const LikeCountNum = styled.div`
   font-size: 10px;
   color: #5b3a1a;
 `;
-
-function LikeBtn({ handleLikeClick, isLiked, LikeCount }) {
-  return (
-    <LikeBtnWrapper onClick={handleLikeClick}>
-      <LikeBtnImg
-        src={isLiked ? "/img/Lantern/like_fill.png" : "/img/Lantern/like.png"}
-      />
-      <LikeCountNum>{LikeCount}</LikeCountNum>
-    </LikeBtnWrapper>
-  );
-}
-
-export default LikeBtn;

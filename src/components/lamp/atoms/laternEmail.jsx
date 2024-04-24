@@ -22,8 +22,9 @@ const LanternWriteEmailInput = styled.input`
   background-color: #f1f1f1;
   border-radius: 5px;
   border: 1px solid #898989;
-  text-indent: 5px;
+  /* text-indent: 5px; */
   height: 2em;
+  padding: 0.3em;
 
   &::placeholder {
     font-size: 8px;
