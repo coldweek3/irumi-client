@@ -66,7 +66,7 @@ function LanternWishPaper({ inputType }) {
             <WishPaperInput
               inputType="textarea"
               inputTitle="소원 내용"
-              inputPlaceholder="소원 내용을 입력해주세요.(300자 이내)"
+              inputPlaceholder="소원 내용을 입력해주세요.(200자 이내)"
               inputHeight="13rem"
               maxLength={300}
               value={wish}
